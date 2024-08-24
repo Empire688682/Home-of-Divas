@@ -1,0 +1,30 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 5%;
+  min-height: 100vh;
+  background-color: ghostwhite;
+}
+
+
+/* Mobile */
+@media (max-width: 700px) {
+  
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
