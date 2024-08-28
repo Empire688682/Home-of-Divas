@@ -14,12 +14,24 @@ const Footer = () => {
         <h2>Divas</h2>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse illum sapiente numquam, modi veniam.</p>
         <div className={styles.cards_Con}>
+          <div className={styles.cards}>
           <FaCcMastercard />
+          </div>
+          <div className={styles.cards}>
           <FaCcMastercard />
+          </div>
+          <div className={styles.cards}>
           <FaCcMastercard />
+          </div>
+          <div className={styles.cards}>
           <FaCcMastercard />
+          </div>
+          <div className={styles.cards}>
           <FaCcMastercard />
+          </div>
+          <div className={styles.cards}>
           <FaCcMastercard />
+          </div>
         </div>
       </div>
       <div className={styles.small_col}>

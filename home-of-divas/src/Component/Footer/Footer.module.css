@@ -2,11 +2,20 @@
     padding: 30px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 30px;
+}
+.footer h2{
+   font-family: cursive;
+}
+.footer h3{
+    font-size: 15px;
+    font-weight: 600;
+}
+.footer p{
+    font-size: 14px;
 }
 .footer .big_col{
-    flex-basis: 30%;
-    min-width: 200px;
+    flex-basis: 25%;
 }
 .big_col .cards_Con{
     display: flex;
@@ -29,6 +38,8 @@ form .form_Con{
     color: var(--black);
     font-size: 16px;
     outline: none;
+    flex: 1;
+    padding: 5px 10px;
 }
 .form_Con .btn{
     background-color: transparent;
@@ -40,15 +51,17 @@ form .form_Con{
     color: var(--white);
     cursor: pointer;
 }
+.big_col .cards{
+    font-size: 30px;
+}
 .footer .small_col{
-    flex-basis: 15;
-    min-width: 180px;
+    flex-basis: 15%;
 }
 .small_col li{
     list-style: none;
     margin-bottom: 5px;
     cursor: pointer;
-
+    font-size: 13px;
 }
 .footer h2, .footer h3{
     padding-bottom: 20px;
