@@ -43,7 +43,8 @@ const Footer = () => {
             <input type="email" name="email" placeholder='Email' required />
             <button className={styles.btn} type="submit">SUBSCRIBE</button>
           </div>
-          <div className={styles.socila_icon_Con}>
+        </form>
+        <div className={styles.socila_icon_Con}>
               <div className={styles.socila_icon}>
                 <FaFacebookF />
               </div>
@@ -57,7 +58,6 @@ const Footer = () => {
                 <FaInstagram />
               </div>
             </div>
-        </form>
       </div>
       <p  className={styles.designer}>Copyrighted 2024 <b>Divas</b> All rights reserved | Designed with <FaHeart style={{color:"red"}}/>  by <a href="#">Jay-empire</a> </p>
     </div>

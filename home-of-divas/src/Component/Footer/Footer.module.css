@@ -15,24 +15,22 @@
     margin-top: 15px;
 }
 .big_col form{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
+    margin-bottom: 30px;
 }
 form .form_Con{
     display: flex;
     border: 1px solid var( --gray);
     border-radius: 50px;
+    width: 100%;
 }
 .form_Con input{
     background-color: transparent;
     border: none;
     color: var(--black);
-    flex: 1;
     padding: 10px;
     font-size: 16px;
     outline: none;
+    flex: 1;
 }
 .form_Con .btn{
     background-color: transparent;
@@ -60,10 +58,10 @@ form .form_Con{
 .footer .socila_icon_Con{
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
 }
 .socila_icon{
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
     background-color: var(--white);
     padding: 10px;
