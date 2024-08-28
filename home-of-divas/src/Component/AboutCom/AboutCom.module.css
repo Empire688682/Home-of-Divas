@@ -1,0 +1,59 @@
+.about_Com {
+    padding: 30px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.small_col {
+    flex: 2;
+    margin-bottom: 30px;
+}
+
+.small_col .img_Con {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    z-index: 88;
+}
+
+.big_col {
+    flex: 3;
+    background-color: var(--light);
+    padding-top: 100px;
+    padding-left: 15%;
+    padding-right: 25px;
+    transform: translateX(-90px);
+    padding-bottom: 40px;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.big_col h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.big_col p {
+    margin-bottom: 20px;
+}
+.big_col .btn {
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 20px 40px;
+    margin-top: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width:780px){
+    .big_col {
+        transform: translateX(0px);
+        min-width: 300px;
+        padding-top: 100px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
