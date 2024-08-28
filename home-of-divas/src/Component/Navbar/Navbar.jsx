@@ -3,6 +3,8 @@ import React from 'react';
 import styles from './Navbar.module.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FaUserCircle } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -19,6 +21,14 @@ const Navbar = () => {
         <Link href="/shop" className={`${styles.links} ${pathname === '/shop' ? styles.active : ''}`}>Shop</Link>
         <Link href="/contact" className={`${styles.links} ${pathname === '/contact' ? styles.active : ''}`}>Contact</Link>
       </ul>
+      <div className={styles.user_login_cart}>
+        <div className={styles.cart}>
+          <FiShoppingCart />
+        </div>
+        <div className={styles.user_login}>
+          <FaUserCircle />
+        </div>
+      </div>
     </div>
   );
 };

@@ -12,13 +12,24 @@
 }
 .navbar ul .links{
     text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
     color: black;
-    transition: .4s ease-in-out;
+    transition: .3s ease-in-out;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+.navbar ul .links:hover{
+    border-bottom: 3px solid var(--danger);
 }
 .navbar .links.active {
-    background-color: black;
-    color: white;
+    border-bottom: 3px solid var(--danger);
   }
+  .user_login_cart{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.user_login_cart .cart, .user_login_cart .user_login{
+    font-size: 30px;
+    cursor: pointer;
+}
 

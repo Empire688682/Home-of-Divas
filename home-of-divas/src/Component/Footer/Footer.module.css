@@ -1,0 +1,55 @@
+.footer{
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.footer .big_col{
+    flex-basis: 30%;
+    min-width: 200px;
+}
+.big_col .cards_Con{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.big_col form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+form .form_Con{
+    display: flex;
+    border: 1px solid var( --gray);
+    border-radius: 50px;
+}
+.form_Con input{
+    background-color: transparent;
+    border: none;
+    color: black;
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+.form_Con .btn{
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+}
+.footer .small_col{
+    flex-basis: 15;
+    min-width: 180px;
+}
+.small_col li{
+    list-style: none;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+}
+.footer h2, .footer h3{
+    padding-bottom: 20px;
+}
