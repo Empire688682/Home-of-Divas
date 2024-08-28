@@ -27,10 +27,8 @@ form .form_Con{
     background-color: transparent;
     border: none;
     color: var(--black);
-    padding: 10px;
     font-size: 16px;
     outline: none;
-    flex: 1;
 }
 .form_Con .btn{
     background-color: transparent;
