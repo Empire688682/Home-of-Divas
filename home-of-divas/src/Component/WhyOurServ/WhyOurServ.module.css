@@ -1,0 +1,35 @@
+.why_our_serv{
+    margin: 50px 0;
+    padding: 0 5%;
+}
+.why_our_serv_Com{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.why_our_serv h2{
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 30px;
+}
+.why_our_serv p{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+.four_col{
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+}
+.img_Con{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.four_col h3{
+    font-weight: 600;
+    margin-bottom: 10px;
+}

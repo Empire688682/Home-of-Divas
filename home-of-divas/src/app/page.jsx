@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import Hero from '@/Component/Hero/Hero';
 import ThreeCol from '@/Component/ThreeCol/ThreeCol';
 import AboutCom from '@/Component/AboutCom/AboutCom';
+import WhyOurServ from '@/Component/WhyOurServ/WhyOurServ';
 
 const page = () => {
   return (
@@ -10,6 +11,7 @@ const page = () => {
       <Hero/>
       <ThreeCol/>
       <AboutCom/>
+      <WhyOurServ/>
     </div>
   )
 }
