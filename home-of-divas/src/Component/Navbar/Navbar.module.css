@@ -4,6 +4,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.navbar .big_screen_menu{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
 .navbar ul{
     display: flex;
     align-items: center;
@@ -28,8 +33,56 @@
     align-items: center;
     gap: 40px;
 }
-.user_login_cart .cart, .user_login_cart .user_login{
-    font-size: 30px;
+.user_login_cart .cart, .user_login_cart .user_login,.user_login_cart .user_fav{
+    font-size: 20px;
     cursor: pointer;
+}
+
+/* MOBILE MENU*/
+.navbar .small_screen_menu{
+    display: none;
+}
+.menu_bar{
+    display: none;
+}
+
+@media (max-width:800px){
+    .navbar .big_screen_menu{
+        display: none;
+    }
+    .navbar{
+        position: relative;
+    }
+    .navbar .small_screen_menu{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--blur);
+        width: 70%;
+        gap: 40px;
+        padding: 30px;
+        min-height: 100vh;
+        align-items: flex-start;
+        transition: .5s ease-in-out;
+    }
+    .menu_close{
+        font-size: 40px;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        margin-right: 30px;
+        cursor: pointer;
+    }
+    .navbar .small_screen_menu.active{
+        transform: translateX(-100%);
+    }
+    .menu_bar{
+        display: block;
+    }
+    .small_screen_menu ul{
+        flex-direction: column;
+    }
 }
 
