@@ -28,10 +28,11 @@ form .form_Con{
 .form_Con input{
     background-color: transparent;
     border: none;
-    color: black;
+    color: var(--black);
     flex: 1;
     padding: 10px;
     font-size: 16px;
+    outline: none;
 }
 .form_Con .btn{
     background-color: transparent;
@@ -39,6 +40,9 @@ form .form_Con{
     font-size: 16px;
     border-radius: 50px;
     border: none;
+    background-color: var(--orange);
+    color: var(--white);
+    cursor: pointer;
 }
 .footer .small_col{
     flex-basis: 15;
@@ -52,4 +56,27 @@ form .form_Con{
 }
 .footer h2, .footer h3{
     padding-bottom: 20px;
+}
+.footer .socila_icon_Con{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.socila_icon{
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--white);
+    padding: 10px;
+    border-radius: 50%;
+    transition: .3s ease-in-out;
+    color: var(--black);
+    border: 1px solid var(--gray);
+}
+.socila_icon:hover{
+    transform: translateY(-10px);
+}
+.footer .designer{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
 }

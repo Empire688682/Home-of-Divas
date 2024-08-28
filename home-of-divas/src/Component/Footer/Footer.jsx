@@ -5,6 +5,7 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -58,6 +59,7 @@ const Footer = () => {
             </div>
         </form>
       </div>
+      <p  className={styles.designer}>Copyrighted 2024 <b>Divas</b> All rights reserved | Designed with <FaHeart style={{color:"red"}}/>  by <a href="#">Jay-empire</a> </p>
     </div>
   )
 }
