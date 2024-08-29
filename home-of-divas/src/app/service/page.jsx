@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './service.module.css'
+import ServiceHero from '@/Component/ServiceHero/ServiceHero';
+import ThreeCol from '@/Component/ThreeCol/ThreeCol';
 
 const page = () => {
   return (
     <div>
-      <h1>SERVICE PAGE</h1>
+      <ServiceHero/>
+      <ThreeCol/>
     </div>
   )
 }

@@ -16,6 +16,9 @@
     align-items: center;
     gap: 50px;
 }
+.logo h3{
+    color: var(--orange);
+}
 .navbar ul{
     display: flex;
     align-items: center;

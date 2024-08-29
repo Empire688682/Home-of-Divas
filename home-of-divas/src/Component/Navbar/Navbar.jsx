@@ -22,7 +22,7 @@ const Navbar = () => {
         <ul className={styles.menu}>
           <Link href="/" className={`${styles.links} ${pathname === '/' ? styles.active : ''}`}>Home</Link>
           <Link href="/about" className={`${styles.links} ${pathname === '/about' ? styles.active : ''}`}>About</Link>
-          <Link href="/project" className={`${styles.links} ${pathname === '/project' ? styles.active : ''}`}>Project</Link>
+          <Link href="/project" className={`${styles.links} ${pathname === '/project' ? styles.active : ''}`}>Gallery</Link>
           <Link href="/service" className={`${styles.links} ${pathname === '/service' ? styles.active : ''}`}>Service</Link>
           <Link href="/shop" className={`${styles.links} ${pathname === '/shop' ? styles.active : ''}`}>Shop</Link>
           <Link href="/contact" className={`${styles.links} ${pathname === '/contact' ? styles.active : ''}`}>Contact</Link>
@@ -67,7 +67,7 @@ const Navbar = () => {
           <ul className={styles.menu}>
             <Link href="/" className={`${styles.links} ${pathname === '/' ? styles.active : ''}`}>Home</Link>
             <Link href="/about" className={`${styles.links} ${pathname === '/about' ? styles.active : ''}`}>About</Link>
-            <Link href="/project" className={`${styles.links} ${pathname === '/project' ? styles.active : ''}`}>Project</Link>
+            <Link href="/project" className={`${styles.links} ${pathname === '/project' ? styles.active : ''}`}>Gallery</Link>
             <Link href="/service" className={`${styles.links} ${pathname === '/service' ? styles.active : ''}`}>Service</Link>
             <Link href="/shop" className={`${styles.links} ${pathname === '/shop' ? styles.active : ''}`}>Shop</Link>
             <Link href="/contact" className={`${styles.links} ${pathname === '/contact' ? styles.active : ''}`}>Contact</Link>
