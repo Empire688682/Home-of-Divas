@@ -9,6 +9,7 @@
     background-color: var(--white);
     z-index: 99;
     margin-bottom: 60px;
+    box-shadow: 0 0 5px var(--gray);
 }
 .navbar .big_screen_menu{
     display: flex;
@@ -61,7 +62,7 @@
     width: 100%;
     background-color: var(--white);
     z-index: 99;
-    border-bottom: 1px solid gray;
+    box-shadow: 0 0 5px var(--gray);
     }
     .navbar .small_screen_menu{
         display: flex;

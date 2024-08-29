@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    border-top: 2px solid var(--gray);
+    box-shadow: 0 0 5px var(--gray);
 }
 .footer h2{
    font-family: cursive;

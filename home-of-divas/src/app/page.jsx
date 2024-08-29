@@ -6,6 +6,7 @@ import AboutCom from '@/Component/AboutCom/AboutCom';
 import WhyOurServ from '@/Component/WhyOurServ/WhyOurServ';
 import VideoLink from '@/Component/VideoLink/VideoLink';
 import Review from '@/Component/Review/Review';
+import Instagram from '@/Component/Instagram/Instagram';
 
 const page = () => {
   return (
@@ -16,6 +17,7 @@ const page = () => {
       <WhyOurServ/>
       <VideoLink/>
       <Review/>
+      <Instagram/>
     </div>
   )
 }
