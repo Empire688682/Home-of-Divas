@@ -1,0 +1,56 @@
+/* Hero.module.css */
+.gallery_hero {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    background-image: 
+    linear-gradient(rgba(7, 38, 85, 0.856), rgba(7, 38, 85, 0.979)),
+    url('/instra1.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 50px 0;
+    margin-bottom: 50px;
+  }
+  
+  .text_col {
+    flex: 1;
+    min-width: 300px;
+    padding-left: 5%;
+    padding-top: 160px;
+    padding-bottom: 40px;
+  }
+  .text_col h2{
+    color: var(--white);
+    padding-bottom: 30px;
+    font-size: 50px;
+  }
+  .img_col {
+    flex: 2;
+    min-width: 300px; 
+  }
+  
+  .img_com {
+    position: relative;
+    width: 100%;
+    height: 111%;
+  }
+
+  @media (max-width:700px){
+    .img_col {
+        display: none;
+      }
+      .text_col {
+        padding-bottom: 0px;
+      }
+      .text_col h2{
+        padding-bottom: 0px;
+        font-size: 50px;
+      }
+      .gallery_hero {
+        min-height: 85vh;
+      }
+  }
+  
+  
