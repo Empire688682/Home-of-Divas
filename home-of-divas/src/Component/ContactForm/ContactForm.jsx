@@ -12,7 +12,7 @@ const ContactForm = () => {
             <div className={styles.contact_form_Con}>
                 <div className={styles.form_col}>
                     <form action="">
-                        <textarea name="message" id="" cols="30" rows="10" placeholder='Enter Message'></textarea>
+                        <textarea name="message" id="" cols="30" rows="5" placeholder='Enter Message'></textarea>
                         <input type="text" name="name" id="" placeholder='Enter your name' />
                         <input type="email" name="" id="" placeholder='Email' />
                         <input type="text" name="" id="" placeholder='Enter Subject' />

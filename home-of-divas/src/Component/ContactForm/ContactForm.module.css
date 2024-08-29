@@ -1,3 +1,71 @@
 .contact_form{
     padding: 50px 5%;
 }
+.contact_form h2{
+    font-weight: 600;
+    font-size: 30px;
+}
+.contact_form_Con{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 20px;
+}
+.form_col{
+    flex: 2;
+}
+.form_col form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.form_col form input{
+    padding:10px ;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--gray);
+}
+.form_col form textarea{
+    resize: none;
+    padding:10px ;
+    border-radius: 5px;
+    border: 1px solid var(--gray);
+    outline: none;
+}
+.form_col form button{
+    resize: none;
+    padding:15px 0 ;
+    border-radius: 5px;
+    background-color: var(--orange);
+    outline: none;
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    max-width: 200px;
+}
+.address_col{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 100%;
+}
+.address_box{
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+.address_icon{
+    font-size: 25px;
+}
+.address_text{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.address_text h4{
+    color: var(--gray);
+    font-weight: 500;
+}

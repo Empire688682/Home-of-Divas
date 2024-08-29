@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <ul className={styles.menu}>
+          <ul className={styles.menu} onClick={()=>setShowMenu(false)}>
             <Link href="/" className={`${styles.links} ${pathname === '/' ? styles.active : ''}`}>Home</Link>
             <Link href="/about" className={`${styles.links} ${pathname === '/about' ? styles.active : ''}`}>About</Link>
             <Link href="/project" className={`${styles.links} ${pathname === '/project' ? styles.active : ''}`}>Gallery</Link>
