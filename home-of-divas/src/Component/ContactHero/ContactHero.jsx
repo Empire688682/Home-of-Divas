@@ -6,7 +6,7 @@ const ContactHero = () => {
   return (
     <div className={styles.contact_hero}>
       <div className={styles.text_col}>
-        <h2>About Us</h2>
+        <h2>Contact Us</h2>
       </div>
       <div className={styles.img_col}>
         <div className={styles.img_com}>
