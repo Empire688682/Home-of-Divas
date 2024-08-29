@@ -5,6 +5,7 @@ import ThreeCol from '@/Component/ThreeCol/ThreeCol';
 import AboutCom from '@/Component/AboutCom/AboutCom';
 import WhyOurServ from '@/Component/WhyOurServ/WhyOurServ';
 import VideoLink from '@/Component/VideoLink/VideoLink';
+import Review from '@/Component/Review/Review';
 
 const page = () => {
   return (
@@ -14,6 +15,7 @@ const page = () => {
       <AboutCom/>
       <WhyOurServ/>
       <VideoLink/>
+      <Review/>
     </div>
   )
 }

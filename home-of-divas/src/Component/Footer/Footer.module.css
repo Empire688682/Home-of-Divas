@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    border-top: 2px solid var(--gray);
 }
 .footer h2{
    font-family: cursive;
@@ -88,4 +89,23 @@ form .form_Con{
     text-align: center;
     margin-top: 20px;
     width: 100%;
+}
+.back_top_icon{
+    transform: rotate(90deg);
+    font-size: 25px;
+    font-weight: bolder;
+    padding: 15px;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 90;
+    margin-right: 10px;
+    margin-bottom: 60px;
+    transition: 4s ease-in-out;
+}
+.back_top_icon.hidden{
+    display: none;
 }

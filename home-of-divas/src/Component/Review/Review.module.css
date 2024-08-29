@@ -1,0 +1,40 @@
+.review{
+    padding: 0 5%;
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.two_col{
+    flex: 1;
+    min-width: 300px;
+}
+.two_col p{
+    font-size: 14px;
+    margin: 10px 0;
+}
+.two_col p::before{
+    position: relative;
+    content: '"';
+    font-size: 70px;
+    color: var(--warning);
+}
+.inner_two_col{
+    display: flex;
+    align-items: center;
+}
+.img_Con{
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+.img_Con Image{
+    width: 100%;
+    height: 100%;
+}
+.name_Con{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

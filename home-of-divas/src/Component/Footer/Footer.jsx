@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 import { FaCcMastercard } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
@@ -6,8 +7,33 @@ import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { IoReturnUpBackSharp } from "react-icons/io5";
 
 const Footer = () => {
+  const [vissible, setVissible] = useState(false);
+  const backtoTop = () =>{
+    window.scrollTo(0, 0)
+  }
+
+  useEffect(() => {
+    // Function to handle scroll event
+    const handleScroll = () => {
+      const scroll = window.scrollY;
+      if(scroll > 400){
+        setVissible(false)
+      }
+      else{
+        setVissible(true)
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className={styles.footer}>
       <div className={styles.big_col}>
@@ -72,6 +98,9 @@ const Footer = () => {
             </div>
       </div>
       <p  className={styles.designer}>Copyrighted 2024 <b>Divas</b> All rights reserved | Designed with <FaHeart style={{color:"red"}}/>  by <a href="#">Jay-empire</a> </p>
+      <div className={`${styles.back_top_icon} ${vissible? styles.hidden:""}`} onClick={backtoTop}>
+      <IoReturnUpBackSharp />
+      </div>
     </div>
   )
 }
