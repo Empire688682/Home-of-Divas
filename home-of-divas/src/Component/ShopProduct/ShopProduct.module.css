@@ -1,0 +1,40 @@
+.shop_product{
+    width: 100%;
+    padding: 50px 5%;
+}
+.shop_header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.shop_product h2{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.shop_menus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.shop_menus li{
+    list-style: none;
+    cursor: pointer;
+    color: var(--gray);
+    transition: .3s ease-in-out;
+}
+.shop_menus li:hover{
+    color:var(--green) ;
+    font-weight: bold;
+}
+.shop_menus b{
+    color: black;
+    margin-left: 5px;
+}
+.shop_header .active{
+    color:var(--green) ;
+    font-weight: bold;
+}

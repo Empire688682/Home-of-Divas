@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './shop.module.css'
+import ShopHero from '@/Component/ShopHero/ShopHero';
+import ShopProduct from '@/Component/ShopProduct/ShopProduct';
 
 const page = () => {
   return (
-    <div>
-      <h1>SHOP PAGE</h1>
+    <div className={styles.shop}>
+      <ShopHero/>
+      <ShopProduct/>
     </div>
   )
 }

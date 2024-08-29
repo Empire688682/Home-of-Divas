@@ -13,13 +13,16 @@
     padding: 50px 0;
     margin-bottom: 50px;
   }
-  
   .text_col {
     flex: 1;
     min-width: 300px;
     padding-left: 5%;
     padding-top: 160px;
-    padding-bottom: 40px;
+  }
+  .gif_com{
+    position: relative;
+    width: 50%;
+    height: 200px;
   }
   .text_col h2{
     color: var(--white);

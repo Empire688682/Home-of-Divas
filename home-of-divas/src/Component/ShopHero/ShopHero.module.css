@@ -1,0 +1,60 @@
+.shop_hero{
+    background-image: 
+    linear-gradient(
+        rgba(80, 77, 77, 0.87), 
+        rgba(80, 77, 77, 0.87)
+      ),
+    url('/hero_image.png'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px 5%;
+    overflow: hidden;
+}
+.tex_col{
+    flex: 3;
+    min-width: 300px;
+    padding-top: 100px;
+}
+.tex_col h3{
+    color: var(--white);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.tex_col h2{
+    color: var(--white);
+    font-size: 45px;
+}
+.tex_col h2 .hand_icon{
+    color: var(--white);
+    font-size: 45px;
+    color: var(--orange);
+    margin-right: 10px;
+}
+.tex_col button{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    border: none;
+    background-color: var(--orange);
+    font-size: 16px;
+    color: var(--white);
+    cursor: pointer;
+}
+.img_col{
+    flex: 2;
+    min-width: 280px;
+    min-height: 500px;
+}
+.img_col .img_com{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
