@@ -8,10 +8,14 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import Image from 'next/image';
 import { LiaTimesSolid } from "react-icons/lia";
+import { useGlobalContext } from '../Context';
+import SignUp from '../SignUp/SignUp';
 
 const Navbar = () => {
+  const {token} = useGlobalContext();
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
+  const [signup, setSignup] = useState(false);
 
   return (
     <div className={styles.navbar}>
@@ -28,11 +32,13 @@ const Navbar = () => {
           <Link href="/contact" className={`${styles.links} ${pathname === '/contact' ? styles.active : ''}`}>Contact</Link>
         </ul>
         <div className={styles.user_login_cart}>
+          <div className={styles.user_login}>
+            {
+              token? <FaUserCircle />:<p onClick={()=> setSignup(true)}>Signup</p>
+            }
+          </div>
           <div className={styles.cart}>
             <FiShoppingCart />
-          </div>
-          <div className={styles.user_login}>
-            <FaUserCircle />
           </div>
           <div className={styles.user_fav}>
             <FaHeart />
@@ -53,11 +59,13 @@ const Navbar = () => {
             <h3>Divas</h3>
           </div>
           <div className={styles.user_login_cart}>
+            <div className={styles.user_login}>
+            {
+              token? <FaUserCircle />:<p onClick={()=> setSignup(true)}>Signup</p>
+            }
+            </div>
             <div className={styles.cart}>
               <FiShoppingCart />
-            </div>
-            <div className={styles.user_login}>
-              <FaUserCircle />
             </div>
             <div className={styles.user_fav}>
               <FaHeart />
@@ -73,6 +81,10 @@ const Navbar = () => {
             <Link href="/contact" className={`${styles.links} ${pathname === '/contact' ? styles.active : ''}`}>Contact</Link>
           </ul>
         </div>
+      }
+
+      {
+        signup? <SignUp setSignup={setSignup}/>:null
       }
     </div>
   );

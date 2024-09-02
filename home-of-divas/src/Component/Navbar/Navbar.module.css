@@ -47,6 +47,15 @@
     font-size: 20px;
     cursor: pointer;
 }
+.user_login p{
+    font-weight: bold;
+    font-size: 16px;
+    transition: .4s ease-in-out;
+}
+.user_login p:hover{
+    color: var(--orange);
+    transform: translateY(-5px);
+}
 
 /* MOBILE MENU*/
 .navbar .small_screen_menu{
