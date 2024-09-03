@@ -10,12 +10,18 @@ import Image from 'next/image';
 import { LiaTimesSolid } from "react-icons/lia";
 import { useGlobalContext } from '../Context';
 import SignUp from '../SignUp/SignUp';
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const {token} = useGlobalContext();
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
   const [signup, setSignup] = useState(false);
+  const router = useRouter();
+
+  const toProfile = () =>{
+    router.replace("/profile")
+  }
 
   return (
     <div className={styles.navbar}>
@@ -34,7 +40,7 @@ const Navbar = () => {
         <div className={styles.user_login_cart}>
           <div className={styles.user_login}>
             {
-              token? <FaUserCircle />:<p onClick={()=> setSignup(true)}>Signup</p>
+              token? <FaUserCircle onClick={toProfile} />:<p onClick={()=> setSignup(true)}>Signup</p>
             }
           </div>
           <div className={styles.cart}>
@@ -61,7 +67,7 @@ const Navbar = () => {
           <div className={styles.user_login_cart}>
             <div className={styles.user_login}>
             {
-              token? <FaUserCircle />:<p onClick={()=> setSignup(true)}>Signup</p>
+              token? <FaUserCircle onClick={toProfile}  />:<p onClick={()=> setSignup(true)}>Signup</p>
             }
             </div>
             <div className={styles.cart}>

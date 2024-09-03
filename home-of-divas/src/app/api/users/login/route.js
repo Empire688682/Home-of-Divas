@@ -22,7 +22,7 @@ const loginUser = async (req) =>{
             return NextResponse.json({success:false, message:"Incorrect Paasword"});
         };
 
-        const token = jwt.sign(user._id, process.env.TOKEN_KEY);
+        const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
 
         return NextResponse.json({success:true, token, user, message:"User login successfully"});
 

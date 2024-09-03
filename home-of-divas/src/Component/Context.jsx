@@ -12,7 +12,7 @@ export const GlobalProvider = ({children}) => {
     useEffect(()=>{
       if(typeof window !== "undefined"){
         const savedToken = localStorage.getItem("Divastoken") || "";
-        const savedUser = localStorage.getItem("Divasuser") || "";
+        const savedUser = localStorage.getItem("Divasuserdata") || "";
         setToken(savedToken);
         setUser(savedUser);
       }
@@ -26,7 +26,8 @@ export const GlobalProvider = ({children}) => {
         cartItems,
         token, 
         setToken,
-        user
+        user,
+        setUser
     }}>
         {children}
     </GlobalContext.Provider>
