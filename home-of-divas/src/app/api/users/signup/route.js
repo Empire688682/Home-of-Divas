@@ -1,13 +1,17 @@
-import { UserModel } from "../models/userModel.js";
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { NextResponse } from "next/server.js";
+import { connectDB } from "@/ConnectDB/ConnectDB.js";
+import { UserModel } from '@/model/userModel';
+
+connectDB();
 
 // register function goes here
 const registerUser = async (req) => {
-    const reqBody = await req.json()
+    const reqBody = await req.json();
     const { fName, lName, email, gender, password, pwdRepeat, dBirth } = reqBody;
+    console.log( "ReQbody:", reqBody);
     try {
         if (!fName || !lName || !email || !gender || !password || !pwdRepeat || !dBirth) {
             return NextResponse.json({ success: false, message: "All fields required" });

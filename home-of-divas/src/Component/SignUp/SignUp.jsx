@@ -23,14 +23,9 @@ const SignUp = ({ setSignup }) => {
 
     try {
       setLoading(true);
-      if (loginStage === "Login") {
-        let newUrl = "api/users/login";
-      } else {
-        let newUrl = "api/users/signup";
-      }
-      console.log("newurl:", newUrl)
-      const response = await axios.post(newUrl, data);
-
+      const endpoint = loginStage === "Login" ? "api/users/login" : "api/users/signup";
+      const response = await axios.post(endpoint, data);
+      console.log("DATA:", data);
       if (response.data.success) {
         console.log("Full Response:", response);
         localStorage.setItem("token", response.data.token);
