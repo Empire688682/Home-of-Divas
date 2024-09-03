@@ -20,8 +20,14 @@ const Navbar = () => {
   const router = useRouter();
 
   const toProfile = () =>{
-    router.replace("/profile")
-  }
+    router.replace("/profile");
+    setShowMenu(false)
+  };
+
+  const handleSigup = ()=>{
+    setSignup(true);
+    setShowMenu(false);
+  };
 
   return (
     <div className={styles.navbar}>
@@ -40,7 +46,7 @@ const Navbar = () => {
         <div className={styles.user_login_cart}>
           <div className={styles.user_login}>
             {
-              token? <FaUserCircle onClick={toProfile} />:<p onClick={()=> setSignup(true)}>Signup</p>
+              token? <FaUserCircle onClick={toProfile} />:<p onClick={handleSigup}>Signup</p>
             }
           </div>
           <div className={styles.cart}>
@@ -67,7 +73,7 @@ const Navbar = () => {
           <div className={styles.user_login_cart}>
             <div className={styles.user_login}>
             {
-              token? <FaUserCircle onClick={toProfile}  />:<p onClick={()=> setSignup(true)}>Signup</p>
+              token? <FaUserCircle onClick={toProfile}  />:<p onClick={handleSigup}>Signup</p>
             }
             </div>
             <div className={styles.cart}>

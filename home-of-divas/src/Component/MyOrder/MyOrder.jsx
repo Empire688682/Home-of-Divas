@@ -17,8 +17,8 @@ const MyOrder = () => {
           <img src='' alt="" />
         </div>
         <div className={styles.name}>
-          <div>order.name</div>
-          <div>Quantity: order.quantity</div>
+          <div>name</div>
+          <div>Quantity: 10</div>
         </div>
         <div className={styles.name}>Items total: #50,000</div>
         <div className={styles.remove}>Door delivery</div>
