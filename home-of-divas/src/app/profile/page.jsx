@@ -6,6 +6,7 @@ import { IoLogOut } from "react-icons/io5";
 import { useRouter } from "next/navigation"; // New hook for navigation
 import { useGlobalContext } from "@/Component/Context"; // Adjust path as needed
 import styles from "./Profile.module.css"; // Using CSS module
+import MyOrder from "@/Component/MyOrder/MyOrder";
 
 const Profile = () => {
   const { setToken, token} = useGlobalContext(); // Fix useGlobalContext as a function
