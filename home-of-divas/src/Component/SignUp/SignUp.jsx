@@ -25,12 +25,10 @@ const SignUp = ({ setSignup }) => {
       setLoading(true);
       const endpoint = loginStage === "Login" ? "api/users/login" : "api/users/signup";
       const response = await axios.post(endpoint, data);
-      console.log("DATA:", data);
       if (response.data.success) {
-        console.log("Full Response:", response);
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("Divastoken", response.data.token);
         const user = response.data.user;
-        localStorage.setItem("User Data", JSON.stringify(user));
+        localStorage.setItem("Divasuserdata", JSON.stringify(user));
         setSignup(false);
         setData({
           fName: "",
@@ -129,7 +127,6 @@ const SignUp = ({ setSignup }) => {
           )}
           {loading ? (
             <button className={styles.loading_gif}>
-              <span>PROCESSING</span>
               <img src='/loading_gif.gif' alt="Loading" />
             </button>
           ) : (

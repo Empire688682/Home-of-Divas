@@ -11,7 +11,6 @@ connectDB();
 const registerUser = async (req) => {
     const reqBody = await req.json();
     const { fName, lName, email, gender, password, pwdRepeat, dBirth } = reqBody;
-    console.log( "ReQbody:", reqBody);
     try {
         if (!fName || !lName || !email || !gender || !password || !pwdRepeat || !dBirth) {
             return NextResponse.json({ success: false, message: "All fields required" });
