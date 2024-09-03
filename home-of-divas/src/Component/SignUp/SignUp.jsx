@@ -20,15 +20,15 @@ const SignUp = ({ setSignup }) => {
   const [loginStage, setLogInStage] = useState("Login");
 
   const userControl = async () => {
-    let newUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace 'url' with an environment variable for the base URL
-    if (loginStage === "Login") {
-      newUrl += "/api/users/login";
-    } else {
-      newUrl += "/api/users/add";
-    }
 
     try {
       setLoading(true);
+      if (loginStage === "Login") {
+        let newUrl = "api/users/login";
+      } else {
+        let newUrl = "api/users/signup";
+      }
+      console.log("newurl:", newUrl)
       const response = await axios.post(newUrl, data);
 
       if (response.data.success) {
