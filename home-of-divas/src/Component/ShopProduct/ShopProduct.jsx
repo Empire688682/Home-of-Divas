@@ -6,9 +6,11 @@ import all_product from '../../../public/all_product';
 import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
+import { useGlobalContext } from '../Context';
 
 const ShopProduct = () => {
     const [category, setCategory] = useState("All");
+    const {addToCart} = useGlobalContext()
     return (
         <div className={styles.shop_product}>
             <div className={styles.shop_header}>
@@ -48,7 +50,7 @@ const ShopProduct = () => {
                                 <div className={styles.fav}>
                                     <FaHeart/>
                                 </div>
-                                <div className={styles.cart}>
+                                <div onClick={()=> addToCart(item.id)} className={styles.cart}>
                                     <FiShoppingCart/>
                                 </div>
                             </div>

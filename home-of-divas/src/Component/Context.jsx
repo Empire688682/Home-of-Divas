@@ -18,8 +18,20 @@ export const GlobalProvider = ({children}) => {
       }
     },[]);
 
-    console.log(token);
-    console.log(user);
+    const addToCart = (itemId) =>{
+      if(cartItems[itemId] < 0){
+        setCartItems((prev) =>{
+          if(!prev[itemId]){
+            return {...prev, [itemId]:1}
+          }
+          else{
+            return {...prev, [itemId]: +1}
+          }
+        })
+      }
+    };
+
+    console.log("CARTITEMS:", cartItems);
 
   return (
     <GlobalContext.Provider value={{
@@ -27,7 +39,8 @@ export const GlobalProvider = ({children}) => {
         token, 
         setToken,
         user,
-        setUser
+        setUser,
+        addToCart
     }}>
         {children}
     </GlobalContext.Provider>

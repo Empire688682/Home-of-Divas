@@ -22,6 +22,11 @@ const Navbar = () => {
   const toProfile = () =>{
     router.replace("/profile");
     setShowMenu(false)
+  }; 
+
+  const home = () =>{
+    router.replace("/");
+    setShowMenu(false)
   };
 
   const handleSigup = ()=>{
@@ -32,7 +37,7 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <h3>Divas</h3>
+        <h3 onClick={home}>Divas</h3>
       </div>
       <div className={styles.big_screen_menu}>
         <ul className={styles.menu}>
@@ -68,7 +73,7 @@ const Navbar = () => {
             <LiaTimesSolid />
           </div>
           <div className={styles.logo}>
-            <h3>Divas</h3>
+            <h3 onClick={home}>Divas</h3>
           </div>
           <div className={styles.user_login_cart}>
             <div className={styles.user_login}>

@@ -32,6 +32,11 @@ const Profile = () => {
     router.refresh(); // Force a page refresh
   };
 
+  if(!token){
+    router.push("/"); 
+    return null
+  }
+
   return (
     <div className={styles.profile}>
       <div className={styles.small_col}>
