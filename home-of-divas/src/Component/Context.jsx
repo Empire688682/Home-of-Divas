@@ -6,9 +6,11 @@ const GlobalContext = React.createContext();
 export const GlobalProvider = ({ children }) => {
 
   const [cartItems, setCartItems] = useState({});
+  const [favItem, setFavItem] = useState({});
   const [token, setToken] = useState('');
   const [user, setUser] = useState('');
   const [itemAdded, setItemAdded] = useState(null);
+  const [favAdded, setFavAdded] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -46,7 +48,27 @@ export const GlobalProvider = ({ children }) => {
     } else return null
   };
 
-  console.log("CARTITEMS:", cartItems);
+  const handleFav = (favId) => {
+    setFavItem((prev) => {
+      if (!prev[favId]) {
+        setFavAdded("true");
+        setTimeout(() => {
+          setFavAdded(null);
+        }, 1000);
+        return { ...prev, [favId]:1 };
+      }
+      else{
+        setFavAdded("false");
+        setTimeout(() => {
+          setFavAdded(null);
+        }, 1000);
+        return { ...prev, [favId]:0 };
+      };
+    });
+  };
+
+  console.log("FAVOURITE:", favItem);
+  console.log("favAdded:", favAdded);
 
   return (
     <GlobalContext.Provider value={{
@@ -57,7 +79,10 @@ export const GlobalProvider = ({ children }) => {
       setUser,
       addToCart,
       removeFromCart,
-      itemAdded
+      itemAdded,
+      favAdded,
+      favItem,
+      handleFav
     }}>
       {children}
     </GlobalContext.Provider>

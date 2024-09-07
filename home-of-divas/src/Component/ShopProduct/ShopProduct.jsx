@@ -10,7 +10,7 @@ import { useGlobalContext } from '../Context';
 
 const ShopProduct = () => {
     const [category, setCategory] = useState("All");
-    const { addToCart, removeFromCart, itemAdded, cartItems } = useGlobalContext();
+    const { addToCart, removeFromCart, itemAdded, cartItems, handleFav, favItem, favAdded,favIconColor } = useGlobalContext();
     return (
         <div className={styles.shop_product}>
             <div className={styles.shop_header}>
@@ -47,7 +47,7 @@ const ShopProduct = () => {
                                     </div>
                                 </div>
                                 <div className={styles.cart_fav_Con}>
-                                    <div className={styles.fav}>
+                                    <div className={favItem[item.id] < 0 || !favItem[item.id] ? styles.fav:styles.fav_red} onClick={()=>handleFav(item.id)}>
                                         <FaHeart />
                                     </div>
                                     {
@@ -67,14 +67,29 @@ const ShopProduct = () => {
                     })
                 }
             </div>
+            
             {
+                //CART ADD DISPLAY
                 itemAdded === "true" ? <div className={styles.item_add_message}>
                     <p>Added To Cart Successfully!!</p>
                 </div>:null
             }
             {
+                //CART REMOVE DISPLAY
                 itemAdded ==="false" ? <div className={styles.item_remove_message}>
                     <p>Removed From Cart Successfully!!</p>
+                </div>:null
+            }
+            {
+                //FAV ADD DISPLAY
+                favAdded === "true" ? <div className={styles.item_add_message}>
+                    <p>Added To Favourite Successfully!!</p>
+                </div>:null
+            }
+            {
+                //FAV REMOVE DISPLAY
+                favAdded ==="false" ? <div className={styles.item_remove_message}>
+                    <p>Removed From Favourite Successfully!!</p>
                 </div>:null
             }
         </div>
