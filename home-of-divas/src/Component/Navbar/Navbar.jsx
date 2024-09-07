@@ -13,7 +13,7 @@ import SignUp from '../SignUp/SignUp';
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const {token} = useGlobalContext();
+  const {token,inCart,inFav} = useGlobalContext();
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
   const [signup, setSignup] = useState(false);
@@ -56,9 +56,15 @@ const Navbar = () => {
           </div>
           <div className={styles.cart}>
             <FiShoppingCart />
+            {
+              inCart? <p></p>:null
+            }
           </div>
           <div className={styles.user_fav}>
             <FaHeart />
+            {
+              inFav? <p></p>:null
+            }
           </div>
         </div>
       </div>
@@ -83,9 +89,15 @@ const Navbar = () => {
             </div>
             <div className={styles.cart}>
               <FiShoppingCart />
+              {
+                inCart? <p></p>:null
+              }
             </div>
             <div className={styles.user_fav}>
               <FaHeart />
+              {
+                inFav ? <p></p>:null
+              }
             </div>
           </div>
 

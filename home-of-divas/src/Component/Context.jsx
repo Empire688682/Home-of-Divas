@@ -1,10 +1,11 @@
 "use client";
-
+import all_product from '../../public/all_product';
 import React, { useContext, useEffect, useState } from 'react';
 
 const GlobalContext = React.createContext();
 
 export const GlobalProvider = ({ children }) => {
+  const [allProduct, setAllProduct] = ([all_product]);
   const [cartItems, setCartItems] = useState({});
   const [favItem, setFavItem] = useState({});
   const [token, setToken] = useState('');
@@ -12,6 +13,8 @@ export const GlobalProvider = ({ children }) => {
   const [itemAdded, setItemAdded] = useState(null);
   const [favAdded, setFavAdded] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [inCart, setInCart] = useState(false);
+  const [inFav, setInFav] = useState(false);
 
   // Initialize state from localStorage
   useEffect(() => {
@@ -78,6 +81,19 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  useEffect(()=>{
+    const hasItemInCart = allProduct.some((item)=> cartItems[item.id] > 0);
+    setInCart(hasItemInCart);
+  },[cartItems]);
+
+  useEffect(()=>{
+    const hasItemInFav = allProduct.some((item)=> favItem[item.id] > 0);
+    setInFav(hasItemInFav);
+  },[favItem, allProduct]);
+
+  console.log("INFAV:", inFav)
+  console.log("INCART:", inCart)
+
   return (
     <GlobalContext.Provider value={{
       cartItems,
@@ -90,7 +106,10 @@ export const GlobalProvider = ({ children }) => {
       itemAdded,
       favAdded,
       favItem,
-      handleFav
+      handleFav,
+      allProduct,
+      inCart,
+      inFav
     }}>
       {children}
     </GlobalContext.Provider>

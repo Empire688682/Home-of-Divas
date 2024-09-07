@@ -47,6 +47,7 @@
 .user_login_cart .cart, .user_login_cart .user_login,.user_login_cart .user_fav{
     font-size: 20px;
     cursor: pointer;
+    position: relative;
 }
 .user_login p{
     font-weight: bold;
@@ -56,6 +57,24 @@
 .user_login p:hover{
     color: var(--orange);
     transform: translateY(-5px);
+}
+.user_login_cart .cart p{
+    width: 10px;
+    height: 10px;
+    background-color: var(--danger);
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    right: 0;
+}
+.user_login_cart .user_fav p{
+    width: 10px;
+    height: 10px;
+    background-color: var(--danger);
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    right: 0;
 }
 
 /* MOBILE MENU*/
