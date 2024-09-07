@@ -107,23 +107,40 @@
     cursor: pointer;
 }
 
+.deliveryNote{
+    text-align: end;
+    font-size: 15px;
+}
+
 .subTotal{
     box-shadow: none;
     min-width: 150px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.total{
+    min-width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .checkOutBtnCon {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
+    gap: 10px;
 }
 
 .checkOutBtn {
     padding: 10px 50px;
     background-color: var(--orange);
-    border: none;
-    border-radius: 50px;
+    border: 1px solid var(--orange);
+    border-radius: 5px;
     color: white;
     font-size: 16px;
     font-weight: bolder;
@@ -132,8 +149,25 @@
     transition: .3s ease-in-out;
     text-decoration: none;
 }
+.backToShopBtn {
+    padding: 10px 50px;
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    color: var(--orange);
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: .3s ease-in-out;
+    text-decoration: none;
+}
+.backToShopBtn:hover{
+    background-color: var(--danger);
+    color: var(--white);
+}
 .checkOutBtn:hover{
     background-color: var(--green);
+    border: 1px solid var(--green);
 }
 
 @media (max-width:520px){
@@ -156,7 +190,10 @@
     .product p{
         font-size: 13px;
     }
-    .checkOutBtn {
+    .checkOutBtnCon {
+        flex-direction: column;
+    }
+    .checkOutBtn,.backToShopBtn {
         font-size: 13px;
     }
 }

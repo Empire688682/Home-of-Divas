@@ -1,0 +1,67 @@
+.order_con {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    padding-top: 40px;
+}
+
+.two_col {
+    flex-basis: 45%;
+    min-width: 300px;
+    margin-bottom: 30px;
+}
+
+.two_col h3 {
+    padding-bottom: 20px;
+}
+
+.cart div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 3px;
+}
+
+.buttonLabel {
+    padding: 10px 50px;
+    border: none;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+.two_col form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.two_col form input {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-size: 15px;
+    border: none;
+    background-color: lightgray;
+    border-radius: 3px;
+}
+
+@media (max-width: 700px) {
+    .two_col {
+        flex-basis: 100%;
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
+}

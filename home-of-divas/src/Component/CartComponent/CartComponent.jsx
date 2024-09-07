@@ -66,20 +66,24 @@ useEffect(() => {
         }
       })}
      {
+        inCart?  <p className={styles.deliveryNote} >Delivery fee not included yet</p>:null
+     }
+     {
         inCart?  <div className={`${styles.cartHead}`}>
         <p className={styles.product}></p>
         <p className={styles.headTitle}></p>
         <div className={`${styles.subTotal} ${styles.quantityCon}`}>
           <h3 className={styles.plusMinus}>
-            Sub Total
+            Sub Total:
           </h3>
         </div>
-        <h3>#{getTotalValue()}</h3> {/* Assuming getTotalValue calculates total */}
+        <h3 className={styles.total}># {getTotalValue()}</h3>
       </div>:null
      }
       {
         inCart? <div className={styles.checkOutBtnCon}>
-        <Link href="/order" className={styles.checkOutBtn}>Check Out</Link>
+        <Link href="/shop" className={styles.backToShopBtn}>COUNTINUE SHOPPING</Link> 
+        <Link href="/order" className={styles.checkOutBtn}>PROCEED TO CHECOUT</Link> 
       </div>:null
       }
     </div>
