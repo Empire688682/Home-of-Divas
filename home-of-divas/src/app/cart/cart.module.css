@@ -1,0 +1,14 @@
+.cart{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 105px;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 150px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+    display:flex ;
+    flex-wrap: wrap;
+    gap: 30px;
+}

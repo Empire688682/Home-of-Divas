@@ -55,13 +55,13 @@ const Navbar = () => {
             }
           </div>
           <div className={styles.cart}>
-            <FiShoppingCart />
+            <Link style={{color:"black"}} href='/cart'><FiShoppingCart /></Link>
             {
               inCart? <p></p>:null
             }
           </div>
           <div className={styles.user_fav}>
-            <FaHeart />
+            <Link style={{color:"black"}} href='/favorite'><FaHeart /></Link>
             {
               inFav? <p></p>:null
             }
@@ -88,13 +88,13 @@ const Navbar = () => {
             }
             </div>
             <div className={styles.cart}>
-              <FiShoppingCart />
+              <Link style={{color:"black"}} onClick={()=>setShowMenu(false)} href='/cart'><FiShoppingCart /></Link>
               {
                 inCart? <p></p>:null
               }
             </div>
             <div className={styles.user_fav}>
-              <FaHeart />
+              <Link style={{color:"black"}} onClick={()=>setShowMenu(false)} href='/favorite'><FaHeart /></Link>
               {
                 inFav ? <p></p>:null
               }
