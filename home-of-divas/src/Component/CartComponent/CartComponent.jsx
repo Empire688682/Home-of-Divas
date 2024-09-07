@@ -74,7 +74,7 @@ useEffect(() => {
             Sub Total
           </h3>
         </div>
-        <h3>TOTALVALUE</h3> {/* Assuming getTotalValue calculates total */}
+        <h3>#{getTotalValue()}</h3> {/* Assuming getTotalValue calculates total */}
       </div>:null
      }
       {

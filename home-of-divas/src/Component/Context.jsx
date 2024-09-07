@@ -70,6 +70,21 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  const getTotalValue = () => {
+    let total = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let totalInfo = allProduct.find((product) => product.id === item || product.id === Number(item));
+        console.log("totalInfo:", total)
+        if (totalInfo) {
+          total += totalInfo.new_price * cartItems[item];
+        }
+      }
+    }
+    return total;
+  };
+
+
   const handleFav = (favId) => {
     setFavItem((prev) => {
       const newFav = { ...prev, [favId]: prev[favId] ? 0 : 1 };
@@ -106,7 +121,8 @@ export const GlobalProvider = ({ children }) => {
       handleFav,
       allProduct,
       inCart,
-      inFav
+      inFav,
+      getTotalValue
     }}>
       {children}
     </GlobalContext.Provider>
