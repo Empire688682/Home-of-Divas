@@ -67,8 +67,17 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  console.log("FAVOURITE:", favItem);
-  console.log("favAdded:", favAdded);
+  useEffect(()=>{
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  },[cartItems]);
+
+  useEffect(()=>{
+    if(typeof window !== "undefined"){
+      const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
+      setCartItems(localSavedCart || {});
+      console.log("localSavedCart:",localSavedCart);
+    }
+  },[]);
 
   return (
     <GlobalContext.Provider value={{
