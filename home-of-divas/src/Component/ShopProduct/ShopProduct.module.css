@@ -1,6 +1,7 @@
 .shop_product{
     width: 100%;
     padding: 50px 5%;
+    position: relative;
 }
 .shop_header{
     width: 100%;
@@ -96,11 +97,61 @@
     align-items: center;
     justify-content: center;
     border: 1px solid lightslategray;
-    flex: 1;
+    flex-basis: 50%;
     padding: 10px 0;
     transition: .2s ease-in;
 }
 .fav:hover, .cart:hover{
     background-color:var(--teal) ;
     color: var(--white);
+}
+.item_add_message{
+    position: fixed;
+    bottom: 100px;
+    background-color: var(--green);
+    border-radius: 5px;
+}
+.item_add_message p{
+    color: white;
+    padding: 20px 20px;
+    font-weight: 600;
+}
+.items_toggle_Con{
+    display: flex;
+    align-items: center;
+    border: 1px solid lightslategray;
+    width: 150px;
+    height: 52px;
+    justify-content: space-between;
+    padding: 10px;
+}
+.items_toggle_Con p{
+    font-size: 25px;
+}
+.items_toggle_Con .add_icon{
+    background-color:var(--green) ;
+    padding: 5px 10px;
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.items_toggle_Con .remove_icon{
+    background-color:var(--red) ;
+    padding: 5px 10px;
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.item_remove_message{
+    position: fixed;
+    bottom: 100px;
+    background-color: var(--red);
+    border-radius: 5px;
+}
+.item_remove_message p{
+    color: white;
+    padding: 20px 20px;
+    font-weight: 600;
 }
