@@ -84,15 +84,12 @@ export const GlobalProvider = ({ children }) => {
   useEffect(()=>{
     const hasItemInCart = allProduct.some((item)=> cartItems[item.id] > 0);
     setInCart(hasItemInCart);
-  },[cartItems]);
+  },[cartItems, allProduct]);
 
   useEffect(()=>{
     const hasItemInFav = allProduct.some((item)=> favItem[item.id] > 0);
     setInFav(hasItemInFav);
   },[favItem, allProduct]);
-
-  console.log("INFAV:", inFav)
-  console.log("INCART:", inCart)
 
   return (
     <GlobalContext.Provider value={{

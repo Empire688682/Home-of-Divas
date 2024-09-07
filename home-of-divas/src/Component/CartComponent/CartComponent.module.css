@@ -1,0 +1,79 @@
+.Cart {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 105px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.cartHead {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartItems {
+    border-bottom: 1px solid rgb(221, 220, 220);
+    align-items: center;
+    gap: 20px;
+}
+
+.product {
+    flex-basis: 40%;
+    font-size: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.headTitle {
+    font-size: 15px;
+    flex-basis: 18%;
+}
+
+.quantityCon {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.quantity {
+    height: 50px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+}
+
+.quantityCon p {
+    border: 1px solid gray;
+    height: 25px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.checkOutBtnCon {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.checkOutBtn {
+    padding: 10px 50px;
+    background-color: red;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-top: 10px;
+}
