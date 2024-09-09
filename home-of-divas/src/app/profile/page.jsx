@@ -9,7 +9,7 @@ import styles from "./Profile.module.css"; // Using CSS module
 import MyOrder from "@/Component/MyOrder/MyOrder";
 
 const Profile = () => {
-  const { setToken, token} = useGlobalContext(); // Fix useGlobalContext as a function
+  const { setToken, token, logoutUser} = useGlobalContext(); // Fix useGlobalContext as a function
   const router = useRouter(); // Replaces useNavigate from React Router
 
   const [dashboard, setDashboard] = useState("information");
@@ -24,18 +24,14 @@ const Profile = () => {
     }
   },[]);
 
-  const logoutUser = () => {
+  const logout = () => {
+    logoutUser()
     localStorage.removeItem("Divastoken");
     localStorage.removeItem("Divasuser");
     setToken("");
     router.push("/"); // Use Next.js navigation to redirect
     router.refresh(); // Force a page refresh
   };
-
-  if(!token){
-    router.push("/"); 
-    return null
-  }
 
   return (
     <div className={styles.profile}>
@@ -51,7 +47,7 @@ const Profile = () => {
             <span>My Orders</span>
           </li>
         </ul>
-        <p onClick={logoutUser}>
+        <p onClick={logout}>
           <IoLogOut />
           <span>Logout</span>
         </p>
@@ -82,7 +78,7 @@ const Profile = () => {
               <p>dBirth:</p>
               <p className={styles.small}>{user.dBirth}</p>
             </div>
-            <button onClick={logoutUser}>Logout</button>
+            <button onClick={logout}>Logout</button>
           </div>
         </div>
       ) : (

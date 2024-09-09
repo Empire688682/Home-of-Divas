@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   const handleSigup = ()=>{
-    setSignup(true);
+    window.location.replace("/signup");
     setShowMenu(false);
   };
 
@@ -110,10 +110,6 @@ const Navbar = () => {
             <Link href="/contact" className={`${styles.links} ${pathname === '/contact' ? styles.active : ''}`}>Contact</Link>
           </ul>
         </div>
-      }
-
-      {
-        signup? <SignUp setSignup={setSignup}/>:null
       }
     </div>
   );

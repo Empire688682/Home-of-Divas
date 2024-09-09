@@ -1,6 +1,8 @@
 "use client";
 import all_product from '../../public/all_product';
 import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const GlobalContext = React.createContext();
 
@@ -15,6 +17,7 @@ export const GlobalProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [inCart, setInCart] = useState(false);
   const [inFav, setInFav] = useState(false);
+  const route = useRouter()
 
   // Initialize state from localStorage
   useEffect(() => {
@@ -106,6 +109,17 @@ export const GlobalProvider = ({ children }) => {
     setInFav(hasItemInFav);
   },[favItem, allProduct]);
 
+  const logoutUser = async () =>{
+    try {
+     const response =  await axios.get("api/users/logout");
+     if(response){
+      route.push("/");
+     }
+    } catch (error) {
+      console.log("ERROR:", error)
+    }
+  }
+
   return (
     <GlobalContext.Provider value={{
       cartItems,
@@ -122,7 +136,8 @@ export const GlobalProvider = ({ children }) => {
       allProduct,
       inCart,
       inFav,
-      getTotalValue
+      getTotalValue,
+      logoutUser
     }}>
       {children}
     </GlobalContext.Provider>

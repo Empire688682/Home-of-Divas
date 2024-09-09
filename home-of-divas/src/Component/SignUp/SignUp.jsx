@@ -3,9 +3,9 @@ import { useState } from 'react';
 import styles from './SignUp.module.css';
 import { RxCross2 } from "react-icons/rx";
 import axios from 'axios';
-import { useGlobalContext } from '../Context';
+import { useRouter } from 'next/navigation';
 
-const SignUp = ({ setSignup }) => {
+const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     fName: "",
@@ -17,7 +17,8 @@ const SignUp = ({ setSignup }) => {
     dBirth: ""
   });
 
-  const [loginStage, setLogInStage] = useState("Login");
+  const [loginStage, setLogInStage] = useState("Signup");
+  const route = useRouter()
 
   const userControl = async () => {
 
@@ -29,7 +30,6 @@ const SignUp = ({ setSignup }) => {
         localStorage.setItem("Divastoken", response.data.token);
         const user = response.data.user;
         localStorage.setItem("Divasuserdata", JSON.stringify(user));
-        setSignup(false);
         setData({
           fName: "",
           lName: "",
@@ -39,7 +39,7 @@ const SignUp = ({ setSignup }) => {
           pwdRepeat: "",
           dBirth: ""
         });
-        window.location.replace("/");
+        route.push('/shop');
       } else {
         alert(response.data.message);
       }
@@ -63,7 +63,7 @@ const SignUp = ({ setSignup }) => {
   return (
     <div className={styles['log-sign-con']}>
       <div className={styles['log-sign']}>
-        <div onClick={() => setSignup(false)}><RxCross2 className={styles.icon} /></div>
+        <div onClick={() => window.location.replace("/")}><RxCross2 className={styles.icon} /></div>
         <h4>{loginStage === "Signup" ? "Signup" : "Login"}</h4>
         <form onSubmit={handleFormSubmission}>
           {loginStage === "Signup" && (

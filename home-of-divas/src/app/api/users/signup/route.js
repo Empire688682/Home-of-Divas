@@ -43,12 +43,20 @@ const registerUser = async (req) => {
         await user.save();
 
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
-        return NextResponse.json({
+        const res = NextResponse.json({
             success: true,
             message: "User signed up",
             token,
             user
         })
+        res.cookies.set('DCToken', token, {
+            httpOnly:true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 2 *24*60*60,
+            sameSite: "lax",
+            path:"/"
+        });
+        return res
 
     } catch (error) {
         console.log(error);

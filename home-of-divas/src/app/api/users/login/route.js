@@ -23,8 +23,15 @@ const loginUser = async (req) =>{
         };
 
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
-
-        return NextResponse.json({success:true, token, user, message:"User login successfully"});
+        const res =  NextResponse.json({success:true, token, user, message:"User login successfully"});
+        res.cookies.set('DCToken', token, {
+            httpOnly:true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 2 *24*60*60,
+            sameSite: "lax",
+            path:"/"
+        });
+        return res
 
     } catch (error) {
         console.log(error);
