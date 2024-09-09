@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './favorite.module.css';
+import FavComponent from '@/Component/FavComponent/FavComponent';
 
 const page = () => {
   return (
     <div className={styles.fav}>
-      <h1>FAVORITE HERE</h1>
+      <FavComponent/>
     </div>
   )
 }
