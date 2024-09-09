@@ -50,15 +50,17 @@
 }
 .shop_cart{
     min-width: 300px;
-    overflow: hidden;
 }
-.shop_cart:hover .img_com{
+.shop_cart:hover .img_com .img{
     transform: scale(1.1);
 }
 .img_com{
     position: relative;
     width: 100%;
     height: 380px;
+    overflow: hidden;
+}
+.img_com .img{
     transition: .4s ease-in-out;
 }
 .item_text{

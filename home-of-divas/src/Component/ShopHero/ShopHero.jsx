@@ -11,7 +11,9 @@ const ShopHero = () => {
                 <h3>NEW ARRIVALS ONLY</h3>
                 <h2>new <FaHandHoldingHeart className={styles.hand_icon} />
                     collections for everyone</h2>
+                <div className={styles.btn_Con}>
                 <button>Latest Collection <FaLongArrowAltRight /> </button>
+                </div>
             </div>
             <div className={styles.img_col}>
                 <div className={styles.img_com}>

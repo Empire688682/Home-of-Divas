@@ -49,4 +49,7 @@
         align-items: center;
         justify-content: center;
     }
+    .three_col p{
+        text-align: center;
+    }
 }

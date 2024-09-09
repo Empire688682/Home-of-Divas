@@ -37,7 +37,7 @@ const ShopProduct = () => {
                         if (category === "All" || item.category === category) {
                             return <div key={item.id} className={styles.shop_cart}>
                                 <div className={styles.img_com}>
-                                    <Image src={item.image} alt="" fill />
+                                    <Image className={styles.img} src={item.image} alt="" fill />
                                 </div>
                                 <div className={styles.item_text}>
                                     <div className={styles.item_name}>

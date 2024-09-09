@@ -104,8 +104,9 @@ form .form_Con{
     z-index: 90;
     margin-right: 10px;
     margin-bottom: 60px;
-    transition: 4s ease-in-out;
+    opacity: 1;
+    transition: .4s ease-in-out;
 }
 .back_top_icon.hidden{
-    display: none;
+    opacity: 0;
 }
