@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ShopHero.module.css';
 import Image from 'next/image';
 import { FaHandHoldingHeart } from "react-icons/fa6";
-import { FaLongArrowAltRight } from 'react-icons/fa';
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const ShopHero = () => {
     return (
@@ -12,7 +12,8 @@ const ShopHero = () => {
                 <h2>new <FaHandHoldingHeart className={styles.hand_icon} />
                     collections for everyone</h2>
                 <div className={styles.btn_Con}>
-                <button>Latest Collection <FaLongArrowAltRight /> </button>
+                <button><a style={{textDecoration:"none", color:"white"}} href="#shop">Explore our collection</a></button>
+                <a style={{textDecoration:"none", color:"white"}} href="#shop"><IoIosArrowDropdownCircle className={styles.btn_Con_icon} /></a>
                 </div>
             </div>
             <div className={styles.img_col}>

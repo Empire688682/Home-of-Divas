@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const WhyOurServ = () => {
     return (
-        <div className={styles.why_our_serv}>
+        <div className={styles.why_our_serv} id='service'>
             <h2>Why use our service?</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae inventore nisi ullam aliquid porro.</p>
             <div className={styles.why_our_serv_Com}>

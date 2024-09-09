@@ -36,6 +36,12 @@
     color: var(--orange);
     margin-right: 10px;
 }
+.tex_col .btn_Con{
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
 .tex_col button{
     margin-top: 30px;
     display: flex;
@@ -49,9 +55,15 @@
     cursor: pointer;
     transition: .3s ease-in-out;
     font-weight: 700;
+    max-width:300px ;
 }
 .tex_col button:hover{
-    background-color: var(--yellow);
+    background-color: var(--dark);
+}
+.btn_Con_icon{
+    font-size: 30px;
+    color: var(--white);
+    cursor: pointer;
 }
 .img_col{
     flex: 2;

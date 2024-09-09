@@ -20,7 +20,7 @@ const ShopProduct = () => {
         favAdded,
     } = useGlobalContext();
     return (
-        <div className={styles.shop_product}>
+        <div className={styles.shop_product} id='shop'>
             <div className={styles.shop_header}>
                 <h2>Popular on Divas</h2>
                 <div className={styles.shop_menus}>

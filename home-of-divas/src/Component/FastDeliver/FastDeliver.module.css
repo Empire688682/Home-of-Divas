@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    box-shadow: 0 0 5px;
+    box-shadow: 0 0 4px rgb(185, 180, 180);
     padding: 10px;
     text-align: center;
     border-radius: 10px;

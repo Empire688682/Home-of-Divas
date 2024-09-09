@@ -43,6 +43,10 @@
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+    transition: .2s ease-in-out;
+  }
+  .text_col .btn:hover{
+    background-color: var(--dark);
   }
   .img_col {
     flex: 1;
