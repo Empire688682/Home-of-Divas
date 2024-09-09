@@ -11,7 +11,10 @@ export function middleware(req) {
     if(token && isPublic){
       return NextResponse.redirect(new URL('/', req.url));
     }
-    if(!token && isPrivate && isProfile){
+    if(!token && isPrivate){
+      return NextResponse.redirect(new URL('/signup', req.url));
+    }
+    if(!token && isProfile){
       return NextResponse.redirect(new URL('/signup', req.url));
     }
 }

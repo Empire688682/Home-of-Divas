@@ -9,28 +9,16 @@ import styles from "./Profile.module.css"; // Using CSS module
 import MyOrder from "@/Component/MyOrder/MyOrder";
 
 const Profile = () => {
-  const { setToken, token, logoutUser} = useGlobalContext(); // Fix useGlobalContext as a function
+  const { setToken, logoutUser, user} = useGlobalContext(); // Fix useGlobalContext as a function
   const router = useRouter(); // Replaces useNavigate from React Router
 
   const [dashboard, setDashboard] = useState("information");
-  const [user, setUser ] = useState("");
-
-  useEffect(()=>{
-    if(typeof window !== "undefined"){
-      const savedToken = localStorage.getItem("Divastoken") || "";
-      const savedUser = JSON.parse(localStorage.getItem("Divasuserdata")) || "";
-      setToken(savedToken);
-      setUser(savedUser);
-    }
-  },[]);
 
   const logout = () => {
     logoutUser()
     localStorage.removeItem("Divastoken");
-    localStorage.removeItem("Divasuser");
+    localStorage.removeItem("Divasuserdata");
     setToken("");
-    router.push("/"); // Use Next.js navigation to redirect
-    router.refresh(); // Force a page refresh
   };
 
   return (
