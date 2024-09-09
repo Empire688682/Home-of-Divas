@@ -13,8 +13,9 @@ const AboutCom = () => {
             <div className={styles.big_col}>
                 <h3>About our tailor house</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptas iusto dicta placeat quibusdam quam ipsa, amet obcaecati cumque voluptatem laboriosam quae. Quos esse error, est optio unde fuga temporibus?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptas iusto dicta placeat quibusdam quam ipsa, amet obcaecati cumque voluptatem laboriosam quae. Quos esse error, est optio unde fuga temporibus?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptas iusto dicta placeat quibusdam quam ipsa, amet obcaecati cumque voluptatem laboriosam quae. Quos esse error, est optio unde fuga temporibus?</p>
                 <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus recusandae cupiditate impedit animi asperiores similique.</small> <br />
-                <button className={styles.btn}>Read more</button>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ const ThreeCol = () => {
             <div className={styles.three_col}>
                 <div className={styles.img_overflow}>
                     <div className={styles.img_Con}>
-                        <Image src="/offers1.png" alt='' fill />
+                        <Image className={styles.img} src="/offers1.png" alt='' fill />
                     </div>
                 </div>
                 <h3>Tailor Sweing</h3>
@@ -17,7 +17,7 @@ const ThreeCol = () => {
             <div className={styles.three_col}>
                 <div className={styles.img_overflow}>
                     <div className={styles.img_Con}>
-                        <Image src="/offers2.png" alt='' fill />
+                        <Image className={styles.img} src="/offers2.png" alt='' fill />
                     </div>
                 </div>
                 <h3>Mesurement</h3>
@@ -26,7 +26,7 @@ const ThreeCol = () => {
             <div className={styles.three_col}>
                 <div className={styles.img_overflow}>
                     <div className={styles.img_Con}>
-                        <Image src="/offers3.png" alt='' fill />
+                        <Image className={styles.img} src="/offers3.png" alt='' fill />
                     </div>
                 </div>
                 <h3>Ready-made</h3>
