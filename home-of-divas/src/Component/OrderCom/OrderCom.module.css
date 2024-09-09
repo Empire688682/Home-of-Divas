@@ -14,12 +14,39 @@
     flex-basis: 45%;
     min-width: 300px;
     margin-bottom: 30px;
+    box-shadow: 0 0 2px rgb(197, 191, 191);
+    padding: 30px;
+    border-radius: 9px;
 }
 
 .two_col h3 {
     padding-bottom: 20px;
 }
-
+.two_col .paywith_card, .two_col .payon_deliver{
+    padding-bottom: 20px;
+    display: flex;
+    gap: 15px;
+}
+.two_col .paywith_card p{
+    padding-top: 10px;
+    font-size: 15px;
+}
+.two_col .paywith_card small{
+    padding-top: 15px;
+    font-size: 12px;
+}
+.two_col .paywith_card_icon, .two_col .payon_deliver_icon{
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--orange);
+}
+.two_col .payon_deliver ul{
+    padding-top: 10px;
+}
+.payon_deliver ul li{
+    padding-top: 10px;
+    font-size: 12px;
+}
 .cart div {
     display: flex;
     align-items: center;
