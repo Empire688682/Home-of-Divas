@@ -21,7 +21,6 @@ const SignUp = () => {
   const route = useRouter()
 
   const userControl = async () => {
-
     try {
       setLoading(true);
       const endpoint = loginStage === "Login" ? "api/users/login" : "api/users/signup";

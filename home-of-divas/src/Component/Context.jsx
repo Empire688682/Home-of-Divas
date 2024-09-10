@@ -10,7 +10,7 @@ export const GlobalProvider = ({ children }) => {
   const [allProduct, setAllProduct] = ([all_product]);
   const [cartItems, setCartItems] = useState({});
   const [favItem, setFavItem] = useState({});
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState({});
   const [user, setUser] = useState('');
   const [itemAdded, setItemAdded] = useState(null);
   const [favAdded, setFavAdded] = useState(null);
@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const LocalSavedUser = localStorage.getItem("Divasuserdata") || "";
+      const LocalSavedUser = localStorage.getItem("Divasuserdata") || {};
       const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
       const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
       
@@ -119,6 +119,8 @@ export const GlobalProvider = ({ children }) => {
       console.log("ERROR:", error)
     }
   }
+
+  console.log("USER:", user)
 
   return (
     <GlobalContext.Provider value={{

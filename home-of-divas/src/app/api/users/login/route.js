@@ -11,7 +11,7 @@ const loginUser = async (req) =>{
     const reqBody = await req.json();
     try {
         const {email, password} = reqBody;
-        const user = await UserModel.findOne({email});
+        const user = await UserModel.findOne({email}).select('-password -_id ');
         
         if(!user){
             return NextResponse.json({success:false, message:"User not found"})
