@@ -43,13 +43,20 @@ const registerUser = async (req) => {
         await newUser.save();
 
         const user = await UserModel.findOne({email}).select('-password -_id')
+        const userData = {
+            email,
+            fName,
+            lName,
+            gender,
+            dBirth
+        }
 
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
         const res = NextResponse.json({
             success: true,
             message: "User signed up",
             token,
-            user
+            user:userData
         })
         res.cookies.set('DCToken', token, {
             httpOnly:true,
