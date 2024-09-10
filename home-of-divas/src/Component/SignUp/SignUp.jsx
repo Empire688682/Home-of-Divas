@@ -39,6 +39,7 @@ const SignUp = () => {
           dBirth: ""
         });
         route.push('/shop');
+        window.location.reload()
       } else {
         alert(response.data.message);
       }

@@ -123,8 +123,6 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
-  console.log("USER:", user)
-
   return (
     <GlobalContext.Provider value={{
       cartItems,

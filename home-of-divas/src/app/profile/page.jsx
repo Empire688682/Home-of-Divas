@@ -17,6 +17,8 @@ const Profile = () => {
     logoutUser();
   };
 
+  console.log("USER:", user)
+
   return (
     <div className={styles.profile}>
       <div className={styles.small_col}>
