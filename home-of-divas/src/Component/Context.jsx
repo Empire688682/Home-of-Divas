@@ -62,7 +62,7 @@ export const GlobalProvider = ({ children }) => {
     setItemAdded("false");
     setTimeout(() => {
       setItemAdded(null)
-    }, 1000)
+    },  1000)
     setCartItems((prev) => {
       if (prev[itemId] > 0) {
         const newCart = { ...prev, [itemId]: prev[itemId] - 1 };
