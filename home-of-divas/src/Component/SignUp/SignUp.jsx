@@ -18,7 +18,7 @@ const SignUp = () => {
   });
 
   const [loginStage, setLogInStage] = useState("Signup");
-  const route = useRouter()
+  const router = useRouter()
 
   const userControl = async () => {
     try {
@@ -28,7 +28,7 @@ const SignUp = () => {
       if (response.data.success) {
         localStorage.setItem("Divastoken", response.data.token);
         const user = response.data.user;
-        localStorage.setItem("Divasuserdata", JSON.stringify(user));
+        localStorage.setItem("Divasuserdata",JSON.stringify(user));
         setData({
           fName: "",
           lName: "",
@@ -38,7 +38,7 @@ const SignUp = () => {
           pwdRepeat: "",
           dBirth: ""
         });
-        route.push('/shop');
+        router.push('/shop');
         window.location.reload()
       } else {
         alert(response.data.message);
@@ -60,10 +60,14 @@ const SignUp = () => {
     userControl();
   };
 
+  const handleSigupCrossIcon = () =>{
+    router.push('/');
+  }
+
   return (
     <div className={styles['log-sign-con']}>
       <div className={styles['log-sign']}>
-        <div onClick={() => window.location.replace("/")}><RxCross2 className={styles.icon} /></div>
+        <div onClick={handleSigupCrossIcon}><RxCross2 className={styles.icon} /></div>
         <h4>{loginStage === "Signup" ? "Signup" : "Login"}</h4>
         <form onSubmit={handleFormSubmission}>
           {loginStage === "Signup" && (

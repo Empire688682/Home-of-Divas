@@ -3,21 +3,17 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { BsFillBagFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
-import { useRouter } from "next/navigation";
 import { useGlobalContext } from "@/Component/Context";
 import styles from "./Profile.module.css";
 import MyOrder from "@/Component/MyOrder/MyOrder";
 
 const Profile = () => {
-  const { setToken, logoutUser, user } = useGlobalContext();
-  const router = useRouter();
+  const { logoutUser, user } = useGlobalContext();
   const [dashboard, setDashboard] = useState("information");
 
   const logout = () => {
     logoutUser();
   };
-
-  console.log("USER:", user)
 
   return (
     <div className={styles.profile}>

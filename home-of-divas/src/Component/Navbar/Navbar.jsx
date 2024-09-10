@@ -15,28 +15,27 @@ const Navbar = () => {
   const {token,inCart,inFav} = useGlobalContext();
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
-  const [signup, setSignup] = useState(false);
   const router = useRouter();
 
   const toProfile = () =>{
-    router.replace("/profile");
+    router.push("/profile");
     setShowMenu(false)
   }; 
 
-  const home = () =>{
-    router.replace("/");
+  const toHome = () =>{
+    router.push("/");
     setShowMenu(false)
   };
 
-  const handleSigup = ()=>{
-    window.location.replace("/signup");
+  const toSignup = ()=>{
+    router.push("/signup");
     setShowMenu(false);
   };
 
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <h3 onClick={home}>Divas</h3>
+        <h3 onClick={toHome}>Divas</h3>
       </div>
       <div className={styles.big_screen_menu}>
         <ul className={styles.menu}>
@@ -50,7 +49,7 @@ const Navbar = () => {
         <div className={styles.user_login_cart}>
           <div className={styles.user_login}>
             {
-              token? <FaUserCircle onClick={toProfile} />:<p onClick={handleSigup}>Signup</p>
+              token? <FaUserCircle onClick={toProfile} />:<p onClick={toSignup}>Signup</p>
             }
           </div>
           <div className={styles.cart}>
@@ -78,12 +77,12 @@ const Navbar = () => {
             <LiaTimesSolid />
           </div>
           <div className={styles.logo}>
-            <h3 onClick={home}>Divas</h3>
+            <h3 onClick={toHome}>Divas</h3>
           </div>
           <div className={styles.user_login_cart}>
             <div className={styles.user_login}>
             {
-              token? <FaUserCircle onClick={toProfile}  />:<p onClick={handleSigup}>Signup</p>
+              token? <FaUserCircle onClick={toProfile}  />:<p onClick={toSignup}>Signup</p>
             }
             </div>
             <div className={styles.cart}>

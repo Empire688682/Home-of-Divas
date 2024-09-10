@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const LocalSavedUser = JSON.parse(localStorage.getItem("Divasuserdata")) || "{}"; // Ensure user data is parsed correctly
+      const LocalSavedUser = localStorage.getItem("Divasuserdata") || {}; // Ensure user data is parsed correctly
       const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
       const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
   
@@ -39,11 +39,13 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialized && typeof window !== "undefined") {
       localStorage.setItem("Divastoken", token);
-      localStorage.setItem("Divasuserdata", user);
+      localStorage.setItem("Divasuserdata", JSON.stringify(user)) || {};
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       localStorage.setItem("favItems", JSON.stringify(favItem));
     }
   }, [isInitialized, token, user, cartItems, favItem]);
+
+  console.log("USER:", user)
 
   const addToCart = (itemId) => {
     setItemAdded("true");
@@ -114,8 +116,7 @@ export const GlobalProvider = ({ children }) => {
      const response =  await axios.get("api/users/logout");
      if(response){
       route.push("/");
-      localStorage.clear();
-      setUser({});
+      localStorage.clear("Divasuserdata")
       setToken("");
      }
     } catch (error) {
