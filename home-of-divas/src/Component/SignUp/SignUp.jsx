@@ -4,6 +4,8 @@ import styles from './SignUp.module.css';
 import { RxCross2 } from "react-icons/rx";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { FaEyeSlash } from 'react-icons/fa';
+import { IoEyeSharp } from 'react-icons/io5';
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +20,8 @@ const SignUp = () => {
   });
 
   const [loginStage, setLogInStage] = useState("Signup");
-  const router = useRouter()
+  const router = useRouter();
+  const [showPass, setShowPass] = useState(false);
 
   const userControl = async () => {
     try {
@@ -98,24 +101,34 @@ const SignUp = () => {
             placeholder='Email'
             required
           />
-          <input
+         <div>
+         <input
             onChange={handleOnChange}
             value={data.password}
             name="password"
-            type="password"
+            type={showPass? "text":"password"}
             placeholder='Password'
             required
           />
+          <small onClick={() => setShowPass(!showPass)} className={styles.eyeIcon}>
+              {!showPass ? <FaEyeSlash /> : <IoEyeSharp />}
+            </small>
+         </div>
           {loginStage === "Signup" && (
             <>
+              <div>
               <input
                 onChange={handleOnChange}
                 value={data.pwdRepeat}
                 name="pwdRepeat"
-                type="password"
+                type={showPass? "text":"password"}
                 placeholder='Repeat Password'
                 required
               />
+              <small onClick={() => setShowPass(!showPass)} className={styles.eyeIcon}>
+              {!showPass ? <FaEyeSlash /> : <IoEyeSharp />}
+            </small>
+              </div>
               <select onChange={handleOnChange} name="gender" value={data.gender}>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
