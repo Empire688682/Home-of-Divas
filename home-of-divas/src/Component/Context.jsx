@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const LocalSavedUser = JSON.parse(localStorage.getItem("Divasuserdata")) || {}; // Ensure user data is parsed correctly
+      const LocalSavedUser = JSON.parse(localStorage.getItem("Divasuserdata")) || "{}"; // Ensure user data is parsed correctly
       const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
       const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
   
