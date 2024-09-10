@@ -31,7 +31,7 @@ const Profile = () => {
         </ul>
         <p onClick={logout}>
           <IoLogOut />
-          <span>Logout</span>
+          <span>Logout Of Shop</span>
         </p>
       </div>
       {dashboard === "information" ? (
