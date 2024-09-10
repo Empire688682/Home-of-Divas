@@ -11,7 +11,7 @@ export const GlobalProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
   const [favItem, setFavItem] = useState({});
   const [token, setToken] = useState({});
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState({});
   const [itemAdded, setItemAdded] = useState(null);
   const [favAdded, setFavAdded] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -23,10 +23,10 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const LocalSavedUser = localStorage.getItem("Divasuserdata") || {};
+      const LocalSavedUser = JSON.parse(localStorage.getItem("Divasuserdata")) || {}; // Ensure user data is parsed correctly
       const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
       const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
-      
+  
       setToken(localSavedToken);
       setUser(LocalSavedUser);
       setCartItems(localSavedCart);
