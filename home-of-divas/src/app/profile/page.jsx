@@ -1,24 +1,20 @@
-"use client"; // Enables client-side rendering
-import React, { useState, useEffect } from "react";
+"use client";
+import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { BsFillBagFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
-import { useRouter } from "next/navigation"; // New hook for navigation
-import { useGlobalContext } from "@/Component/Context"; // Adjust path as needed
-import styles from "./Profile.module.css"; // Using CSS module
+import { useRouter } from "next/navigation";
+import { useGlobalContext } from "@/Component/Context";
+import styles from "./Profile.module.css";
 import MyOrder from "@/Component/MyOrder/MyOrder";
 
 const Profile = () => {
-  const { setToken, logoutUser, user} = useGlobalContext(); // Fix useGlobalContext as a function
-  const router = useRouter(); // Replaces useNavigate from React Router
-
+  const { setToken, logoutUser, user } = useGlobalContext();
+  const router = useRouter();
   const [dashboard, setDashboard] = useState("information");
 
   const logout = () => {
-    logoutUser()
-    localStorage.removeItem("Divastoken");
-    localStorage.removeItem("Divasuserdata");
-    setToken("");
+    logoutUser();
   };
 
   return (
@@ -63,7 +59,7 @@ const Profile = () => {
               <p className={styles.small}>{user.gender}</p>
             </div>
             <div className={styles.info}>
-              <p>dBirth:</p>
+              <p>Date of Birth:</p>
               <p className={styles.small}>{user.dBirth}</p>
             </div>
             <button onClick={logout}>Logout</button>
@@ -76,7 +72,6 @@ const Profile = () => {
               @ <span>{user.fName}</span> Welcome to your Order Page
             </h2>
           </div>
-          {/* Assuming MyOrder is another component */}
           <MyOrder user={user.fName} />
         </div>
       )}

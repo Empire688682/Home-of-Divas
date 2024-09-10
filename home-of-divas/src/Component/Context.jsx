@@ -114,6 +114,9 @@ export const GlobalProvider = ({ children }) => {
      const response =  await axios.get("api/users/logout");
      if(response){
       route.push("/");
+      localStorage.clear();
+      setUser({});
+      setToken("");
      }
     } catch (error) {
       console.log("ERROR:", error)
