@@ -31,7 +31,7 @@ const registerUser = async (req) => {
 
         const passwordHashed = await bcrypt.hash(password, 10);
 
-        const user = new UserModel({
+        const newUser = new UserModel({
             fName,
             lName,
             email,
@@ -40,7 +40,9 @@ const registerUser = async (req) => {
             password: passwordHashed
         });
 
-        await user.save();
+        await newUser.save();
+
+        const user = await UserModel.findOne({email}).select('-password -_id')
 
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
         const res = NextResponse.json({

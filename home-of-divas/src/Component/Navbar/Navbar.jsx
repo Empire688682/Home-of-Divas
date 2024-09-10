@@ -9,7 +9,6 @@ import { FaHeart } from "react-icons/fa";
 import Image from 'next/image';
 import { LiaTimesSolid } from "react-icons/lia";
 import { useGlobalContext } from '../Context';
-import SignUp from '../SignUp/SignUp';
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
