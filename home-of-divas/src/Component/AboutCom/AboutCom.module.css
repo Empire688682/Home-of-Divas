@@ -12,7 +12,7 @@
 
 .small_col .img_Con {
     position: relative;
-    width: 400px;
+    min-width: 250px;
     height: 400px;
     z-index: 88;
 }

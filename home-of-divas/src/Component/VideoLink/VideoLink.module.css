@@ -1,7 +1,7 @@
 .video_link{
     margin: 50px 0;
     position: relative;
-    min-height: 70vh;
+    min-height: 50vh;
     width: 100%;
 }
 .play_icon {

@@ -13,7 +13,6 @@ const ShopHero = () => {
                     collections for everyone</h2>
                 <div className={styles.btn_Con}>
                 <button><a style={{textDecoration:"none", color:"white"}} href="#shop">Explore our collection</a></button>
-                <a style={{textDecoration:"none", color:"white"}} href="#shop"><IoIosArrowDropdownCircle className={styles.btn_Con_icon} /></a>
                 </div>
             </div>
             <div className={styles.img_col}>
