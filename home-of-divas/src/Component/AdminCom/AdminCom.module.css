@@ -2,6 +2,47 @@
     padding: 0 5%;
     min-height: 100vh;
 }
+.admin_Com .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border: 1px solid rgb(226, 222, 222);
+    padding: 20px 10px;
+    border-radius: 5px;
+}
 .admin_Com h1{
     font-size: 25px;
+}
+.profile{
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+}
+.profile p{
+    position: absolute;
+    font-size: 15px;
+    top: 0;
+    left: 50%;
+    background-color: var(--purple);
+    color: var(--white);
+    font-weight: bold;
+    padding: 10px 5px 20px;
+    margin-top: 22px;
+    transform: translateX(-50%);
+    display: none;
+    border-radius: 5px;
+}
+.profile:hover  p{
+    display: block;
+}
+
+@media (max-width:600px){
+    .admin_Com h1{
+        font-size: 20px;
+    }
+    .profile{
+        font-size: 25px;
+        cursor: pointer;
+    }
 }
