@@ -3,17 +3,24 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { BsFillBagFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
-import { useGlobalContext } from "@/Component/Context";
 import styles from "./Profile.module.css";
 import MyOrder from "@/Component/MyOrder/MyOrder";
 
 const Profile = () => {
-  const { logoutUser, user } = useGlobalContext();
   const [dashboard, setDashboard] = useState("information");
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("Divasuserdata")) || {});
 
-  const logout = () => {
-    logoutUser();
-  };
+  const logoutUser = async () =>{
+    try {
+     const response =  await axios.get("api/users/logout");
+     if(response){
+      route.push("/");
+      setToken("");
+     }
+    } catch (error) {
+      console.log("ERROR:", error)
+    }
+  }
 
   return (
     <div className={styles.profile}>
@@ -29,7 +36,7 @@ const Profile = () => {
             <span>My Orders</span>
           </li>
         </ul>
-        <p onClick={logout}>
+        <p onClick={logoutUser}>
           <IoLogOut />
           <span>Logout Of Shop</span>
         </p>
@@ -60,7 +67,7 @@ const Profile = () => {
               <p>Date of Birth:</p>
               <p className={styles.small}>{user.dBirth}</p>
             </div>
-            <button onClick={logout}>Logout</button>
+            <button onClick={logoutUser}>Logout</button>
           </div>
         </div>
       ) : (

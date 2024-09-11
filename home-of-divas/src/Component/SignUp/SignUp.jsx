@@ -31,6 +31,7 @@ const SignUp = () => {
       if (response.data.success) {
         localStorage.setItem("Divastoken", response.data.token);
         const user = response.data.user;
+        console.log("User:", user)
         localStorage.setItem("Divasuserdata",JSON.stringify(user));
         setData({
           fName: "",

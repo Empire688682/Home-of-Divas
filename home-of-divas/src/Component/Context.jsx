@@ -1,7 +1,6 @@
 "use client";
 import all_product from '../../public/all_product';
 import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const GlobalContext = React.createContext();
@@ -11,7 +10,6 @@ export const GlobalProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
   const [favItem, setFavItem] = useState({});
   const [token, setToken] = useState({});
-  const [user, setUser] = useState({});
   const [itemAdded, setItemAdded] = useState(null);
   const [favAdded, setFavAdded] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -23,12 +21,10 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const LocalSavedUser = localStorage.getItem("Divasuserdata") || {}; // Ensure user data is parsed correctly
       const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
       const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
   
       setToken(localSavedToken);
-      setUser(LocalSavedUser);
       setCartItems(localSavedCart);
       setFavItem(localSavedFav);
       setIsInitialized(true);
@@ -39,13 +35,10 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialized && typeof window !== "undefined") {
       localStorage.setItem("Divastoken", token);
-      localStorage.setItem("Divasuserdata", JSON.stringify(user)) || {};
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       localStorage.setItem("favItems", JSON.stringify(favItem));
     }
-  }, [isInitialized, token, user, cartItems, favItem]);
-
-  console.log("USER:", user)
+  }, [isInitialized, token, cartItems, favItem]);
 
   const addToCart = (itemId) => {
     setItemAdded("true");
@@ -111,26 +104,11 @@ export const GlobalProvider = ({ children }) => {
     setInFav(hasItemInFav);
   },[favItem, allProduct]);
 
-  const logoutUser = async () =>{
-    try {
-     const response =  await axios.get("api/users/logout");
-     if(response){
-      route.push("/");
-      localStorage.clear("Divasuserdata")
-      setToken("");
-     }
-    } catch (error) {
-      console.log("ERROR:", error)
-    }
-  }
-
   return (
     <GlobalContext.Provider value={{
       cartItems,
       token,
       setToken,
-      user,
-      setUser,
       addToCart,
       removeFromCart,
       itemAdded,
@@ -140,8 +118,7 @@ export const GlobalProvider = ({ children }) => {
       allProduct,
       inCart,
       inFav,
-      getTotalValue,
-      logoutUser
+      getTotalValue
     }}>
       {children}
     </GlobalContext.Provider>
