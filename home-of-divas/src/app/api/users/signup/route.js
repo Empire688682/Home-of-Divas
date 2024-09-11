@@ -48,9 +48,7 @@ const registerUser = async (req) => {
             userDData
         });
 
-        console.log("Before saving:", newUser);
         await newUser.save();
-        console.log("After saving:", newUser);
 
         const user = await UserModel.findOne({ email }).select('-password -_id')
         const userData = {
