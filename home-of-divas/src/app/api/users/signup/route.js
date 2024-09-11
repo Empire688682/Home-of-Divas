@@ -31,18 +31,28 @@ const registerUser = async (req) => {
 
         const passwordHashed = await bcrypt.hash(password, 10);
 
+        // Initialize userData if not provided
+        const userDData = {
+            cart: [],
+            fav: [],
+            order: []
+        };
+
         const newUser = new UserModel({
             fName,
             lName,
             email,
             gender,
             dBirth,
-            password: passwordHashed
+            password: passwordHashed,
+            userDData
         });
 
+        console.log("Before saving:", newUser);
         await newUser.save();
+        console.log("After saving:", newUser);
 
-        const user = await UserModel.findOne({email}).select('-password -_id')
+        const user = await UserModel.findOne({ email }).select('-password -_id')
         const userData = {
             email,
             fName,
@@ -56,14 +66,14 @@ const registerUser = async (req) => {
             success: true,
             message: "User signed up",
             token,
-            user:userData
+            user: userData
         })
         res.cookies.set('DCToken', token, {
-            httpOnly:true,
+            httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            maxAge: 2 *24*60*60,
+            maxAge: 2 * 24 * 60 * 60,
             sameSite: "lax",
-            path:"/"
+            path: "/"
         });
         return res
 
