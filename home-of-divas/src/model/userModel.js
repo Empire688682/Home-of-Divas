@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
   gender: { type: String, required: true },
   password: { type: String, required: true },
   dBirth: { type: String, required: true },
-  userDData: { type: userDataSchema, default:{}} // Use the defined schema and set default to an empty object
+  userDData: { type: userDataSchema, default:{}},
+  isAdmin: {type: Boolean, default:false}
 });
 
 export const UserModel = mongoose.models.User || mongoose.model("User", userSchema);
