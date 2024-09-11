@@ -1,21 +1,33 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { BsFillBagFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
 import styles from "./Profile.module.css";
 import MyOrder from "@/Component/MyOrder/MyOrder";
+import axios from "axios";
+import { useGlobalContext } from "@/Component/Context";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  const {setToken} = useGlobalContext();
   const [dashboard, setDashboard] = useState("information");
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("Divasuserdata")) || {});
+  const [user, setUser] = useState({});
+  const router = useRouter();
+
+  useEffect(()=>{
+    if(typeof window !== "undefined"){
+      setUser(JSON.parse(localStorage.getItem("Divasuserdata")) || {})
+    }
+  },[])
 
   const logoutUser = async () =>{
     try {
      const response =  await axios.get("api/users/logout");
      if(response){
-      route.push("/");
+      router.push("/");
       setToken("");
+      setUser({})
      }
     } catch (error) {
       console.log("ERROR:", error)
