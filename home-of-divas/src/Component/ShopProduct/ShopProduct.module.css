@@ -174,4 +174,7 @@
     .shop_menus{
         gap: 10px;
     }
+    .shop_menus li{
+        font-size: 13px;
+    }
 }
