@@ -16,10 +16,10 @@ const SignUp = () => {
     gender: "Male",
     password: "",
     pwdRepeat: "",
-    dBirth: ""
+    dBirth: "1999-01-01"
   });
 
-  const [loginStage, setLogInStage] = useState("Signup");
+  const [loginStage, setLogInStage] = useState("Login");
   const router = useRouter();
   const [showPass, setShowPass] = useState(false);
 
