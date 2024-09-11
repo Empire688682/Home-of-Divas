@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './AdminCom.module.css';
 import SideBar from './SideBar/SiseBar';
 import { FaUserCircle } from "react-icons/fa";
+import AddItems from './AddItems/AddItems';
 
 const AdminCom = () => {
   return (
@@ -15,6 +16,7 @@ const AdminCom = () => {
       </div>
       </div>
       <SideBar />
+      <AddItems/>
     </div>
   )
 }
