@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './AddItems.module.css';
+import axios from 'axios';
 
 const AddItems = () => {
   const [data, setData] = useState({
@@ -19,13 +20,19 @@ const AddItems = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!data.name || !data.price || !category) {
-      setEmptyField(true);
-    } else {
-      setEmptyField(false);
-      console.log('Form submitted:', data);
-    }
+      addItem()
   };
+
+  const addItem = async () =>{
+    try {
+      const response = await axios.post('api/items/addItem', data);
+      if(response){
+        console.log("RES:", response.data.message)
+      }
+    } catch (error) {
+      console.log("ERROR:",error);
+    }
+  }
 
   return (
     <div className={`${styles.add_Items}`}>
