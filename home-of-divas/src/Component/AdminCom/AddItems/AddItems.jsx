@@ -36,7 +36,7 @@ const AddItems = () => {
       formData.append('price', data.price);
       formData.append('image', image);
 
-      const response = await axios.post('/api/items/addItem', formData, 
+      const response = await axios.post('/api/items/uploadItem', formData, 
         {headers: {"Content-Type": 'multipart/form-data'}});
       
       if (response.data.message) {
