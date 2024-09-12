@@ -1,11 +1,11 @@
-import {nextConnect} from 'next-connect';  // Correct import statement
+import nextconnect from 'next-connect'
 import { connectDB } from "@/ConnectDB/ConnectDB";
 import { upload } from "@/helper/imageUploader";
 import { ItemModel } from "@/model/itemModel";
 
 connectDB();
 
-const handler = nextConnect();
+const handler = nextconnect();
 
 handler.use(upload.single("image"))
 
