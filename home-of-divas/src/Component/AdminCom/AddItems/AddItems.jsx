@@ -25,7 +25,14 @@ const AddItems = () => {
 
   const addItem = async () =>{
     try {
-      const response = await axios.post('api/items/addItem', data);
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('category', data.category);
+      formData.append('price', data.price);
+      formData.append('image', data.image);
+
+      const response = await axios.post('api/items/addItem', formData, 
+        {headers:{"Content-Type":'multipart/form-data'}});
       if(response){
         console.log("RES:", response.data.message)
       }
