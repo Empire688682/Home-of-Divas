@@ -12,7 +12,8 @@ const AddItems = () => {
   });
 
   const [image, setImage] = useState(null);
-  const [emptyField, setEmptyField] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const onchangeHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -20,26 +21,37 @@ const AddItems = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-      addItem()
+    if (!image) {
+      setError('Please select an image');
+      return;
+    }
+    addItem();
   };
 
-  const addItem = async () =>{
+  const addItem = async () => {
     try {
       const formData = new FormData();
       formData.append('name', data.name);
       formData.append('category', data.category);
       formData.append('price', data.price);
-      formData.append('image', data.image);
+      formData.append('image', image);
 
-      const response = await axios.post('api/items/addItem', formData, 
-        {headers:{"Content-Type":'multipart/form-data'}});
-      if(response){
-        console.log("RES:", response.data.message)
+      const response = await axios.post('/api/items/addItem', formData, 
+        {headers: {"Content-Type": 'multipart/form-data'}});
+      
+      if (response.data.message) {
+        setSuccess(response.data.message);
+        setError('');
+        // Reset form
+        setData({ name: '', category: 'Women', price: '' });
+        setImage(null);
       }
     } catch (error) {
-      console.log("ERROR:",error);
+      console.error("ERROR:", error);
+      setError(error.response?.data?.error || 'An error occurred while adding the item');
+      setSuccess('');
     }
-  }
+  };
 
   return (
     <div className={`${styles.add_Items}`}>
@@ -55,12 +67,12 @@ const AddItems = () => {
             />
            </div>
           </label>
-          {emptyField && <small>Please fill the empty fields</small>}
           <input
             onChange={(e) => setImage(e.target.files[0])}
             hidden={true}
             type="file"
             id="image"
+            accept="image/*"
           />
         </div>
         <div className={`${styles.add_name_con} ${styles.flex_col}`}>
@@ -100,6 +112,8 @@ const AddItems = () => {
             />
           </div>
         </div>
+        {error && <p className={styles.error}>{error}</p>}
+        {success && <p className={styles.success}>{success}</p>}
         <button className={`${styles.add_button}`} type="submit">
           ADD
         </button>

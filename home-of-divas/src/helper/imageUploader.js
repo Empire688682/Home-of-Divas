@@ -7,5 +7,5 @@ import multer from "multer";
         }
     });
 
-export const upload= multer({storage:storage});
+export const upload = multer({storage:storage});
 

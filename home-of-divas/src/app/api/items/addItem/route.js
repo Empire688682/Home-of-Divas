@@ -1,8 +1,7 @@
+import {nextConnect} from 'next-connect';  // Correct import statement
 import { connectDB } from "@/ConnectDB/ConnectDB";
 import { upload } from "@/helper/imageUploader";
 import { ItemModel } from "@/model/itemModel";
-import { NextResponse } from "next/server";
-import nextConnect from 'next-connect'
 
 connectDB();
 
