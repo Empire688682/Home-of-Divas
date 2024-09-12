@@ -19,7 +19,7 @@ const AddItems = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!data.name || !data.price) {
+    if (!data.name || !data.price || !category) {
       setEmptyField(true);
     } else {
       setEmptyField(false);
