@@ -37,6 +37,11 @@
     display: block;
 }
 
+.admin_Content_Con{
+    display: flex;
+    gap: 20px;
+}
+
 @media (max-width:600px){
     .admin_Com h1{
         font-size: 20px;

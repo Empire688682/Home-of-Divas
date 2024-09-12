@@ -1,5 +1,4 @@
 .add_Items {
-    margin: 30px;
     max-width: 40%;
     min-width: 50%;
 }
@@ -12,12 +11,10 @@
     border: 1px dotted;
     max-width: 200px;
     height: 200px;
-    padding: 10px;
     position: relative;
 }
 
 .addForm input,
-.addForm textarea,
 .addForm select {
     padding: 5px;
     outline: none;

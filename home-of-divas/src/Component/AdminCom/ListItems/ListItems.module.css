@@ -1,0 +1,57 @@
+.list_Item {
+    background-color: aquamarine;
+    width: 100%;
+}
+
+.header, .content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 10px 20px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header .image,
+.content .image {
+    flex-basis: 10%;
+    width: 100%;
+    font-weight: 500;
+}
+
+.header .name,
+.content .name {
+    flex-basis: 40%;
+    flex: 1;
+    width: 100%;
+    font-weight: 500;
+}
+
+.header .category,
+.content .category {
+    flex-basis: 20%;
+    width: 100%;
+    font-weight: 500;
+}
+
+.header .price,
+.content .price {
+    flex-basis: 10%;
+    width: 100%;
+    font-weight: 500;
+}
+
+.header .remove,
+.content .remove {
+    flex-basis: 10%;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.img_Con {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}

@@ -5,8 +5,7 @@ import { IoMdAdd } from "react-icons/io";
 import { BsBasket3 } from "react-icons/bs";
 import { MdChecklistRtl } from "react-icons/md";
 
-const SideBar = () => {
-    const [menu, setMenu] = useState("add");
+const SideBar = ({menu, setMenu}) => {
 
   return (
     <div className={styles.side_Bar}>
