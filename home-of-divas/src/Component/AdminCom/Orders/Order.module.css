@@ -1,13 +1,16 @@
 .order_items {
-    background-color: aquamarine;
     width: 100%;
     margin-bottom: 90px;
+}
+.order_items h2{
+    font-size: 18px;
+
 }
 
 .content {
     display: flex;
     gap: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgb(228, 220, 220);
     padding: 10px 20px;
     justify-content: space-between;
     width: 100%;

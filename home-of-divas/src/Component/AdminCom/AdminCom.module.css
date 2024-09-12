@@ -40,6 +40,10 @@
 .admin_Content_Con{
     display: flex;
     gap: 20px;
+    width: 100%;
+} 
+.admin_Content_Value{
+   flex: 2;
 }
 
 @media (max-width:600px){

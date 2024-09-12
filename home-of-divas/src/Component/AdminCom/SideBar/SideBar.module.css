@@ -1,6 +1,5 @@
 .side_Bar{
     max-width: 200px;
-    min-width: 120px;
     min-height: 100vh;
     border: 1px solid rgb(226, 222, 222);
     padding: 10px;
@@ -32,7 +31,7 @@
     font-weight: bolder;
 }
 .menu_Icon{
-    font-size: 40px;
+    font-size: 30px;
     background-color: var(--yellow);
     border-radius: 50%;
     color: var(--white);
@@ -48,7 +47,7 @@
         padding: 10px;
         border-radius: 5px;
     }
-    .menu_Icon{
+    .side_Bar_Menu p{
         display: none;
     }
 }

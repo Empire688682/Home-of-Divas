@@ -17,8 +17,8 @@ const Order = () => {
               <div>
                 <div className={styles.header_item}>Item</div>
                   <div className={styles.item}>
-                    <small>Name: {item.name}</small><br />
-                    <small>Qty: {item.quantity}</small>
+                    <small>Name: name</small><br />
+                    <small>Qty: quantity</small>
                   </div>
               </div>
               <div>
@@ -36,7 +36,7 @@ const Order = () => {
               </div>
               <div>
                 <div className={styles.header_amount}>Total Amount</div>
-                <div className={styles.amount}>#{order.amount}</div>
+                <div className={styles.amount}>#.amount</div>
               </div>
               <div>
                 <div className={styles.header_remove}>Remove</div>

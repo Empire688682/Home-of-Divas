@@ -29,9 +29,9 @@ const ListItems = ({ apiUrl }) => {
                     fill
                   />
                 </div>
-                <div className={styles.name}>food.name</div>
-                <div className={styles.category}>food.category</div>
-                <div className={styles.price}>food.price</div>
+                <div className={styles.name}>food name</div>
+                <div className={styles.category}>food category</div>
+                <div className={styles.price}>food price</div>
                 <div
                   className={styles.remove}
                 >

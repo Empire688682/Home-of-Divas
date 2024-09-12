@@ -1,23 +1,27 @@
 .list_Item {
-    background-color: aquamarine;
     width: 100%;
+}
+
+.list_Item h2{
+    font-size: 18px;
 }
 
 .header, .content {
     display: flex;
     gap: 20px;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid rgb(216, 206, 206);
     padding: 10px 20px;
     justify-content: space-between;
     width: 100%;
 }
 
 .header .image,
-.content .image {
+.content .img_Con{
     flex-basis: 10%;
     width: 100%;
     font-weight: 500;
+    font-size: 14px;
 }
 
 .header .name,
@@ -51,7 +55,42 @@
 }
 
 .img_Con {
+    flex-basis: 15%;
     width: 60px;
     height: 60px;
     position: relative;
+}
+
+@media (max-width:550px){
+    .list_Item {
+        width: 95%;
+    }
+    .header .image,
+.content .img_Con{
+    font-size: 14px;
+}
+
+.header .name,
+.content .name {
+    flex-basis: 40%;
+    flex: 1;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.header .category,
+.content .category {
+    font-size: 14px;
+}
+
+.header .price,
+.content .price {
+    font-size: 14px;
+}
+
+.header .remove,
+.content .remove {
+    font-size: 14px;
+}
 }

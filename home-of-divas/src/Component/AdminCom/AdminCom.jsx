@@ -5,6 +5,7 @@ import SideBar from './SideBar/SiseBar';
 import { FaUserCircle } from "react-icons/fa";
 import AddItems from './AddItems/AddItems';
 import ListItems from './ListItems/ListItems';
+import Order from './Orders/Order';
 
 const AdminCom = () => {
     const [menu, setMenu] = useState("add")
@@ -18,13 +19,18 @@ const AdminCom = () => {
                 </div>
             </div>
             <div className={styles.admin_Content_Con}>
+                <div className={styles.admin_SideBar}>
                 <SideBar menu={menu} setMenu={setMenu} />
+                </div>
                 <div className={styles.admin_Content_Value}>
                     {
                         menu === "add"? <AddItems />:null
                     }
                     {
                         menu === "list"? <ListItems />:null
+                    }
+                    {
+                        menu === "order"? <Order />:null
                     }
                 </div>
             </div>
