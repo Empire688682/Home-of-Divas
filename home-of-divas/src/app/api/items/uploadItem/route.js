@@ -1,8 +1,9 @@
 import multer from 'multer';
 import { ItemModel } from '@/model/itemModel';
 import path from 'path';
-import fs, { existsSync } from 'fs';
+import fs from 'fs';
 import { connectDB } from '@/ConnectDB/ConnectDB';
+import { NextResponse } from 'next/server';
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -31,13 +32,13 @@ const uploadItems = async (req,res)=>{
 
             upload.single("image")(req, res, async (error)=>{
                 if(error){
-                    return res.json({success:false, message:"Failed to upload file"});
+                    return NextResponse.json({success:false, message:"Failed to upload file"});
                 }
             });
 
             const file = req.file;
             if(!file){
-                return res.json({success:false, message:"No file uploaded"});
+                return NextResponse.json({success:false, message:"No file uploaded"});
             }
 
             const {name, price, category} = JSON.parse(req.body.data);
@@ -53,11 +54,11 @@ const uploadItems = async (req,res)=>{
 
             await newItem.save();
 
-            return res.json({success:true, newItem, message:"File uploaded successfully"});
+            return NextResponse.json({success:true, newItem, message:"File uploaded successfully"});
             
         } catch (error) {
            console.log("ERROR:", error);
-           return res.json({success:false, message:"Upload file error"});
+           return NextResponse.json({success:false, message:"Upload file error"});
         }
     }
 }
