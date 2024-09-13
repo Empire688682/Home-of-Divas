@@ -6,9 +6,9 @@ import axios from 'axios';
 
 const AddItems = () => {
   const [data, setData] = useState({
-    name: '',
-    category: 'Women',
-    price: '',
+    name: 'Seamsters Secret Stash',
+    category: 'Materials',
+    price: '5000',
   });
 
   const [image, setImage] = useState(null);
@@ -43,7 +43,6 @@ const AddItems = () => {
         setSuccess(response.data.message);
         setError('');
         // Reset form
-        setData({ name: '', category: 'Women', price: '' });
         setImage(null);
       }
     } catch (error) {
