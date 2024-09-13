@@ -1,66 +1,32 @@
-import nextConnect from 'next-connect';
-import multer from 'multer';
-import { promises as fs } from 'fs';
-import path from 'path';
-import { connectDB } from '@/ConnectDB/ConnectDB';
-import { ItemModel } from '@/model/itemModel';
+import { NextResponse } from "next/server";
+import path from "path";
+import { writeFile } from 'fs/promises';
 
-// Set up multer for file uploads
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: './public/uploads',
-    filename: (req, file, cb) => {
-      cb(null, file.originalname); // Use original filename
-    },
-  }),
-});
+export const POST = async (req) => {
+    const formData = await req.formData();
 
-// Initialize next-connect handler
-const handler = nextConnect({
-  onError: (err, req, res) => {
-    console.error(err);
-    res.status(500).end('Something went wrong!');
-  },
-  onNoMatch: (req, res) => {
-    res.status(404).end('Page is not found');
-  },
-});
-
-// Handle file upload
-handler.use(upload.single('file')).post(async (req, res) => {
-  try {
-    const file = req.file;
+    const file = formData.get("image");
     if (!file) {
-      return res.status(400).json({ error: 'No file uploaded' });
-    }
-    
-    // Extract other fields from request body
-    const { name, price, category } = req.body;
-    
-    if (!name || !price || !category) {
-      return res.status(400).json({ error: 'Missing required fields' });
+        return NextResponse.json({ success: false, message: "No file found" });
     }
 
-    // Connect to the database
-    await connectDB();
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const filename = file.name.replace(/\s/g, "-");
+    console.log("filename:", filename);
 
-    // Create a new item
-    const newItem = new ItemModel({
-      name,
-      price,
-      category,
-      image: `/uploads/${file.filename}`, // Use filename from multer
-    });
+    try {
+        const uploadDir = path.join(process.cwd(), "public/uploads");
+        await writeFile(path.join(uploadDir, filename), buffer);
+        
+        // You might want to save other form data to a database here
+        // const name = formData.get("name");
+        // const category = formData.get("category");
+        // const price = formData.get("price");
+        // ... save to database ...
 
-    // Save the item
-    const savedItem = await newItem.save();
-
-    // Send response
-    res.status(200).json({ message: 'File uploaded successfully', file: savedItem });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'File upload failed' });
-  }
-});
-
-export default handler;
+        return NextResponse.json({ success: true, message: "File uploaded successfully" });
+    } catch (error) {
+        console.log("Error occurred:", error);
+        return NextResponse.json({ success: false, message: "An error occurred while uploading the file" });
+    }
+};
