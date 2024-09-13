@@ -3,7 +3,7 @@ import path from "path";
 import { writeFile } from 'fs/promises';
 import fs from 'fs';
 import { connectDB } from "@/ConnectDB/ConnectDB";
-import { ItemModel } from "@/model/itemModel";
+import { ProductModel } from "@/model/productModel";
 
 export async function POST(req) {
     try {
@@ -32,7 +32,7 @@ export async function POST(req) {
 
         await connectDB();
 
-        const newItem = new ItemModel({
+        const newItem = new ProductModel({
             name,
             price,
             category,

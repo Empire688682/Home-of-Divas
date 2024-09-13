@@ -7,4 +7,4 @@ const itemSchema = new mongoose.Schema({
     image:{type:String, required:true}
 });
 
-export const ItemModel = mongoose.models.Item || mongoose.model("Item", itemSchema);
+export const ProductModel = mongoose.models.Item || mongoose.model("Item", itemSchema);
