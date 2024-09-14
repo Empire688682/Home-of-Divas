@@ -6,9 +6,9 @@ import axios from 'axios';
 
 const AddItems = () => {
   const [data, setData] = useState({
-    name: 'Seamsters Secret Stash',
-    category: 'Materials',
-    price: '5000',
+    name: '',
+    category: '',
+    price: '',
   });
 
   const [image, setImage] = useState(null);
@@ -36,13 +36,17 @@ const AddItems = () => {
       formData.append('price', data.price);
       formData.append('image', image);
 
-      const response = await axios.post('api/products/uploadProduct', formData, 
-        {headers: {"Content-Type": 'multipart/form-data'}});
-      
+      const response = await axios.post('api/products/uploadProduct', formData,
+        { headers: { "Content-Type": 'multipart/form-data' } });
+
       if (response.data.message) {
         setSuccess(response.data.message);
         setError('');
-        // Reset form
+        setData({
+          name: '',
+          category: '',
+          price: '',
+        });
         setImage(null);
       }
     } catch (error) {
@@ -58,13 +62,13 @@ const AddItems = () => {
         <div className={`${styles.add_img_con} ${styles.flex_col}`}>
           <p>Upload image</p>
           <label htmlFor="image">
-           <div className={styles.img_Con}>
-           <Image
-              src={image ? URL.createObjectURL(image) : '/profile_icon.png'}
-              alt="Uploaded Preview"
-              fill
-            />
-           </div>
+            <div className={styles.img_Con}>
+              <Image
+                src={image ? URL.createObjectURL(image) : '/profile_icon.png'}
+                alt="Uploaded Preview"
+                fill
+              />
+            </div>
           </label>
           <input
             onChange={(e) => setImage(e.target.files[0])}
