@@ -34,7 +34,7 @@ const ProductList = () => {
                   </div>
                   <div className={styles.name}>{product.name}</div>
                   <div className={styles.category}>{product.category}</div>
-                  <div className={styles.price}>{product.price}</div>
+                  <div className={styles.price}>#{product.price}</div>
                   <div
                     className={styles.remove}
                   >
