@@ -13,7 +13,7 @@ const CartComponent = () => {
 const handleAvailableItems = () => {
     let itemCount = 0;
     allProduct.forEach((item)=>{
-        if(cartItems[item.id] > 0){
+        if(cartItems[item._id] > 0){
             itemCount += 1
         }
         return itemCount
@@ -37,27 +37,27 @@ useEffect(() => {
       </div>:<p>Nothing in Cart</p>
       }
       {allProduct.map((item) => {
-        if (cartItems[item.id] > 0) {
+        if (cartItems[item._id] > 0) {
           return (
-            <div className={` ${styles.cartItems}`} key={item.id}>
+            <div className={` ${styles.cartItems}`} key={item._id}>
               <div className={styles.product}>
               <div className={styles.img_Con}>
-                <Image src={item.image} alt='' fill/>
+                <Image src={`/uploads/${item.image}`} alt='' fill/>
               </div>
               <p>{item.name}</p>
               </div>
               <div className={styles.headTitle}>
-                #{item.new_price}
+                #{item.price}
                 </div>
               <div className={`${styles.headTitle} ${styles.quantityCon}`}>
-                <h3 className={styles.quantity}>{cartItems[item.id]}</h3>
+                <h3 className={styles.quantity}>{cartItems[item._id]}</h3>
                 <div className={styles.plusMinus}>
-                  <p onClick={() => addToCart(item.id)}>+</p>
-                  <p onClick={() => removeFromCart(item.id)}>-</p>
+                  <p onClick={() => addToCart(item._id)}>+</p>
+                  <p onClick={() => removeFromCart(item._id)}>-</p>
                 </div>
               </div>
               <p className={styles.headTitle}>
-                #{item.new_price * cartItems[item.id]}
+                #{item.price * cartItems[item._id]}
                 </p>
             </div>
           );

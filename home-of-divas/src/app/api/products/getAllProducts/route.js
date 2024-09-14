@@ -3,14 +3,15 @@ import { ProductModel } from "@/model/productModel";
 import { NextResponse } from "next/server";
 
 
-export async function post(req) {
-    connectDB()
+export async function GET() {
     try {
-        const allProduct = await ProductModel.find({});
-        if(!allProduct){
+        connectDB()
+        const data = await ProductModel.find({});
+        if(!data){
             return NextResponse.json({success:false, message:"No product available"})
         }
-        return NextResponse.json({success:true, allProduct, message:"All product fetched successfully"})
+        console.log("data:", data)
+        return NextResponse.json({success:true, data:data, message:"All product fetched successfully"})
     } catch (error) {
         console.log("error:", error);
         return NextResponse.json({success:false, message:"ERROR"});

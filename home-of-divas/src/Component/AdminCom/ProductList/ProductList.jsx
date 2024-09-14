@@ -1,18 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import styles from './ListItems.module.css'; // Converted CSS to module
-import axios from 'axios';
+import React, { useState } from 'react';
+import styles from './ProductList.module.css'; // Converted CSS to module
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 
-const ListItems = ({ apiUrl }) => {
+const ProductList = () => {
   const [allFood, setAllFood] = useState([]);
 
   return (
     <div className={styles.list_Item}>
-      <ToastContainer style={{ width: '80%' }} />
       <h2>All Food List</h2>
       <div className={styles.header}>
         <div className={styles.image}>Image</div>
@@ -42,4 +40,4 @@ const ListItems = ({ apiUrl }) => {
   );
 };
 
-export default ListItems;
+export default ProductList;

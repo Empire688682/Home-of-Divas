@@ -13,11 +13,12 @@ const ShopProduct = () => {
         allProduct,
         addToCart,
         removeFromCart,
-        itemAdded, 
+        itemAdded,
         cartItems,
-        handleFav, 
+        handleFav,
         favItem,
         favAdded,
+        loading
     } = useGlobalContext();
     return (
         <div className={styles.shop_product} id='shop'>
@@ -31,50 +32,54 @@ const ShopProduct = () => {
                     <li className={`${category === "Materials" ? styles.active : ""}`} onClick={() => setCategory((prev) => prev !== "Materials" ? "Materials" : "All")}>Materials</li>
                 </div>
             </div>
-            <div className={styles.shop_items}>
-                {
-                    allProduct.map((item) => {
-                        if (category === "All" || item.category === category) {
-                            return <div key={item.id} className={styles.shop_cart}>
-                                <div className={styles.img_com}>
-                                    <Image className={styles.img} src={item.image} alt="" fill />
-                                </div>
-                                <div className={styles.item_text}>
-                                    <div className={styles.item_name}>
-                                        {item.name}
-                                    </div>
-                                    <div className={styles.item_price}>
-                                        <div className={styles.item_stars}>
-                                            <FaStar className={styles.star} />
-                                            <FaStar className={styles.star} />
-                                            <FaStar className={styles.star} />
-                                            <FaStar className={styles.star} />
-                                            <FaStar className={styles.star} />
+            {
+                loading ? <div className={styles.loading}><p>Loading.......</p></div>
+                    :
+                    <div className={styles.shop_items}>
+                        {
+                            allProduct.map((item) => {
+                                if (category === "All" || item.category === category) {
+                                    return <div key={item._id} className={styles.shop_cart}>
+                                        <div className={styles.img_com}>
+                                            <Image className={styles.img} src={`/uploads/${item.image}`} alt="" fill />
                                         </div>
-                                        <p>#{item.new_price}</p>
-                                    </div>
-                                </div>
-                                <div className={styles.cart_fav_Con}>
-                                    <div className={favItem[item.id] < 0 || !favItem[item.id] ? styles.fav : styles.fav_red} onClick={() => handleFav(item.id)}>
-                                        <FaHeart />
-                                    </div>
-                                    {
-                                        cartItems[item.id] > 0 ? <div className={styles.items_toggle_Con}>
-                                            <p className={styles.add_icon} onClick={() => addToCart(item.id)}>+</p>
-                                            <p>{cartItems[item.id]}</p>
-                                            <p className={styles.remove_icon} onClick={() => removeFromCart(item.id)}>-</p>
-                                        </div>
-                                            :
-                                            <div onClick={() => addToCart(item.id)} className={styles.cart}>
-                                                <FiShoppingCart />
+                                        <div className={styles.item_text}>
+                                            <div className={styles.item_name}>
+                                                {item.name}
                                             </div>
-                                    }
-                                </div>
-                            </div>
+                                            <div className={styles.item_price}>
+                                                <div className={styles.item_stars}>
+                                                    <FaStar className={styles.star} />
+                                                    <FaStar className={styles.star} />
+                                                    <FaStar className={styles.star} />
+                                                    <FaStar className={styles.star} />
+                                                    <FaStar className={styles.star} />
+                                                </div>
+                                                <p>#{item.price}</p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.cart_fav_Con}>
+                                            <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleFav(item._id)}>
+                                                <FaHeart />
+                                            </div>
+                                            {
+                                                cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
+                                                    <p className={styles.add_icon} onClick={() => addToCart(item._id)}>+</p>
+                                                    <p>{cartItems[item._id]}</p>
+                                                    <p className={styles.remove_icon} onClick={() => removeFromCart(item._id)}>-</p>
+                                                </div>
+                                                    :
+                                                    <div onClick={() => addToCart(item._id)} className={styles.cart}>
+                                                        <FiShoppingCart />
+                                                    </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            })
                         }
-                    })
-                }
-            </div>
+                    </div>
+            }
 
             {
                 //CART ADD DISPLAY

@@ -1,12 +1,14 @@
 "use client";
-import all_product from '../../public/all_product';
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+
+import axios from 'axios';
 
 const GlobalContext = React.createContext();
 
 export const GlobalProvider = ({ children }) => {
-  const [allProduct, setAllProduct] = ([all_product]);
+
+  const [allProduct, setAllProduct] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [favItem, setFavItem] = useState({});
   const [token, setToken] = useState({});
@@ -15,7 +17,8 @@ export const GlobalProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [inCart, setInCart] = useState(false);
   const [inFav, setInFav] = useState(false);
-  const route = useRouter()
+  const route = useRouter();
+  const [loading, setLoading] = useState(false);
 
   // Initialize state from localStorage
   useEffect(() => {
@@ -68,14 +71,34 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("api/products/getAllProducts");
+      if(response){
+        setAllProduct(response.data.data);
+      }
+      
+    } catch (error) {
+      console.log("Error:", error)
+    }
+    finally{
+      setLoading(false)
+    }
+  };
+
+  useEffect(()=>{
+    fetchProducts()
+  }, [])
+
   const getTotalValue = () => {
     let total = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let totalInfo = allProduct.find((product) => product.id === item || product.id === Number(item));
+        let totalInfo = allProduct.find((product) => product._id === item || product._id === Number(item));
         console.log("totalInfo:", total)
         if (totalInfo) {
-          total += totalInfo.new_price * cartItems[item];
+          total += totalInfo.price * cartItems[item];
         }
       }
     }
@@ -95,12 +118,12 @@ export const GlobalProvider = ({ children }) => {
   };
 
   useEffect(()=>{
-    const hasItemInCart = allProduct.some((item)=> cartItems[item.id] > 0);
+    const hasItemInCart = allProduct.some((item)=> cartItems[item._id] > 0);
     setInCart(hasItemInCart);
   },[cartItems, allProduct]);
 
   useEffect(()=>{
-    const hasItemInFav = allProduct.some((item)=> favItem[item.id] > 0);
+    const hasItemInFav = allProduct.some((item)=> favItem[item._id] > 0);
     setInFav(hasItemInFav);
   },[favItem, allProduct]);
 
@@ -118,7 +141,8 @@ export const GlobalProvider = ({ children }) => {
       allProduct,
       inCart,
       inFav,
-      getTotalValue
+      getTotalValue,
+      loading
     }}>
       {children}
     </GlobalContext.Provider>
