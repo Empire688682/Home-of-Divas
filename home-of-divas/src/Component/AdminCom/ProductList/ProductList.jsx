@@ -14,16 +14,12 @@ const ProductList = () => {
     try {
       const response = await axios.post('api/products/removeProduct', {id});
       if(response.data.message){
-        setSuccess(response.data.message);
+        fetchProducts();
       }
     } catch (error) {
       console.log("ERROR:", error)
     }
   }
-
-  useEffect(()=>{
-    fetchProducts()
-  },[removeProduct]);
 
   return (
     <div className={styles.list_Item}>
