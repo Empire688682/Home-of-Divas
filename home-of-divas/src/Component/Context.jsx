@@ -142,7 +142,8 @@ export const GlobalProvider = ({ children }) => {
       inCart,
       inFav,
       getTotalValue,
-      loading
+      loading,
+      fetchProducts 
     }}>
       {children}
     </GlobalContext.Provider>

@@ -1,28 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ProductList.module.css'; // Converted CSS to module
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 import { useGlobalContext } from '@/Component/Context';
+import axios from 'axios';
 
 const ProductList = () => {
-  const { allProduct, loading } = useGlobalContext();
+  const { allProduct, fetchProducts, loading } = useGlobalContext();
 
   const removeProduct = async (id) =>{
     try {
-      const comfirm = window.confirm("Are you sure you?");
-      if(comfirm){
-        const response = await axios.post('api/products/removeProduct', {id});
+      const response = await axios.post('api/products/removeProduct', {id});
       if(response.data.message){
         setSuccess(response.data.message);
       }
-      }
-      else return null
     } catch (error) {
       console.log("ERROR:", error)
     }
   }
+
+  useEffect(()=>{
+    fetchProducts()
+  },[removeProduct]);
 
   return (
     <div className={styles.list_Item}>
@@ -50,7 +51,7 @@ const ProductList = () => {
                   <div className={styles.name}>{product.name}</div>
                   <div className={styles.category}>{product.category}</div>
                   <div className={styles.price}>#{product.price}</div>
-                  <div className={styles.remove} onClick={()=>removeProduct(product._d)}>
+                  <div className={styles.remove} onClick={()=>removeProduct(product._id)}>
                     X
                   </div>
                 </div>

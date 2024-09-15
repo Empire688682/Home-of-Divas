@@ -10,7 +10,6 @@ export async function GET() {
         if(!data){
             return NextResponse.json({success:false, message:"No product available"})
         }
-        console.log("data:", data)
         return NextResponse.json({success:true, data:data, message:"All product fetched successfully"})
     } catch (error) {
         console.log("error:", error);
