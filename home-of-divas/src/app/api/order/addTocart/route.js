@@ -8,15 +8,15 @@ connectDB();
 
 export async function POST(req) {
     try {
+        console.log("Headers:", req.headers); // Check what headers are being received
         const reqBody = await req.json();
-        const { itemId, token} = reqBody;
+        const { itemId } = reqBody;
 
-        const userId = await userToken(req);
-        const user = await UserModel.findById(userId);
-
-        console.log("token:", token);
+        const userId = await userToken(req); // Pass req to extract token
         console.log("userId:", userId);
-        console.log("itemId:", itemId);
+
+        const user = await UserModel.findById(userId);
+        console.log("user:", user);
 
         if (!itemId || !userId) {
             return NextResponse.json({ success: false, message: "All fields required" });
@@ -47,3 +47,4 @@ export async function POST(req) {
         return NextResponse.json({ success: false, message: "Internal server error" });
     }
 }
+
