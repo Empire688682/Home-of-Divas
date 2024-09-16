@@ -8,9 +8,10 @@ connectDB();
 export async function POST(req) {
     try {
         const reqBody = await req.json();
-        const { productId, token} = reqBody;
+        const { itemId, token} = reqBody;
         const userId = await userToken(token)
-        if(!productId){
+        const user = await UserModel.findById(userId);
+        if(!itemId){
             return NextResponse.json({ success: false, message: "All fields required" });
         }
 
@@ -19,18 +20,21 @@ export async function POST(req) {
             return NextResponse.json({ success: false, message: "Product not found" });
         }
 
-        const user = await UserModel.findById(userId);
         if(!user){
             return NextResponse.json({success:false, message:"User authentiction failed"});
         }
 
-        user.userCartData = user.userCartData;
+        let cartData = user.userCartData;
 
-        if(!user.userCartData[productId]){
-            user.userCartData[productId] = 1
+        if(!cartData[productId]){
+            cartData[productId] = 1
         }else{
-            user.userCartData[productId] += 1
+            cartData[productId] += 1
         }
+
+        await user.f
+
+        return NextResponse.json({ success: true, message: "Product added to cart" });
 
     } catch (error) {
         console.log("Error:", error);

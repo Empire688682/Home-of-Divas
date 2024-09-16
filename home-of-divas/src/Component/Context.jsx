@@ -54,7 +54,7 @@ export const GlobalProvider = ({ children }) => {
     });
     if(token){
       try {
-        await axios.post('api/order/addToCart', {productId:{itemId}}, {token})
+        await axios.post('api/order/addToCart', {itemId}, {token})
       } catch (error) {
         console.log("Error:", error)
       }
