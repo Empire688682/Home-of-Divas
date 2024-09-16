@@ -10,6 +10,6 @@ const userSchema = new mongoose.Schema({
   dBirth: { type: String, required: true },
   userCartData: { type: Object, default:{}},
   isAdmin: {type: Boolean, default:false},
-}, {minimize:true});
+}, {minimize:false});
 
 export const UserModel = mongoose.models.User || mongoose.model("User", userSchema);

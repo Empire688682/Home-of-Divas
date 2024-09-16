@@ -43,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
     }
   }, [isInitialized, token, cartItems, favItem]);
 
-  const addToCart = (itemId) => {
+  const addToCart = async (itemId) => {
     setItemAdded("true");
     setTimeout(() => {
       setItemAdded(null)
@@ -52,6 +52,13 @@ export const GlobalProvider = ({ children }) => {
       const newCart = { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
       return newCart;
     });
+    if(token){
+      try {
+        await axios.post('api/order/addToCart', {productId:{itemId}}, {token})
+      } catch (error) {
+        console.log("Error:", error)
+      }
+    }
   };
 
   const removeFromCart = (itemId) => {

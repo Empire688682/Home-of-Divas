@@ -6,6 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { useGlobalContext } from '../Context';
+import { useRouter } from 'next/navigation';
 
 const ShopProduct = () => {
     const [category, setCategory] = useState("All");
@@ -18,8 +19,36 @@ const ShopProduct = () => {
         handleFav,
         favItem,
         favAdded,
-        loading
+        loading,
+        token,
     } = useGlobalContext();
+    const router = useRouter();
+    
+    const handleAddToCart = (itemId) => {
+        if (!token) {
+            router.push("/signup");
+        }
+        else {
+            addToCart(itemId)
+        }
+    }
+    const handleRemoveFromCart = (itemId) => {
+        if (!token) {
+            router.push("/signup");
+        }
+        else {
+            removeFromCart(itemId)
+        }
+    }
+    const handleAddToFav = (itemId) => {
+        if (!token) {
+            router.push("/signup");
+        }
+        else {
+            handleFav(itemId);
+        }
+    }
+
     return (
         <div className={styles.shop_product} id='shop'>
             <div className={styles.shop_header}>
@@ -59,17 +88,17 @@ const ShopProduct = () => {
                                             </div>
                                         </div>
                                         <div className={styles.cart_fav_Con}>
-                                            <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleFav(item._id)}>
+                                            <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleAddToFav(item._id)}>
                                                 <FaHeart />
                                             </div>
                                             {
                                                 cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
-                                                    <p className={styles.add_icon} onClick={() => addToCart(item._id)}>+</p>
+                                                    <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
                                                     <p>{cartItems[item._id]}</p>
-                                                    <p className={styles.remove_icon} onClick={() => removeFromCart(item._id)}>-</p>
+                                                    <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>
                                                 </div>
                                                     :
-                                                    <div onClick={() => addToCart(item._id)} className={styles.cart}>
+                                                    <div onClick={() => handleAddToCart(item._id)} className={styles.cart}>
                                                         <FiShoppingCart />
                                                     </div>
                                             }
