@@ -19,12 +19,6 @@ export function middleware(req) {
     if(!token && isProfile){
       return NextResponse.redirect(new URL('/signup', req.url));
     }
-    if(!token && isCart){
-      return NextResponse.redirect(new URL('/signup', req.url));
-    }
-    if(!token && isFavorite){
-      return NextResponse.redirect(new URL('/signup', req.url));
-    }
     if(!token && isOrder){
       return NextResponse.redirect(new URL('/signup', req.url));
     }
