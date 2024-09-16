@@ -16,9 +16,11 @@ export async function POST(req) {
             return NextResponse.json({ success: false, message: "User or Product not found" });
         }
 
-        userFavData = userFavData || {};
-
-        let favData = user.userFavData;
+        if (!user.userFavData) {
+            user.userFavData = {};
+        }
+        
+        let favData = user.userFavData || {};;
         if (!favData[favId]) {
             favData[favId] = 1;
         } else if (favData[favId] === 1) {
