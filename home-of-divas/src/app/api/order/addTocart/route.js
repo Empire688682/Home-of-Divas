@@ -9,23 +9,24 @@ connectDB();
 export async function POST(req) {
     try {
         const reqBody = await req.json();
+        console.log("ReqHeaders:", req.headers);
         const { itemId } = reqBody;
-
         const userId = await userToken(req);
+        console.log("userId:", userId);
 
         const user = await UserModel.findById(userId);
 
         if (!itemId || !userId) {
-            return NextResponse.json({ success: false, message: "All fields required" });
+            return new NextResponse(JSON.stringify({ success: false, message: "All fields required" }), {status:401});
         }
 
         const product = await ProductModel.findById(itemId);
         if (!product) {
-            return NextResponse.json({ success: false, message: "Product not found" });
+            return new NextResponse(JSON.stringify({ success: false, message: "Product not found" }), {status:401});
         }
 
         if (!user) {
-            return NextResponse.json({ success: false, message: "User authentication failed" });
+            return new NextResponse(JSON.stringify({ success: false, message: "User not Authenticated" }), {status:401});
         }
 
         let cartData = user.userCartData || {};

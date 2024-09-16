@@ -148,6 +148,8 @@ export const GlobalProvider = ({ children }) => {
           setFavAdded(response.data.data);
           console.log("favAdded:", favAdded);
           console.log("response:", response.data.data);
+        }else{
+          console.log(response);
         }
       } catch (error) {
         console.log("Error:", error);

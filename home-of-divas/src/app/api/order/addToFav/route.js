@@ -8,12 +8,16 @@ connectDB();
 export async function POST(req) {
     try {
         const userId = await userToken(req);
+        console.log("userId:", userId);
         const reqBody = await req.json();
         const { favId } = reqBody;
         const user = await UserModel.findById(userId);
         const product = await ProductModel.findById(favId);
-        if (!user || !product) {
-            return NextResponse.json({ success: false, message: "User or Product not found" });
+        if (!product) {
+            return new NextResponse(JSON.stringify({ success: false, message: "Product not found" }), {status:401});
+        }
+        if (!user) {
+            return new NextResponse(JSON.stringify({ success: false, message: "User not Authenticated" }), {status:401});
         }
 
         if (!user.userFavData) {
