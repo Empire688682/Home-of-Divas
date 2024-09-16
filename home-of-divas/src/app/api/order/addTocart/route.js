@@ -11,6 +11,8 @@ export async function POST(req) {
         const { itemId, token} = reqBody;
         const userId = await userToken(token)
         const user = await UserModel.findById(userId);
+        console.log("userId:", userId);
+        console.log("itemId:", itemId);
         if(!itemId){
             return NextResponse.json({ success: false, message: "All fields required" });
         }
@@ -26,13 +28,13 @@ export async function POST(req) {
 
         let cartData = user.userCartData;
 
-        if(!cartData[productId]){
-            cartData[productId] = 1
+        if(!cartData[itemId]){
+            cartData[itemId] = 1
         }else{
-            cartData[productId] += 1
+            cartData[itemId] += 1
         }
 
-        await user.f
+        await UserModel.findByIdAndUpdate(userId);
 
         return NextResponse.json({ success: true, message: "Product added to cart" });
 

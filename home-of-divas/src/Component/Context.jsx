@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import axios from 'axios';
+import { set } from 'mongoose';
 
 const GlobalContext = React.createContext();
 
@@ -17,7 +18,7 @@ export const GlobalProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [inCart, setInCart] = useState(false);
   const [inFav, setInFav] = useState(false);
-  const route = useRouter();
+  const [allProductError, setAllProductError] = useState(false)
   const [loading, setLoading] = useState(false);
 
   // Initialize state from localStorage
@@ -56,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
       try {
         await axios.post('api/order/addToCart', {itemId}, {token})
       } catch (error) {
-        console.log("Error:", error)
+        console.log("Error:", error);
       }
     }
   };
@@ -83,7 +84,10 @@ export const GlobalProvider = ({ children }) => {
       setLoading(true);
       const response = await axios.get("api/products/getAllProducts");
       if(response){
-        setAllProduct(response.data.data);
+        setAllProduct(response.data.data || []);
+      }else{
+        setAllProductError(true);
+        setAllProduct([]);
       }
       
     } catch (error) {
@@ -146,6 +150,7 @@ export const GlobalProvider = ({ children }) => {
       favItem,
       handleFav,
       allProduct,
+      allProductError,
       inCart,
       inFav,
       getTotalValue,

@@ -21,9 +21,10 @@ const ShopProduct = () => {
         favAdded,
         loading,
         token,
+        allProductError
     } = useGlobalContext();
     const router = useRouter();
-    
+
     const handleAddToCart = (itemId) => {
         if (!token) {
             router.push("/signup");
@@ -64,48 +65,56 @@ const ShopProduct = () => {
             {
                 loading ? <div className={styles.loading}><p>Loading.......</p></div>
                     :
-                    <div className={styles.shop_items}>
+                    <div>
                         {
-                            allProduct.map((item) => {
-                                if (category === "All" || item.category === category) {
-                                    return <div key={item._id} className={styles.shop_cart}>
-                                        <div className={styles.img_com}>
-                                            <Image className={styles.img} src={`/uploads/${item.image}`} alt="" fill />
-                                        </div>
-                                        <div className={styles.item_text}>
-                                            <div className={styles.item_name}>
-                                                {item.name}
-                                            </div>
-                                            <div className={styles.item_price}>
-                                                <div className={styles.item_stars}>
-                                                    <FaStar className={styles.star} />
-                                                    <FaStar className={styles.star} />
-                                                    <FaStar className={styles.star} />
-                                                    <FaStar className={styles.star} />
-                                                    <FaStar className={styles.star} />
-                                                </div>
-                                                <p>#{item.price}</p>
-                                            </div>
-                                        </div>
-                                        <div className={styles.cart_fav_Con}>
-                                            <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleAddToFav(item._id)}>
-                                                <FaHeart />
-                                            </div>
-                                            {
-                                                cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
-                                                    <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
-                                                    <p>{cartItems[item._id]}</p>
-                                                    <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>
-                                                </div>
-                                                    :
-                                                    <div onClick={() => handleAddToCart(item._id)} className={styles.cart}>
-                                                        <FiShoppingCart />
+                            allProductError ? <div>
+                                <p>Internal Server Error, or Network Error</p>
+                            </div>
+                                :
+                                <div className={styles.shop_items}>
+                                    {
+                                        allProduct.map((item) => {
+                                            if (category === "All" || item.category === category) {
+                                                return <div key={item._id} className={styles.shop_cart}>
+                                                    <div className={styles.img_com}>
+                                                        <Image className={styles.img} src={`/uploads/${item.image}`} alt="" fill />
                                                     </div>
+                                                    <div className={styles.item_text}>
+                                                        <div className={styles.item_name}>
+                                                            {item.name}
+                                                        </div>
+                                                        <div className={styles.item_price}>
+                                                            <div className={styles.item_stars}>
+                                                                <FaStar className={styles.star} />
+                                                                <FaStar className={styles.star} />
+                                                                <FaStar className={styles.star} />
+                                                                <FaStar className={styles.star} />
+                                                                <FaStar className={styles.star} />
+                                                            </div>
+                                                            <p>#{item.price}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.cart_fav_Con}>
+                                                        <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleAddToFav(item._id)}>
+                                                            <FaHeart />
+                                                        </div>
+                                                        {
+                                                            cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
+                                                                <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
+                                                                <p>{cartItems[item._id]}</p>
+                                                                <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>
+                                                            </div>
+                                                                :
+                                                                <div onClick={() => handleAddToCart(item._id)} className={styles.cart}>
+                                                                    <FiShoppingCart />
+                                                                </div>
+                                                        }
+                                                    </div>
+                                                </div>
                                             }
-                                        </div>
-                                    </div>
-                                }
-                            })
+                                        })
+                                    }
+                                </div>
                         }
                     </div>
             }
