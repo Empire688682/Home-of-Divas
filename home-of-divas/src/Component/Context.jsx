@@ -83,12 +83,13 @@ export const GlobalProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await axios.get("api/products/getAllProducts");
-      if(response){
+      if(response.data.success){
         setAllProduct(response.data.data || []);
       }else{
         setAllProductError(true);
         setAllProduct([]);
       }
+      console.log("response", response);
       
     } catch (error) {
       console.log("Error:", error)
@@ -97,6 +98,8 @@ export const GlobalProvider = ({ children }) => {
       setLoading(false)
     }
   };
+
+  console.log("error", allProductError);
 
   useEffect(()=>{
     fetchProducts()

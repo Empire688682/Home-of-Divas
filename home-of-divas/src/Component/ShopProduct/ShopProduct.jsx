@@ -67,7 +67,7 @@ const ShopProduct = () => {
                     :
                     <div>
                         {
-                            allProductError ? <div>
+                            allProductError ? <div className={styles.error_message_Con}>
                                 <p>Internal Server Error, or Network Error</p>
                             </div>
                                 :
