@@ -25,10 +25,8 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
   
       setToken(localSavedToken);
-      setFavItem(localSavedFav);
       setIsInitialized(true);
     }
   }, []);
@@ -37,7 +35,6 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialized && typeof window !== "undefined") {
       localStorage.setItem("Divastoken", token);
-      localStorage.setItem("favItems", JSON.stringify(favItem));
     }
   }, [isInitialized, token, cartItems, favItem]);
 
