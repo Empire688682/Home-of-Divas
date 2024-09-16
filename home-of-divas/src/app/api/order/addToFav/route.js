@@ -19,22 +19,19 @@ export async function POST(req) {
         if (!user.userFavData) {
             user.userFavData = {};
         }
-        
-        let favData = user.userFavData || {};;
-        if (!favData[favId]) {
-            favData[favId] = 1;
-        } else if (favData[favId] === 1) {
+
+        let favData = user.userFavData || {};
+        if (favData[favId]) {
             favData[favId] = 0;
-        } else if (favData[favId] === 0) {
+            return NextResponse.json({ success: true, data: favData, message: "Product removed from your favorite list" });
+        } else{
             favData[favId] = 1;
-        } else {
-            return NextResponse.json({ success: false, message: "Something went wrong" });
         }
-    
-        await user.save();
+
         console.log("favData:", favData);
         console.log("user:", user);
-
+    
+        await user.save()
         return NextResponse.json({ success: true, data:favData, message: "Product added to your favorite list" });
     } catch (error) {
         console.log("Error:", error);
