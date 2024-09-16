@@ -132,7 +132,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
 
-  const handleFav = (favId) => {
+  const handleFav = async (favId) => {
     setFavItem((prev) => {
       const newFav = { ...prev, [favId]: prev[favId] ? 0 : 1 };
       setFavAdded(newFav[favId] ? "true" : "false");
@@ -141,6 +141,18 @@ export const GlobalProvider = ({ children }) => {
       }, 1000);
       return newFav;
     });
+    if (token) {
+      try {
+        const response = await axios.post("api/order/addToFav", { favId }, {withCredentials:true});
+        if(response.data.success){
+          setFavAdded(response.data.data);
+          console.log("favAdded:", favAdded);
+          console.log("response:", response.data.data);
+        }
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
   };
 
   useEffect(()=>{
@@ -157,7 +169,7 @@ export const GlobalProvider = ({ children }) => {
     try {
       const response = await axios.get("api/order/getCartData");
       if(response.data.success){
-        setCartItems(response.data.cartData || {});
+        setCartItems(response.data.data || {});
       }
     } catch (error) {
       console.log("Error:", error)

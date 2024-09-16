@@ -11,13 +11,13 @@ export async function GET(req){
             return NextResponse.json({ success: false, message: 'User not found' });
         }
 
-        const userData = await UserModel.findById(userId);
-        if(!userData) {
+        const user = await UserModel.findById(userId);
+        if(!user) {
             return NextResponse.json({ success: false, message: 'User not found' });
         }
-        let cartData = await userData.cartData;
+        let userCartData = await user.userCartData;
         
-        return NextResponse.json({ success: true, cartData, message: 'Cart data fetch successfully' });
+        return NextResponse.json({ success: true, data:userCartData, message: 'Cart data fetch successfully' });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ success: false, message: 'Error removing item to cart' });

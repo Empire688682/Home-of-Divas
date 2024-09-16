@@ -38,7 +38,8 @@ const registerUser = async (req) => {
             gender,
             dBirth,
             password: passwordHashed,
-            userCartData:{}
+            userCartData:{},
+            userFavData:{},
         });
 
         await newUser.save();

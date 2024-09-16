@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   dBirth: { type: String, required: true },
   userCartData: { type: Object, default:{}},
+  userFavData: { type: Object, default:{}},
   isAdmin: {type: Boolean, default:false},
 }, {minimize:false});
 
