@@ -193,7 +193,11 @@
     .checkOutBtnCon {
         flex-direction: column;
     }
-    .checkOutBtn,.backToShopBtn {
+    .checkOutBtn{
         font-size: 13px;
+    }
+    .backToShopBtn {
+        font-size: 13px;
+        padding: 10px 55px;
     }
 }

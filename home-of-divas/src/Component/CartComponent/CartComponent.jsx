@@ -83,7 +83,7 @@ useEffect(() => {
       {
         inCart? <div className={styles.checkOutBtnCon}>
         <Link href="/shop" className={styles.backToShopBtn}>COUNTINUE SHOPPING</Link> 
-        <Link href="/order" className={styles.checkOutBtn}>PROCEED TO CHECOUT</Link> 
+        <Link href="/order" className={styles.checkOutBtn}>PROCEED TO CHECKOUT</Link> 
       </div>:null
       }
     </div>
