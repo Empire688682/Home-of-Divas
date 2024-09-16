@@ -53,13 +53,16 @@ export const GlobalProvider = ({ children }) => {
       const newCart = { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
       return newCart;
     });
-    if(token){
+    if (token) {
       try {
-        await axios.post('api/order/addToCart', {itemId}, {token})
+        await axios.post('api/order/addToCart', { itemId }, {headers:{
+          Authorization: `Bearer ${token}`
+        }});
       } catch (error) {
         console.log("Error:", error);
       }
     }
+    console.log("Token:", token)
   };
 
   const removeFromCart = (itemId) => {
@@ -89,7 +92,6 @@ export const GlobalProvider = ({ children }) => {
         setAllProductError(true);
         setAllProduct([]);
       }
-      console.log("response", response);
       
     } catch (error) {
       console.log("Error:", error)
@@ -98,8 +100,6 @@ export const GlobalProvider = ({ children }) => {
       setLoading(false)
     }
   };
-
-  console.log("error", allProductError);
 
   useEffect(()=>{
     fetchProducts()
