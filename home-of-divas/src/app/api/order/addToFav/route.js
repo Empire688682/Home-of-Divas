@@ -24,11 +24,13 @@ export async function POST(req) {
         }
 
         let favData = user.userFavData || {};
-        if (!favData[favId]) {
-            favData[favId] = 1;
-            return NextResponse.json({ success: true, data: favData, message: "Product removed from your favorite list" });
-        } else{
-            favData[favId] = 0;
+
+        if (!favData[itemId]) {
+            favData[itemId] = 1;
+        } else if(!favData[itemId] === 0) {
+            favData[itemId] += 1;
+        } else if(!favData[itemId] === 1){
+            favData[itemId] = 0;
         }
 
         console.log("favData:", favData);

@@ -32,15 +32,11 @@ export async function POST(req) {
 
         if (!cartData[itemId]) {
             cartData[itemId] = 1;
-        } else if(!cartData[itemId] === 0) {
+        } else {
             cartData[itemId] += 1;
-        } else if(!cartData[itemId] === 1){
-            cartData[itemId] = 0;
         }
 
-        console.log("cartData:", cartData);
-
-        await user.save();
+        await UserModel.findByIdAndUpdate(userId, { userCartData: cartData });
 
         return NextResponse.json({ success: true, message: "Product added to cart" });
     } catch (error) {
