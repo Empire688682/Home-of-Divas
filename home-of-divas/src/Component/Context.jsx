@@ -56,9 +56,7 @@ export const GlobalProvider = ({ children }) => {
     if (token) {
       try {
         await axios.post('/api/order/addToCart', { itemId }, {
-            headers: {
-                Authorization: `Bearer ${token}` // Send token in Authorization header
-            }
+          withCredentials: true,
         });
       } catch (error) {
         console.log("Error:", error);
