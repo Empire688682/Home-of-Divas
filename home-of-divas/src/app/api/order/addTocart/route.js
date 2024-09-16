@@ -9,7 +9,6 @@ connectDB();
 export async function POST(req) {
     try {
         const reqBody = await req.json();
-        console.log("ReqHeaders:", req.headers);
         const { itemId } = reqBody;
         const userId = await userToken(req);
         console.log("userId:", userId);
@@ -33,11 +32,15 @@ export async function POST(req) {
 
         if (!cartData[itemId]) {
             cartData[itemId] = 1;
-        } else {
+        } else if(!cartData[itemId] === 0) {
             cartData[itemId] += 1;
+        } else if(!cartData[itemId] === 1){
+            cartData[itemId] = 0;
         }
 
-        await UserModel.findByIdAndUpdate(userId, { userCartData: cartData });
+        console.log("cartData:", cartData);
+
+        await user.save();
 
         return NextResponse.json({ success: true, message: "Product added to cart" });
     } catch (error) {

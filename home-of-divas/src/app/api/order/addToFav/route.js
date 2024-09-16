@@ -8,7 +8,6 @@ connectDB();
 export async function POST(req) {
     try {
         const userId = await userToken(req);
-        console.log("userId:", userId);
         const reqBody = await req.json();
         const { favId } = reqBody;
         const user = await UserModel.findById(userId);
@@ -25,11 +24,11 @@ export async function POST(req) {
         }
 
         let favData = user.userFavData || {};
-        if (favData[favId]) {
-            favData[favId] = 0;
+        if (!favData[favId]) {
+            favData[favId] = 1;
             return NextResponse.json({ success: true, data: favData, message: "Product removed from your favorite list" });
         } else{
-            favData[favId] = 1;
+            favData[favId] = 0;
         }
 
         console.log("favData:", favData);
