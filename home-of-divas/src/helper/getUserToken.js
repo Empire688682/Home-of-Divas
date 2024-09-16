@@ -10,7 +10,7 @@ export const userToken = (req) => {
         console.log("decodedToken:", decodedToken._id);
         return decodedToken.id; // Make sure your token has 'id' or '_id'
     } catch (error) {
-        console.log("Error verifying token:", error);
+        console.log("Error verifying token:",error);
         return null;
     }
 };
