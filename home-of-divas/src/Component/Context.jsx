@@ -25,11 +25,9 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const localSavedToken = localStorage.getItem("Divastoken") || "";
-      const localSavedCart = JSON.parse(localStorage.getItem("cartItems")) || {};
       const localSavedFav = JSON.parse(localStorage.getItem("favItems")) || {};
   
       setToken(localSavedToken);
-      setCartItems(localSavedCart);
       setFavItem(localSavedFav);
       setIsInitialized(true);
     }
@@ -39,7 +37,6 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialized && typeof window !== "undefined") {
       localStorage.setItem("Divastoken", token);
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       localStorage.setItem("favItems", JSON.stringify(favItem));
     }
   }, [isInitialized, token, cartItems, favItem]);
@@ -55,9 +52,10 @@ export const GlobalProvider = ({ children }) => {
     });
     if (token) {
       try {
-        await axios.post('/api/order/addToCart', { itemId }, {
+        await axios.post('api/order/addToCart', { itemId }, {
           withCredentials: true,
         });
+        fetchCartData();
       } catch (error) {
         console.log("Error:", error);
       }
@@ -65,7 +63,7 @@ export const GlobalProvider = ({ children }) => {
     console.log("Token:", token)
   };
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = async (itemId) => {
     setItemAdded("false");
     setTimeout(() => {
       setItemAdded(null)
@@ -80,7 +78,21 @@ export const GlobalProvider = ({ children }) => {
       }
       return prev;
     });
+    if (token) {
+      try {
+        await axios.post('api/order/removeFromCart', { itemId }, {
+          withCredentials: true,
+        });
+        fetchCartData();
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
   };
+
+  useEffect(()=>{
+    fetchCartData();
+  }, [])
 
   const fetchProducts = async () => {
     try {
@@ -140,6 +152,17 @@ export const GlobalProvider = ({ children }) => {
     const hasItemInFav = allProduct.some((item)=> favItem[item._id] > 0);
     setInFav(hasItemInFav);
   },[favItem, allProduct]);
+
+  const fetchCartData = async () => {
+    try {
+      const response = await axios.get("api/order/getCartData");
+      if(response.data.success){
+        setCartItems(response.data.cartData || {});
+      }
+    } catch (error) {
+      console.log("Error:", error)
+    }
+  };
 
   return (
     <GlobalContext.Provider value={{

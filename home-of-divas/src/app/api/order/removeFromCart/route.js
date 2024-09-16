@@ -30,15 +30,13 @@ export async function POST(req) {
 
         let cartData = user.userCartData || {};
 
-        if (!cartData[itemId]) {
-            cartData[itemId] = 1;
-        } else {
-            cartData[itemId] += 1;
+        if (cartData[itemId] >= 0) {
+            cartData[itemId] -= 1;
         }
 
         await UserModel.findByIdAndUpdate(userId, { userCartData: cartData });
 
-        return NextResponse.json({ success: true, message: "Product added to cart" });
+        return NextResponse.json({ success: true, message: "Product remove from cart" });
     } catch (error) {
         console.log("Error:", error);
         return NextResponse.json({ success: false, message: "Internal server error" });
