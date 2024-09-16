@@ -19,14 +19,14 @@ const SignUp = () => {
     dBirth: "1999-01-01"
   });
 
-  const [loginStage, setLogInStage] = useState("Login");
+  const [loginStage, setLogInStage] = useState("Signup");
   const router = useRouter();
   const [showPass, setShowPass] = useState(false);
 
   const userControl = async () => {
     try {
       setLoading(true);
-      const endpoint = loginStage === "Login" ? "api/users/login" : "api/users/signup";
+      const endpoint = loginStage === "Signup" ? "api/users/signup" : "api/users/login";
       const response = await axios.post(endpoint, data);
       if (response.data.success) {
         localStorage.setItem("Divastoken", response.data.token);

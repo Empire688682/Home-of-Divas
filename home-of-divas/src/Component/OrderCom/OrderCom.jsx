@@ -12,13 +12,14 @@ const OrderCom = () => {
     const [circleCheck, setCircleCheck] = useState("card");
 
     const [data, setData] = useState({
-        FirstName: "",
-        LastName: "",
-        Email: "",
-        City: "",
-        Street: "",
-        ZipCode: "",
-        Phone: ""
+        firstName: "",
+        lastName: "",
+        email: "",
+        city: "",
+        street: "",
+        zipCode: "",
+        phone: "",
+        state: "",
     });
 
     const handleOnchange = (e) => {
@@ -31,13 +32,14 @@ const OrderCom = () => {
             <div className={styles.two_col}>
                 <h3>Delivery Information</h3>
                 <form>
-                    <input onChange={handleOnchange} required value={data.FirstName} type="text" name="FirstName" placeholder='First name' />
-                    <input onChange={handleOnchange} required value={data.LastName} type="text" name="LastName" placeholder='Last name' />
-                    <input onChange={handleOnchange} required value={data.Email} type="email" name="Email" placeholder='Email' />
-                    <input onChange={handleOnchange} required value={data.City} type="text" name="City" placeholder='City' />
-                    <input onChange={handleOnchange} required value={data.Street} type="text" name="Street" placeholder='Street' />
-                    <input onChange={handleOnchange} required value={data.ZipCode} type="number" name="ZipCode" placeholder='Zip code' />
-                    <input onChange={handleOnchange} required value={data.Phone} type="tel" name="Phone" placeholder='Phone' />
+                    <input onChange={handleOnchange} required value={data.firstName} type="text" name="firstName" placeholder='First name' />
+                    <input onChange={handleOnchange} required value={data.lastName} type="text" name="lastName" placeholder='Last name' />
+                    <input onChange={handleOnchange} required value={data.email} type="email" name="email" placeholder='Email' />
+                    <input onChange={handleOnchange} required value={data.city} type="text" name="city" placeholder='City' />
+                    <input onChange={handleOnchange} required value={data.state} type="text" name="state" placeholder='State' />
+                    <input onChange={handleOnchange} required value={data.street} type="text" name="street" placeholder='Street' />
+                    <input onChange={handleOnchange} required value={data.zipCode} type="number" name="zipCode" placeholder='Zip code' />
+                    <input onChange={handleOnchange} required value={data.phone} type="tel" name="phone" placeholder='Phone' />
                     <button id='submitButton' type='submit' style={{ display: 'none' }}>Submit</button>
                 </form>
             </div>

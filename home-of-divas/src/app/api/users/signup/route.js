@@ -31,13 +31,6 @@ const registerUser = async (req) => {
 
         const passwordHashed = await bcrypt.hash(password, 10);
 
-        // Initialize userData if not provided
-        const userDData = {
-            cart: [],
-            fav: [],
-            order: []
-        };
-
         const newUser = new UserModel({
             fName,
             lName,
@@ -45,7 +38,6 @@ const registerUser = async (req) => {
             gender,
             dBirth,
             password: passwordHashed,
-            userDData
         });
 
         await newUser.save();

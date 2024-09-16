@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const AddressSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    address: { type: String, required: true },
+    fName: { type: String, required: true },
+    lName: { type: String, required: true },
     city: { type: String, required: true },
     state: { type: String, required: true },
     zip: { type: String, required: true },
