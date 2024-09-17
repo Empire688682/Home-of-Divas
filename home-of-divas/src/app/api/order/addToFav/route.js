@@ -30,11 +30,8 @@ export async function POST(req) {
         } else {
             favData[favId] = 1; 
         }
-
-        console.log("favData:", favData);
-        console.log("user:", user);
     
-        await user.save()
+        await UserModel.findByIdAndUpdate(userId, {userFavData:favData})
         return NextResponse.json({ success: true, data:favData, message: "Product added to your favorite list" });
     } catch (error) {
         console.log("Error:", error);
