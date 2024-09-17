@@ -143,10 +143,6 @@ export const GlobalProvider = ({ children }) => {
         const response = await axios.post("api/order/addToFav", { favId }, {withCredentials:true});
         if(response.data.success){
           setFavAdded(response.data.data);
-          console.log("favAdded:", favAdded);
-          console.log("response:", response.data.data);
-        }else{
-          console.log(response);
         }
       } catch (error) {
         console.log("Error:", error);
@@ -173,7 +169,22 @@ export const GlobalProvider = ({ children }) => {
     } catch (error) {
       console.log("Error:", error)
     }
+  }; 
+
+  const fetchFavtData = async () => {
+    try {
+      const response = await axios.get("api/order/getFavData");
+      if(response.data.success){
+        setFavItem(response.data.data || {});
+      }
+    } catch (error) {
+      console.log("Error:", error)
+    }
   };
+
+  useEffect(()=>{
+    fetchFavtData();
+  },[])
 
   return (
     <GlobalContext.Provider value={{
