@@ -1,0 +1,26 @@
+.container{
+    width: 100%;
+    padding: 100px 0;
+    background-color: var(--section-bg);
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.colum{
+    flex-basis: 20%;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.colum h1{
+    color: white;
+    font-size: 30px;
+}
+.colum p{
+    color: white;
+}

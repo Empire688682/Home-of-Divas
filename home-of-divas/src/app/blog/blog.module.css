@@ -1,0 +1,172 @@
+.container{
+    width: 100%;
+    margin-top: 70px;
+}
+.blogCon{
+    background-image: url('/blog-home-banner.jpg');
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    height: 100vh;
+}
+.blogBanner{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    text-align: center;
+}
+.bloBannerCont{
+    max-width: 600px;
+}
+.blogBanner h1{
+    color: white;
+    font-size: 45px;
+}
+.blogBanner p{
+    color: white;
+    margin: 20px 0;
+}
+.blogBanner button{
+    border: none;
+    color: black;
+    padding: 15px 30px;
+    transition: .4s ease-in-out;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+.blogBanner button:hover{
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+.blogCategory{
+    width: 90%;
+    padding: 70px 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.threeColum{
+    flex-basis: 28%;
+    width: 100%;
+    min-width: 350px;
+    height: 215px;
+    position: relative;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.threeColum:hover .overlay{
+    background-color: rgba(127, 150, 228, 0.9);
+}
+.threeColum .imageCon{
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: .4s ease-in-out;
+}
+.overlay h2{
+    color: white;
+    font-size: 20px;
+}
+.overlay hr{
+    width: 200px;
+}
+.overlay p{
+    color: white;
+}
+.AllPosts{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+}
+.leftColum{
+    flex-basis: 60%;
+    min-width: 300px;
+}
+.rightColum{
+    flex-basis: 35%;
+    min-width: 300px;
+    padding: 50px 30px;
+    border: 1px solid rgb(245, 237, 237);
+    border-radius: 5px;
+    width: 90%;
+    margin: 40px 0;
+}
+.nextBackContainer{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.nextBackContainerIcon{
+    font-size: 25px;
+    color: var(--black-color);
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: .2 ease-in-out;
+}
+.nextBackContainerIcon:hover{
+    background-color: var(--black-color);
+    color: white;
+}
+.nextBackNumber{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.nextBackNumber button{
+    border: none;
+    background-color: var(--white);
+    padding: 5px 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    transition: .2s ease-in;
+}
+.nextBackNumber button:hover{
+    background-color: black;
+    color: white;
+}
+@media (max-width:850px){
+    .threeColum{
+        flex-basis: 100%;
+    }
+    .AllPosts{
+        justify-content: center;
+        align-items: center;
+    }
+    .leftColum{
+        flex-basis: 100%;
+        min-width: 300px;
+    }
+    .rightColum{
+        flex-basis: 100%;
+        min-width: 300px;
+    }
+  }

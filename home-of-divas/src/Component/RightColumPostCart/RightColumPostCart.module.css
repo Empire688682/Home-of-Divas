@@ -1,0 +1,206 @@
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+.conatainer hr{
+    border: 0.1px solid rgb(238, 234, 234);
+    height: 0px;
+    margin: 30px 0;
+}
+.searchPost{
+    width: 100%;
+    background-color: var(--section-bg);
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    border-radius: 50px;
+}
+.searchPost input{
+    outline: none;
+    color: white;
+    font-size: 15px;
+    background-color: transparent;
+    flex: 1;
+    border: none;
+    height: 100%;
+}
+.searchPost input::placeholder{
+    color: white;
+}
+.searchPost button{
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.searchPost button .searchPostIcon{
+    color: white;
+    font-size: 20px;
+}
+.bloger{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+.bloger .logo_Con{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.authorName{
+    color: var(--black-color);
+}
+.bloger h2{
+    font-weight: 500;
+    font-size: 20px;
+}
+.bloger .blogSocialIcons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.blogSocialIcons .blogSocialIcon{
+    color: var(--black-color);
+    cursor: pointer;
+    transition: .3 ease-in-out;
+}
+.blogSocialIcon:active{
+    color: var(--section-bg);
+    transform: translateY(-5px);
+}
+.popularPosts h1{
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: var(--section-bg);
+    margin-bottom: 30px;
+}
+.popularPostsCart{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+    cursor: pointer;
+}
+.popularPostsImgCon{
+    width: 100px;
+    height: 80px;
+    position: relative;
+}
+.popularPostsCart h3{
+    font-size: 15px;
+    color: var(--black-color);
+}
+.middleImgCon{
+    width: 100%;
+    position: relative;
+    height: 250px;
+}
+.rightColumPostsCategories h1{
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: var(--section-bg);
+    margin-bottom: 30px;
+}
+.rightColumPostsCategoriesCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed rgb(238, 234, 234);
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+.rightColumPostsCategoriesCart:hover .title{
+    color: var(--section-bg);
+}
+.rightColumPostsCategoriesCart:hover{
+    border-bottom: 2px dashed var(--section-bg);
+}
+.newsletter h2{
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: var(--section-bg);
+    margin-bottom: 30px;
+}
+.newsletter p{
+    text-align: center;
+}
+.subcribeSection{
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    width: 100%;
+    height: 50px;
+    gap: 10px;
+    padding-left:10px;
+    border-right: white;
+    margin: 10px 0;
+}
+.subcribeSection input{
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    outline: none;
+    color: gray;
+    font-size: 15px;
+}
+.subcribeSection input::placeholder{
+    color: gray;
+}
+.subcribeSection button{
+    background-color: var(--section-bg);
+    border: none;
+    height: 105%;
+    padding: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tagClouds h2{
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: var(--section-bg);
+    margin-bottom: 30px;
+}
+.tagClouds .tagCloudsCart{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.tagCloudsCart li{
+    list-style: none;padding: 10px 20px;
+    background-color: white;
+    border: 1px solid rgb(209, 205, 205);
+    transition: .2s;
+    cursor: pointer;
+    font-size: 12px;
+}
+.tagCloudsCart li:hover{
+    background-color: var(--section-bg);
+    color: white;
+    border: 1px solid var(--section-bg);
+}

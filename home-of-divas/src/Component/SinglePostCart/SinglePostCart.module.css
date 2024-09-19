@@ -1,0 +1,227 @@
+.container{
+    width: 100%;
+    margin: 0 auto;
+}
+.singlePostBanner{
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+.singlePostContent{
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.smallLeftColum{
+    flex-basis: 35%;
+    width: 100%;
+}
+.smallLeftColumHeadDetails{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 30px;
+}
+.detailsIcon{
+    font-size: 15px;
+    color: var(--black-color);
+    font-size: 20px;
+}
+.detailsCart{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+.detailsCart .blogSocialIcon{
+    color: var(--black-color);
+    cursor: pointer;
+    transition: .3 ease-in-out;
+}
+.blogSocialIcon:active{
+    color: var(--section-bg);
+    transform: translateY(-5px);
+}
+.bigColumColum{
+    flex-basis: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.bigColumColum h2{
+    color: var(--black-color);
+}
+.centerPTag{
+    width: 100%;
+    padding: 15px;
+    background: var(--white);
+    margin: 20px 0;
+}
+.singlePostSubContent .doubleImageCon{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    gap: 30px;
+}
+.doubleImageCon .doubleColumImage{
+    position: relative;
+    min-width: 300px;
+    height: 215px;
+}
+.container hr{
+    border: 0.1px solid rgb(238, 234, 234);
+    height: 0px;
+    margin: 30px 0;
+}
+.prevNextPostCon{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+.prevNextPostCon h3{
+    color: var(--black-color);
+}
+.prevNextPostConCart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.prevNextPostIcon1{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/review1.jpg");
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+.prevNextPostIcon2{
+    width: 80px;
+    height: 80px;
+    background-image: url("/review2.jpg");
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+.prevNextPostConCart:hover .prevNextIconCon{
+    display: flex;
+}
+.prevNextIconCon{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: .4s ease-in-out;
+}
+.prevNextIcon{
+    color: white;
+    font-size: 25px;
+    transition: .2s ease-in-out;
+}
+.reviewSection{
+    margin: 40px 0;
+    border: 0.1px solid rgb(238, 234, 234);
+    padding: 20px;
+    border-radius: 5px;
+}
+.reviewCart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.reviewSection h2{
+    color: var(--black-color);
+    text-align: center;
+    margin: 40px 0;
+    font-size: 20px;
+}
+.reviewCart h3{
+    font-size: 15px;
+    color: var(--black-color);
+}
+.reviewCart small{
+    color: var(--text-color);
+}
+.reviewImageSide{
+    display: flex;
+    gap: 10px;
+}
+.reviewImageCon{
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+.reviewContent p{
+    margin-top: 15px;
+}
+.reviewReplyButton{
+    background-color: white;
+    border: 0.1px solid rgb(238, 234, 234);
+    padding: 15px 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.reviewSection form{
+    width: 100%;
+}
+.reviewSection form input{
+    width: 100%;
+    background-color: white;
+    border: 0.1px solid rgb(238, 234, 234);
+    padding: 15px 10px ;
+    font-size: 15px;
+    margin: 10px 0;
+    outline: none;
+}
+.reviewSection form textarea{
+    border: 0.1px solid rgb(238, 234, 234);
+    padding: 15px 10px ;
+    font-size: 15px;
+    outline: none;
+    resize: none;
+    width: 100%;
+}
+.reviewSection form button{
+    border: 0.1px solid rgb(238, 234, 234);
+    background-color: var(--section-bg);
+    color: white;
+    font-weight: bold;
+    padding: 15px 10px ;
+    font-size: 15px;
+    cursor: pointer;
+}
+@media (max-width:850px){
+    .smallLeftColum{
+        flex-basis: 100%;
+    }
+    .bigColumColum{
+        flex-basis: 100%;
+    }
+    .smallLeftColumHeadDetails{
+        justify-content: flex-start;
+    }
+  }
+
+
+
+
+

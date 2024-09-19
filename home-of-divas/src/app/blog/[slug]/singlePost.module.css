@@ -1,0 +1,46 @@
+.container{
+    width: 100%;
+    margin-top: 70px;
+}
+.blogHead{
+    background-color: var(--section-bg);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.blogHead h1{
+    color: white;
+    font-size: 50px;
+}
+.blogHead .headLinks{
+    display: flex;
+    align-items: center;
+}
+.singlePostContent{
+    width: 90%;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.SinglePost{
+    flex-basis: 60%;
+    min-width: 300px;
+}
+.RightColumPostCart{
+    flex-basis: 35%;
+    min-width: 300px;
+    padding: 50px 30px;
+    border: 1px solid rgb(245, 237, 237);
+    border-radius: 5px;
+}
+@media (max-width:850px){
+    .SinglePost{
+        flex-basis: 100%;
+    }
+    .RightColumPostCart{
+        flex-basis: 100%;
+    }
+}
