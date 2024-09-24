@@ -23,24 +23,22 @@ const OrderCom = () => {
         state: "",
     });
 
-    const placeOrder = async () =>{
-        let Items = [];
-        allProduct.forEach(item => {
-            if(cartItems[item._id] > 0){
-                Items.push({productId: item._id, quantity: cartItems[item._id]})
-            }
-        })
-        try {
-            setLoading(true);
-        } catch (error) {
-            
-        }
-    }
-
     const handleOnchange = (e) => {
         const { name, value } = e.target;
         setData(prev => ({ ...prev, [name]: value }));
     };
+
+    const placeOrder = () => {
+        let itemData = [];
+        allProduct.forEach(item => {
+            if(cartItems[item._id] > 0){
+                let itemInfo = {...item, quantity: cartItems[item._id]};
+                itemData.push(itemInfo);
+            }
+        })
+        console.log(itemData);
+    }
+    placeOrder();
 
     return (
         <div className={styles.order_con}>

@@ -119,7 +119,6 @@ export const GlobalProvider = ({ children }) => {
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let totalInfo = allProduct.find((product) => product._id === item || product._id === Number(item));
-        console.log("totalInfo:", total)
         if (totalInfo) {
           total += totalInfo.price * cartItems[item];
         }
