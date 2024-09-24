@@ -5,9 +5,10 @@ import styles from './OrderCom.module.css';
 import { useGlobalContext } from '../Context';
 import { FaRegCircle } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
+import axios from 'axios';
 
 const OrderCom = () => {
-    const {getTotalValue} = useGlobalContext();
+    const {getTotalValue, cartItems, allProduct} = useGlobalContext();
     const [loading, setLoading] = useState(false);
     const [circleCheck, setCircleCheck] = useState("card");
 
@@ -21,6 +22,20 @@ const OrderCom = () => {
         phone: "",
         state: "",
     });
+
+    const placeOrder = async () =>{
+        let Items = [];
+        allProduct.forEach(item => {
+            if(cartItems[item._id] > 0){
+                Items.push({productId: item._id, quantity: cartItems[item._id]})
+            }
+        })
+        try {
+            setLoading(true);
+        } catch (error) {
+            
+        }
+    }
 
     const handleOnchange = (e) => {
         const { name, value } = e.target;
