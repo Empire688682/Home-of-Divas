@@ -10,7 +10,7 @@ import axios from 'axios';
 const OrderCom = () => {
     const {getTotalValue, cartItems, allProduct} = useGlobalContext();
     const [loading, setLoading] = useState(false);
-    const [circleCheck, setCircleCheck] = useState("card");
+    const [circleCheck, setCircleCheck] = useState("Pay with Mastercard");
 
     const [addressData, setAddressData] = useState({
         firstName: "",
@@ -29,17 +29,17 @@ const OrderCom = () => {
     };
 
     const placeOrder = async () => {
-        let item = [];
+        let orderItem = [];
         allProduct.forEach(item => {
             if(cartItems[item._id] > 0){
                 let itemInfo = {...item, quantity: cartItems[item._id]};
-                item.push(itemInfo);
+                orderItem.push(itemInfo);
             }
         });
         const itemData ={
-            item:item,
+            item:orderItem,
             total: getTotalValue() + 2000,
-            address: addressData,
+            addressData: addressData,
             paymentMethod: circleCheck
         }
 
@@ -77,14 +77,14 @@ const OrderCom = () => {
             <div className={styles.two_col}>
                 <h3>Delivery Information</h3>
                 <form onSubmit={handleFormSubmission}>
-                    <input onChange={handleOnchange} required value={data.firstName} type="text" name="firstName" placeholder='First name' />
-                    <input onChange={handleOnchange} required value={data.lastName} type="text" name="lastName" placeholder='Last name' />
-                    <input onChange={handleOnchange} required value={data.email} type="email" name="email" placeholder='Email' />
-                    <input onChange={handleOnchange} required value={data.city} type="text" name="city" placeholder='City' />
-                    <input onChange={handleOnchange} required value={data.state} type="text" name="state" placeholder='State' />
-                    <input onChange={handleOnchange} required value={data.street} type="text" name="street" placeholder='Street' />
-                    <input onChange={handleOnchange} required value={data.zipCode} type="number" name="zipCode" placeholder='Zip code' />
-                    <input onChange={handleOnchange} required value={data.phone} type="tel" name="phone" placeholder='Phone' />
+                    <input onChange={handleOnchange} required value={addressData.firstName} type="text" name="firstName" placeholder='First name' />
+                    <input onChange={handleOnchange} required value={addressData.lastName} type="text" name="lastName" placeholder='Last name' />
+                    <input onChange={handleOnchange} required value={addressData.email} type="email" name="email" placeholder='Email' />
+                    <input onChange={handleOnchange} required value={addressData.city} type="text" name="city" placeholder='City' />
+                    <input onChange={handleOnchange} required value={addressData.state} type="text" name="state" placeholder='State' />
+                    <input onChange={handleOnchange} required value={addressData.street} type="text" name="street" placeholder='Street' />
+                    <input onChange={handleOnchange} required value={addressData.zipCode} type="number" name="zipCode" placeholder='Zip code' />
+                    <input onChange={handleOnchange} required value={addressData.phone} type="tel" name="phone" placeholder='Phone' />
                     <button id='submitButton' type='submit' style={{ display: 'none' }}>Submit</button>
                 </form>
             </div>
@@ -93,7 +93,7 @@ const OrderCom = () => {
                 <div className={styles.paywith_card}>
                 <div>
                     {
-                        circleCheck === "card"? <FaCheckCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("card")} />:<FaRegCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("card")} />
+                        circleCheck === "Pay with Mastercard"? <FaCheckCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("Pay with Mastercard")} />:<FaRegCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("Pay with Mastercard")} />
                     }
                 </div>
                 <div>
@@ -105,7 +105,7 @@ const OrderCom = () => {
                 <div className={styles.payon_deliver}>
                 <div >
                 {
-                        circleCheck === "dilever"? <FaCheckCircle className={styles.payon_deliver_icon} onClick={()=> setCircleCheck("dilever")} />:<FaRegCircle className={styles.payon_deliver_icon} onClick={()=> setCircleCheck("dilever")} />
+                        circleCheck === "Pay on dilever"? <FaCheckCircle className={styles.payon_deliver_icon} onClick={()=> setCircleCheck("Pay on dilever")} />:<FaRegCircle className={styles.payon_deliver_icon} onClick={()=> setCircleCheck("Pay on dilever")} />
                     }
                 </div>
                 <div>

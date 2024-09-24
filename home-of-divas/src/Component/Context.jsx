@@ -57,7 +57,6 @@ export const GlobalProvider = ({ children }) => {
         console.log("Error:", error);
       }
     }
-    console.log("Token:", token)
   };
 
   const removeFromCart = async (itemId) => {
