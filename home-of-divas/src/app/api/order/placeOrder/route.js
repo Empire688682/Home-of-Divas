@@ -21,18 +21,11 @@ export async function POST(req) {
             return NextResponse.json({ success: false, message: 'User not found' });
         }
 
-        address: { type: Object, required: true },
-        item: { type: Array, required: true },
-        date: { type: Date, default: Date.now() },
-        payment: { type: Boolean, default: false },
-        total: { type: Number, required: true },
-        status: { type: String, default: "Food Processing" },
-
         const newOrder = new OrderModel({
             userId,
             addressData,
             cartData,
-            paymentMethod
+            paymentMethod,
         });
         await newOrder.save();
         return NextResponse.json({ success: true, message: 'Order placed successfully' });

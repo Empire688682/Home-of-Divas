@@ -12,7 +12,7 @@ const OrderCom = () => {
     const [loading, setLoading] = useState(false);
     const [circleCheck, setCircleCheck] = useState("card");
 
-    const [data, setData] = useState({
+    const [addressData, setAddressData] = useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -25,22 +25,29 @@ const OrderCom = () => {
 
     const handleOnchange = (e) => {
         const { name, value } = e.target;
-        setData(prev => ({ ...prev, [name]: value }));
+        setAddressData(prev => ({ ...prev, [name]: value }));
     };
 
     const placeOrder = async () => {
-        let itemData = [];
+        let item = [];
         allProduct.forEach(item => {
             if(cartItems[item._id] > 0){
                 let itemInfo = {...item, quantity: cartItems[item._id]};
-                itemData.push(itemInfo);
+                item.push(itemInfo);
             }
-        })
+        });
+        const itemData ={
+            item:item,
+            total: getTotalValue() + 2000,
+            address: addressData,
+            paymentMethod: circleCheck
+        }
+
         try {
             setLoading(true);
-            const response = await axios.post('api/order/placeOrder', {data, itemData});
+            const response = await axios.post('api/order/placeOrder', {itemData});
             if(response.data.success){
-                setData({
+                setAddressData({
                     firstName: "",
                     lastName: "",
                     email: "",
