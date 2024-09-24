@@ -11,26 +11,26 @@ const loginUser = async (req) => {
     const reqBody = await req.json();
     try {
         const { email, password } = reqBody;
-        const isUser = await UserModel.findOne({ email })
+        const user = await UserModel.findOne({ email })
 
-        if (!isUser) {
+        if (!user) {
             return NextResponse.json({ success: false, message: "User not found" })
         };
 
-        const isPwdMatch = await bcrypt.compare(password, isUser.password);
+        const isPwdMatch = await bcrypt.compare(password, user.password);
         if (!isPwdMatch) {
             return NextResponse.json({ success: false, message: "Incorrect Paasword" });
         };
 
         const userData = {
-            email: isUser.email,
-            fName: isUser.fName,
-            lName: isUser.lName,
-            gender: isUser.gender,
-            dBirth: isUser.dBirth
+            email: user.email,
+            fName: user.fName,
+            lName: user.lName,
+            gender: user.gender,
+            dBirth: user.dBirth
         }
 
-        const token = jwt.sign({ id: isUser._id }, process.env.TOKEN_KEY, { expiresIn: '2d' });
+        const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY, { expiresIn: '2d' });
         const res = NextResponse.json({ success: true, token, user:userData, message: "User login successfully" });
         res.cookies.set('DCToken', token, {
             httpOnly: true,

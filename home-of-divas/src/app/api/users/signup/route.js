@@ -53,6 +53,8 @@ const registerUser = async (req) => {
             dBirth
         }
 
+        console.log("user:", user._id);
+
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY);
         const res = NextResponse.json({
             success: true,
