@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
-    address: { type: Object, required: true },
-    item: { type: Array, required: true },
+    addressData: { type: Object, required: true },
+    cartData: { type: Array, required: true },
     date: { type: Date, default: Date.now() },
     payment: { type: Boolean, default: false },
     total: { type: Number, required: true },
+    paymentMethod: { type: String, required: true },
     status: { type: String, default: "Food Processing" },
 });
 
