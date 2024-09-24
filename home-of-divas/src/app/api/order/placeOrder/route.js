@@ -6,7 +6,7 @@ connectDB();
 
 export async function POST(req) {
     const reqBody = await req.json();
-    const { address, paymentMethod, items } = reqBody;
+    const { addressData, cartData, paymentMethod} = reqBody;
     const userId = await userToken(req);
     if (!userId) {
         return NextResponse.json({ success: false, message: 'User not found' });

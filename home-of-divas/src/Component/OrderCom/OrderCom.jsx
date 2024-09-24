@@ -28,7 +28,7 @@ const OrderCom = () => {
         setData(prev => ({ ...prev, [name]: value }));
     };
 
-    const placeOrder = () => {
+    const placeOrder = async () => {
         let itemData = [];
         allProduct.forEach(item => {
             if(cartItems[item._id] > 0){
@@ -36,15 +36,40 @@ const OrderCom = () => {
                 itemData.push(itemInfo);
             }
         })
-        console.log(itemData);
+        try {
+            setLoading(true);
+            const response = await axios.post('api/order/placeOrder', {data, itemData});
+            if(response.data.success){
+                setData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    city: "",
+                    street: "",
+                    zipCode: "",
+                    phone: "",
+                    state: "",
+                });
+
+            }
+        } catch (error) {
+            console.log("ERROR:", error);
+        }
+        finally{
+            setLoading(false);
+        }
+    };
+
+    const handleFormSubmission =(e) => {
+        e.preventDefault();
+        placeOrder();
     }
-    placeOrder();
 
     return (
         <div className={styles.order_con}>
             <div className={styles.two_col}>
                 <h3>Delivery Information</h3>
-                <form>
+                <form onSubmit={handleFormSubmission}>
                     <input onChange={handleOnchange} required value={data.firstName} type="text" name="firstName" placeholder='First name' />
                     <input onChange={handleOnchange} required value={data.lastName} type="text" name="lastName" placeholder='Last name' />
                     <input onChange={handleOnchange} required value={data.email} type="email" name="email" placeholder='Email' />
