@@ -7,7 +7,6 @@ export const userToken = (req) => {
             return null;
         }
         const decodedToken = jwt.verify(token, process.env.TOKEN_KEY);
-        console.log("decodedToken:", decodedToken.id);
         return decodedToken.id;
     } catch (error) {
         console.log("Error verifying token:",error);

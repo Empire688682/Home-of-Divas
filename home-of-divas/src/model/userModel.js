@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
   gender: { type: String, required: true },
   password: { type: String, required: true },
   dBirth: { type: String, required: true },
+  userOrderData: { type: Object, default:{}},
+  userOrderHistory: { type: Object, default:{}},
   userCartData: { type: Object, default:{}},
   userFavData: { type: Object, default:{}},
   isAdmin: {type: Boolean, default:false},

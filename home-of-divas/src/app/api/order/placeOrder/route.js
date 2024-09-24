@@ -11,7 +11,6 @@ export async function POST(req) {
         const {itemData } = reqBody;
         const {addressData, item, paymentMethod, total} = itemData;
         const userId = await userToken(req);
-        console.log("UserId:", userId);
         if (!userId) {
             return NextResponse.json({ success: false, message: 'User not authenticated' });
         }
@@ -30,8 +29,7 @@ export async function POST(req) {
             paymentMethod,
             total
         });
-        const savedOrder = await newOrder.save();
-        console.log("savedOrder:", savedOrder);
+        await newOrder.save();
         await UserModel.findByIdAndUpdate(userId, { userCartData: {} });
 
         // Add order to user's order history
