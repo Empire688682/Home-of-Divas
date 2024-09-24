@@ -28,7 +28,16 @@ export async function POST(req) {
             paymentMethod,
         });
         await newOrder.save();
-        return NextResponse.json({ success: true, message: 'Order placed successfully' });
+        await UserModel.findByIdAndUpdate(userId, { userCartData: {} });
+
+        // Add order to user's order history
+        if (user.userOrderHistory) {
+            user.userOrderHistory.push(newOrder._id);
+        } else {
+            user.userOrderHistory = [newOrder._id];
+        }
+        await user.save();
+        return NextResponse.json({ success: true, data: newOrder, message: 'Order placed successfully' });
     } catch (error) {
         return NextResponse.json({ success: false, message: 'Error placing order' });
     }
