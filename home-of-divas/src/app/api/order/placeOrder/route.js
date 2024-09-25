@@ -38,6 +38,11 @@ export async function POST(req) {
         } else {
             user.userOrderHistory = [newOrder._id];
         }
+        if (user.userOrderData) {
+            user.userOrderData.push(newOrder._id);
+        } else {
+            user.userOrderData = [newOrder._id];
+        }
         await user.save();
 
         return NextResponse.json({ success: true, data: newOrder, message: 'Order placed successfully' });
