@@ -33,23 +33,23 @@ export async function POST(req) {
         await newOrder.save();
 
         // Add order to user's order history
-        if (user.userOrderHistory) {
-            user.userOrderHistory.push(newOrder._id);
-        } else {
-            user.userOrderHistory = [newOrder._id];
+        let userOrderHistory = user.userOrderHistory || {};
+        if(!userOrderHistory[newOrder._id]) {
+            userOrderHistory.push(newOrder._id);
         }
 
-        // add order to user's order data
-        let userCartData = user.userCartData || {};
-        if (user.userOrderData) {
-            user.userOrderData.push(newOrder._id);
-        } else {
-            user.userOrderData = [newOrder._id];
+        // Add order to user's order data
+        let userOrderData = user.userOrderData || {};
+        if(!userOrderData[newOrder._id]) {
+            userOrderData.push(newOrder._id);
         }
+        console.log("USERORDERDATA:", userOrderData);
+        console.log("USERORDERHistory:", userOrderHistory);
+        console.log("USERBEFORE:", user);
         await user.save();
         console.log("USERAFTER:", user);
 
-        await UserModel.findByIdAndUpdate(userId, { userCartData: {} });
+        await UserModel.findByIdAndUpdate(userId, { userCartData: {}, userOrderData: userOrderData, userOrderHistory: user.userOrderHistory });
 
         return NextResponse.json({ success: true, data: newOrder, message: 'Order placed successfully' });
     } catch (error) {
