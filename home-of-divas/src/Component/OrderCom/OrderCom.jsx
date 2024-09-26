@@ -57,8 +57,9 @@ const OrderCom = () => {
                     phone: "",
                     state: "",
                 });
-
+                
             }
+            console.log("Response:", response);
         } catch (error) {
             console.log("ERROR:", error);
         }

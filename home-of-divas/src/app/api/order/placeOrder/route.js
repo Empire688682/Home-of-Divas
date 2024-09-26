@@ -3,24 +3,33 @@ import { OrderModel } from "@/model/orderModel";
 import { NextResponse } from "next/server";
 import { userToken } from "@/helper/getUserToken";
 import { UserModel } from "@/model/userModel";
+import mongoose from "mongoose";
 connectDB();
 
 export async function POST(req) {
-    const reqBody = await req.json();
+    const session = await mongoose.startSession();
+    session.startTransaction();
     try {
-        const {itemData } = reqBody;
-        const {addressData, item, paymentMethod, total} = itemData;
+        const reqBody = await req.json();
+        const { itemData } = reqBody;
+        const { addressData, item, paymentMethod, total } = itemData;
         const userId = await userToken(req);
         console.log("USERID:", userId);
         if (!userId) {
+            session.abortTransaction();
+            session.endSession();
             return NextResponse.json({ success: false, message: 'User not authenticated' });
         }
         if (!addressData || !item || !paymentMethod || !total) {
+            session.abortTransaction();
+            session.endSession();
             return NextResponse.json({ success: false, message: 'All fields required' });
         }
         const user = await UserModel.findById(userId);
         if (!user) {
             return NextResponse.json({ success: false, message: 'User not found' });
+            session.abortTransaction();
+            session.endSession();
         }
 
         const newOrder = new OrderModel({
@@ -30,29 +39,30 @@ export async function POST(req) {
             paymentMethod,
             total
         });
-        await newOrder.save();
+        await newOrder.save({session});
 
-        // Add order to user's order history
-        let userOrderHistory = user.userOrderHistory || {};
-        if(!userOrderHistory[newOrder._id]) {
-            userOrderHistory.push(newOrder._id);
-        }
-
-        // Add order to user's order data
         let userOrderData = user.userOrderData || {};
-        if(!userOrderData[newOrder._id]) {
-            userOrderData.push(newOrder._id);
-        }
-        console.log("USERORDERDATA:", userOrderData);
-        console.log("USERORDERHistory:", userOrderHistory);
-        console.log("USERBEFORE:", user);
-        await user.save();
-        console.log("USERAFTER:", user);
+        let userOrderHistory = user.userOrderHistory || {};
 
-        await UserModel.findByIdAndUpdate(userId, { userCartData: {}, userOrderData: userOrderData, userOrderHistory: user.userOrderHistory });
+        if(!userOrderData[newOrder._id]){
+            userOrderData[newOrder._id] = true
+        }
+        if(!userOrderHistory[newOrder._id]){
+            userOrderHistory[newOrder._id] = true
+        }
+
+        user.userOrderData = userOrderData;
+        user.userOrderHistory = userOrderHistory;
+
+        await user.save({session});
+
+        session.commitTransaction();
+        session.endSession();
 
         return NextResponse.json({ success: true, data: newOrder, message: 'Order placed successfully' });
     } catch (error) {
+        session.abortTransaction();
+        session.endSession();
         return NextResponse.json({ success: false, message: 'Error placing order' });
     }
 }
