@@ -46,6 +46,9 @@ const OrderCom = () => {
         try {
             setLoading(true);
             const response = await axios.post('api/order/placeOrder', {itemData});
+            if(response.data.success && response.data.authorization_url){
+                console.log(response.data.authorization_url);
+            }
             if(response.data.success){
                 setAddressData({
                     firstName: "",
