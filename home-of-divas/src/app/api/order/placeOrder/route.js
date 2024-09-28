@@ -96,31 +96,22 @@ export async function POST(req) {
             item,
             paymentMethod,
             total,
-            paymentReference
+            paymentReference:paymentReference
         });
 
         // Save order
         await newOrder.save();
 
-        const updatedUser1 = await UserModel.findByIdAndUpdate(userId, {
+        await UserModel.findByIdAndUpdate(userId, {
             $set: {
                 [`userOrderData.${newOrder._id}`]:true,
                 [`userOrderHistory.${newOrder._id}`]:true,
             }
         }, {new:true});
 
-        if (!updatedUser1) {
-            console.error('User update failed');
-        } else {
-            console.log('Updated User1:', updatedUser1);
-        }
         // After updating and saving the user
         const updatedUser = await UserModel.findById(userId);
         console.log('Updated User:', updatedUser);
-
-        // Verify order in database
-        const verifyOrder = await OrderModel.findById(newOrder._id);
-        console.log('Verified Order:', verifyOrder);
 
         return NextResponse.json({ success: true, data: newOrder, message: 'Order placed successfully' });
     } catch (error) {

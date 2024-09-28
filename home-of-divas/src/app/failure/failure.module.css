@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--blur);
+  }
+  
+  .card {
+    background-color: var(--white);
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .failure_icon {
+    font-size: 3rem;
+    color: var(--danger);
+    margin-bottom: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+  
+  .message {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+  }
+  
+  .button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .button:hover {
+    background-color: var(--indigo);
+  }
