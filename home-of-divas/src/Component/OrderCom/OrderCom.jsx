@@ -40,7 +40,7 @@ const OrderCom = () => {
             item:orderItem,
             total: getTotalValue() + 2000,
             addressData: addressData,
-            paymentMethod: circleCheck
+            paymentMethod: circleCheck,
         }
 
         try {
