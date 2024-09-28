@@ -63,6 +63,7 @@ const Footer = () => {
       <div className={styles.small_col}>
         <h3>QUICK LINKS</h3>
         <li>About</li>
+        <li>Shop</li>
         <li>Blogs</li>
         <li>Contact</li>
         <li>FAQ</li>
@@ -72,7 +73,7 @@ const Footer = () => {
         <li>My Account</li>
         <li>Order Tracking</li>
         <li>Checkout</li>
-        <li>Wishlist</li>
+        <li>Favorite</li>
       </div>
       <div className={styles.big_col}>
         <h3>NEWSLETTER</h3>
@@ -97,7 +98,7 @@ const Footer = () => {
               </div>
             </div>
       </div>
-      <p  className={styles.designer}>Copyrighted 2024 <b>Divas</b> All rights reserved | Designed with <FaHeart style={{color:"red"}}/>  by <a href="#">Jay-empire</a> </p>
+      <p  className={styles.designer}>Copyrighted 2024 <b>Divas</b> All rights reserved | Designed with <FaHeart style={{color:"red"}}/>  by <a href="https://jayempire.netlify.app/">Jay-empire</a> </p>
       <div className={`${styles.back_top_icon} ${vissible? styles.hidden:""}`} onClick={backtoTop}>
       <IoReturnUpBackSharp />
       </div>
