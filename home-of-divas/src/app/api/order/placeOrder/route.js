@@ -77,7 +77,6 @@ export async function POST(req) {
          if (paymentMethod === 'Paystack') {
             const callback_url = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-payment?reference=${paymentReference}`;
             const paystackResponse = await initializePaystackPayment(user.email, total, { items: itemDetails }, callback_url);
-            console.log("URL:", paystackResponse.data.authorization_url);
             if (!paystackResponse.status) {
                 return NextResponse.json({ success: false, message: 'Failed to initialize Paystack payment' });
             }
@@ -110,9 +109,7 @@ export async function POST(req) {
             }
         }, {new:true},);
 
-        // After updating and saving the user
-        const updatedUser = await UserModel.findById(userId);
-        console.log('Updated User:', updatedUser);
+        await UserModel.findById(userId);
 
         return NextResponse.json({ success: true, data: newOrder, message: 'Order placed successfully' });
     } catch (error) {

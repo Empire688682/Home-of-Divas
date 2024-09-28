@@ -6,7 +6,6 @@ import { useGlobalContext } from '../Context';
 import { FaRegCircle } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import axios from 'axios';
-import { IncrementalCache } from 'next/dist/server/lib/incremental-cache';
 
 const OrderCom = () => {
     const {getTotalValue, cartItems, allProduct, inCart} = useGlobalContext();
@@ -61,7 +60,7 @@ const OrderCom = () => {
                     phone: "",
                     state: "",
                 });
-                
+                window.location.href = "/verify-payment"
             }
             console.log("Response:", response);
         } catch (error) {
@@ -167,7 +166,9 @@ const OrderCom = () => {
                     </label></>
                     :
                     <>
-                    <p>NOTHING TO CHECKOUT</p>
+                    <p>{
+                        inCart? "": "NOTING TO CHECK OUT YET"
+                        }</p>
                     <button onClick={()=>window.location.replace("/shop")} className={styles.buttonLabel}>View Products</button>
                     </>
                 }
