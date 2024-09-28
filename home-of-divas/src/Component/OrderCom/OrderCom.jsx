@@ -10,7 +10,7 @@ import axios from 'axios';
 const OrderCom = () => {
     const {getTotalValue, cartItems, allProduct} = useGlobalContext();
     const [loading, setLoading] = useState(false);
-    const [circleCheck, setCircleCheck] = useState("Pay with Mastercard");
+    const [circleCheck, setCircleCheck] = useState("Paystack");
 
     const [addressData, setAddressData] = useState({
         firstName: "",
@@ -40,14 +40,14 @@ const OrderCom = () => {
             item:orderItem,
             total: getTotalValue() + 2000,
             addressData: addressData,
-            paymentMethod: circleCheck,
+            paymentMethod: circleCheck
         }
 
         try {
             setLoading(true);
             const response = await axios.post('api/order/placeOrder', {itemData});
             if(response.data.success && response.data.authorization_url){
-                console.log(response.data.authorization_url);
+                window.location.href = response.data.authorization_url
             }
             if(response.data.success){
                 setAddressData({
@@ -97,7 +97,7 @@ const OrderCom = () => {
                 <div className={styles.paywith_card}>
                 <div>
                     {
-                        circleCheck === "Pay with Mastercard"? <FaCheckCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("Pay with Mastercard")} />:<FaRegCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("Pay with Mastercard")} />
+                        circleCheck === "Paystack"? <FaCheckCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("Paystack")} />:<FaRegCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("Paystack")} />
                     }
                 </div>
                 <div>

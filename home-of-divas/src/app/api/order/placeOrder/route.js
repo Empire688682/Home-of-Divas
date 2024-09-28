@@ -74,10 +74,10 @@ export async function POST(req) {
         }));
 
          // If payment method is Paystack, initialize Paystack payment
-         if (paymentMethod === 'paystack') {
+         if (paymentMethod === 'Paystack') {
             const callback_url = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-payment?reference=${paymentReference}`;
             const paystackResponse = await initializePaystackPayment(user.email, total, { items: itemDetails }, callback_url);
-            console.log("URL:", paystackResponse.data.authorization_url,);
+            console.log("URL:", paystackResponse.data.authorization_url);
             if (!paystackResponse.status) {
                 return NextResponse.json({ success: false, message: 'Failed to initialize Paystack payment' });
             }
@@ -87,7 +87,6 @@ export async function POST(req) {
                 authorization_url: paystackResponse.data.authorization_url,
                 reference: paymentReference
             });
-
         }
 
         // Create a new order
