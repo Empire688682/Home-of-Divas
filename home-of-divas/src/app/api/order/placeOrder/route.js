@@ -106,8 +106,9 @@ export async function POST(req) {
             $set: {
                 [`userOrderData.${newOrder._id}`]:true,
                 [`userOrderHistory.${newOrder._id}`]:true,
+                userCartData: {},
             }
-        }, {new:true});
+        }, {new:true},);
 
         // After updating and saving the user
         const updatedUser = await UserModel.findById(userId);

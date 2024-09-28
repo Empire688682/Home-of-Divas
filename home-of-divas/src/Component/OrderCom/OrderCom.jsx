@@ -6,9 +6,10 @@ import { useGlobalContext } from '../Context';
 import { FaRegCircle } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import axios from 'axios';
+import { IncrementalCache } from 'next/dist/server/lib/incremental-cache';
 
 const OrderCom = () => {
-    const {getTotalValue, cartItems, allProduct} = useGlobalContext();
+    const {getTotalValue, cartItems, allProduct, inCart} = useGlobalContext();
     const [loading, setLoading] = useState(false);
     const [circleCheck, setCircleCheck] = useState("Paystack");
 
@@ -155,13 +156,21 @@ const OrderCom = () => {
                 </div>
             </div>
             <div className={`${styles.two_col} ${styles.cart}`}>
-                <h3>ORDER SUMMARY</h3>
-                <div>Subtotal <h4>#{getTotalValue()}</h4></div>
-                <div>Delivery fees <h4>#2000</h4></div>
-                <div>Total <h4>#{getTotalValue() + 2000}</h4></div>
-                <label htmlFor='submitButton' className={styles.buttonLabel}>
-                    {loading ? "Processing..." : "Proceed to checkout"}
-                </label>
+            <h3>ORDER SUMMARY</h3>
+                {
+                    inCart? <>
+                    <div>Subtotal <h4>#{getTotalValue()}</h4></div>
+                    <div>Delivery fees <h4>#2000</h4></div>
+                    <div>Total <h4>#{getTotalValue() + 2000}</h4></div>
+                    <label htmlFor='submitButton' className={styles.buttonLabel}>
+                        {loading ? "Processing..." : "Proceed to checkout"}
+                    </label></>
+                    :
+                    <>
+                    <p>NOTHING TO CHECKOUT</p>
+                    <button onClick={()=>window.location.replace("/shop")} className={styles.buttonLabel}>View Products</button>
+                    </>
+                }
             </div>
         </div>
     );
