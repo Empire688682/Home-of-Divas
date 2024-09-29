@@ -11,7 +11,6 @@ const Order = () => {
   const [loading, setLoading] = useState(false);
   const [orderItems, setOrderItems] = useState([]);
   const [orderAddress, setOrderAddress] = useState({});
-  console.log("ORDERITEMSOut:", orderItems);
 
   const fetchOrder = async () => {
     try {
@@ -33,14 +32,6 @@ const Order = () => {
     fetchOrder();
   }, []);
 
-  useEffect(()=>{
-    allOrder && allOrder.map((order)=>{
-      setOrderItems(order.item || []);
-      setOrderAddress(order.address || {});
-      console.log("ORDERITEMS:", orderItems);
-      console.log("ORDER:", order);
-    })
-  },[allOrder])
 
 
   return (
@@ -55,30 +46,35 @@ const Order = () => {
                 <div>
                   <div className={styles.header_item}>Item</div>
                   {
-                    orderItems.map((item, index)=>(
+                    order.item.map((item, index) => (
                       <div key={index} className={styles.item}>
-                    <small>Name: {item.name}</small><br />
-                    <small>Qty: {item.quantity}</small>
-                  </div>
+                        <small>Name: {item.name}</small><br />
+                        <small>Qty: {item.quantity}</small>
+                      </div>
                     ))
                   }
                 </div>
                 <div>
                   <div>
                     <div className={styles.header_address}>Shipping Address</div>
-                    <small className={styles.address}>
-                      Name:FirstName LastName
-                    </small><br />
-                    <small>Email: Email</small><br />
-                    <small>City: City</small><br />
-                    <small>Street: Street</small><br />
-                    <small>ZipCode: ZipCode</small><br />
-                    <small>Phone: Phone</small>
+                    {
+                      Object.keys(order.addressData).length > 0 && <>
+                        <div className={styles.address}>
+                          <small>Name: {order.addressData.firstName} {order.addressData.lastName}</small><br />
+                          <small>City: {order.addressData.city}</small><br />
+                          <small>Street: {order.addressData.street}</small><br />
+                          <small>State: {order.addressData.state}</small><br />
+                          <small>Email: {order.addressData.email}</small><br />
+                          <small>Phone: {order.addressData.phone}</small><br />
+                          <small>ZipCode: {order.addressData.zipCode}</small><br />
+                        </div>
+                      </>
+                    }
                   </div>
                 </div>
                 <div>
                   <div className={styles.header_amount}>Total Amount</div>
-                  <div className={styles.amount}>#.amount</div>
+                  <div className={styles.amount}>#{order.total}</div>
                 </div>
                 <div>
                   <div className={styles.header_remove}>Remove</div>
@@ -93,7 +89,10 @@ const Order = () => {
           }
         </>
           :
-          <><p>NO ORDER AVAILABLE</p></>
+          <>{
+            loading ? <div className={styles.loading}><h2>Loading.....</h2></div> : <p>No Order Found</p>
+          }
+          </>
       }
     </div>
   );
