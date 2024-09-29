@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Order.module.css'; // Converted CSS to module
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
@@ -8,6 +8,28 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Order = () => {
   const [allOrder, setAllOrder] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+ const fetchOrder = async () => {
+   try {
+    setLoading(true);
+    const response = await axios.get("/api/order/allOrder");
+    if(response.data.success) {
+      setAllOrder(response.data.data || []);
+    }
+   } catch (error) {
+    console.log("Error:", error);
+   }
+   finally{
+    setLoading(false);
+   }
+  };
+
+  useEffect(()=>{
+    fetchOrder();
+    console.log("ORDER:", allOrder)
+  },[]);
+
 
   return (
     <div className={styles.order_items}>
