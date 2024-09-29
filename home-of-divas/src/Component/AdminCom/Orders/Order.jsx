@@ -9,8 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Order = () => {
   const [allOrder, setAllOrder] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [orderItems, setOrderItems] = useState([]);
-  const [orderAddress, setOrderAddress] = useState({});
 
   const fetchOrder = async () => {
     try {
