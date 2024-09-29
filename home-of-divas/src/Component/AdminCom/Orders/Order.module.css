@@ -23,7 +23,12 @@
     border-bottom: 2px solid gray;
 }
 
-.item, .address, .amount, .remove {
+.item, .address, .amount{
     flex-basis: 23%;
     max-width: 200px;
+}
+.remove {
+    flex-basis: 23%;
+    max-width: 200px;
+    cursor: pointer;
 }

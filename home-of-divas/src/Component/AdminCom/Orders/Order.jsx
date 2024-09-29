@@ -32,6 +32,18 @@ const Order = () => {
     fetchOrder();
   }, []);
 
+  const removeOrder = async(orderId)=>{
+    try {
+      const response = axios.post("/api/order/removeOrder", {orderId});
+      console.log("SUCCESSMESSAGEOute:",response )
+      if((await response).data.success){
+        console.log("SUCCESSMESSAGE:",response )
+        fetchOrder();
+      }
+    } catch (error) {
+      
+    }
+  }
 
 
   return (
@@ -80,6 +92,7 @@ const Order = () => {
                   <div className={styles.header_remove}>Remove</div>
                   <div
                     className={styles.remove}
+                    onClick={()=> removeOrder(order._id)}
                   >
                     X
                   </div>
