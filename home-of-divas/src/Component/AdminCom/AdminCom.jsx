@@ -8,7 +8,7 @@ import ProductList from './ProductList/ProductList';
 import Order from './Orders/Order';
 
 const AdminCom = () => {
-    const [menu, setMenu] = useState("add")
+    const [menu, setMenu] = useState("order")
     return (
         <div className={styles.admin_Com}>
             <div className={styles.header}>
