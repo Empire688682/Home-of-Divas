@@ -14,6 +14,7 @@ const Order = () => {
    try {
     setLoading(true);
     const response = await axios.get("/api/order/allOrder");
+    console.log('RESPONSE:', response);
     if(response.data.success) {
       setAllOrder(response.data.data || []);
     }
@@ -27,8 +28,9 @@ const Order = () => {
 
   useEffect(()=>{
     fetchOrder();
-    console.log("ORDER:", allOrder)
   },[]);
+
+  console.log("ORDER:", allOrder)
 
 
   return (
