@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 export function middleware(req) {
   const path = req.nextUrl.pathname;
     const token = req.cookies.get("DCToken")?. value || "";
+    const userId = req.cookies.get("DCUserId")?. value || "";
     const isPublic = path === '/signup';
     const isProfile = path === '/profile';
     const isOrder = path === '/order';

@@ -54,7 +54,8 @@ const registerUser = async (req) => {
             dBirth
         }
 
-        const token = jwt.sign({ id: newUser._id }, process.env.TOKEN_KEY);
+        const userId = newUser._id
+        const token = jwt.sign({ id: userId }, process.env.TOKEN_KEY);
         const res = NextResponse.json({
             success: true,
             message: "User signed up",
@@ -62,6 +63,13 @@ const registerUser = async (req) => {
             user: userData
         })
         res.cookies.set('DCToken', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 2 * 24 * 60 * 60,
+            sameSite: "lax",
+            path: "/"
+        });
+        res.cookies.set('DCUserId', userId, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 2 * 24 * 60 * 60,
