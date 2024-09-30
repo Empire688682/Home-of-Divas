@@ -33,9 +33,11 @@ const Order = () => {
       const response = await axios.post("/api/order/removeOrder", { orderId });
       if (response.data.success) {
         fetchOrder();
+        toast.success("Order removed successfully!");
       }
     } catch (error) {
       console.log("Error:", error);
+      toast.error("Failed to remove order.");
     }
   };
 

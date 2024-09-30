@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './AddItems.module.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddItems = () => {
   const [data, setData] = useState({
@@ -48,16 +50,19 @@ const AddItems = () => {
           price: '',
         });
         setImage(null);
+        toast.success("Product added successfully");
       }
     } catch (error) {
       console.error("ERROR:", error);
       setError(error.response?.data?.error || 'An error occurred while adding the item');
       setSuccess('');
+      toast.error("Failed to add product");
     }
   };
 
   return (
     <div className={`${styles.add_Items}`}>
+      <ToastContainer style={{ width: '80%' }} />
       <form className={`${styles.addForm}`} onSubmit={submitHandler}>
         <div className={`${styles.add_img_con} ${styles.flex_col}`}>
           <p>Upload image</p>
