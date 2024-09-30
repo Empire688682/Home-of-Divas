@@ -27,7 +27,8 @@ const loginUser = async (req) => {
             fName: user.fName,
             lName: user.lName,
             gender: user.gender,
-            dBirth: user.dBirth
+            dBirth: user.dBirth,
+            isAdmin: user.isAdmin
         }
 
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY, { expiresIn: '2d' });

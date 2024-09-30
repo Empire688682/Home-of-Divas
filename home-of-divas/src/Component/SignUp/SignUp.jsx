@@ -31,7 +31,6 @@ const SignUp = () => {
       if (response.data.success) {
         localStorage.setItem("Divastoken", response.data.token);
         const user = response.data.user;
-        console.log("User:", user)
         localStorage.setItem("Divasuserdata",JSON.stringify(user));
         setData({
           fName: "",
@@ -42,8 +41,8 @@ const SignUp = () => {
           pwdRepeat: "",
           dBirth: ""
         });
+        window.location.reload();
         router.push('/shop');
-        window.location.reload()
       } else {
         alert(response.data.message);
       }

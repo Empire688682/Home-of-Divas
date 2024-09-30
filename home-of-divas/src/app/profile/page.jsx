@@ -1,34 +1,36 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { RiInformationFill } from "react-icons/ri";
 import { BsFillBagFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
+import { RiAdminFill } from "react-icons/ri";
 import styles from "./Profile.module.css";
 import MyOrder from "@/Component/MyOrder/MyOrder";
 import axios from "axios";
 import { useGlobalContext } from "@/Component/Context";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Profile = () => {
-  const {setToken} = useGlobalContext();
+  const { setToken } = useGlobalContext();
   const [dashboard, setDashboard] = useState("information");
   const [user, setUser] = useState({});
   const router = useRouter();
 
-  useEffect(()=>{
-    if(typeof window !== "undefined"){
+  useEffect(() => {
+    if (typeof window !== "undefined") {
       setUser(JSON.parse(localStorage.getItem("Divasuserdata")) || {})
     }
-  },[])
+  }, [])
 
-  const logoutUser = async () =>{
+  const logoutUser = async () => {
     try {
-     const response =  await axios.get("api/users/logout");
-     if(response){
-      router.push("/");
-      setToken("");
-      setUser({})
-     }
+      const response = await axios.get("api/users/logout");
+      if (response) {
+        router.push("/");
+        setToken("");
+        setUser({})
+      }
     } catch (error) {
       console.log("ERROR:", error)
     }
@@ -39,8 +41,11 @@ const Profile = () => {
       <div className={styles.small_col}>
         <h2>ACCOUNT DASHBOARD</h2>
         <ul>
+        {
+            user.isAdmin ? <Link style={{textDecoration:"none"}} href="/admin"> <li><RiAdminFill style={{fontWeight:"bold"}} /> Admin</li> </Link> : null
+          }
           <li onClick={() => setDashboard("information")}>
-            <FaUser />
+            <RiInformationFill />
             <span>Account Information</span>
           </li>
           <li onClick={() => setDashboard("order")}>
