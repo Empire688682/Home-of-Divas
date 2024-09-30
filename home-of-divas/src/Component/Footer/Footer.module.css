@@ -56,9 +56,13 @@ form .form_Con{
 .footer .small_col{
     flex-basis: 15%;
 }
+.small_col .link{
+    cursor: pointer;
+    text-decoration: none;
+}
 .small_col li{
     list-style: none;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     cursor: pointer;
     font-size: 13px;
 }
@@ -70,13 +74,15 @@ form .form_Con{
     align-items: center;
     gap: 10px;
 }
-.socila_icon{
-    font-size: 15px;
+.socila_icon {
+    transition: .3s ease-in-out;
+}
+.socila_icon a{
+    font-size: 20px;
     cursor: pointer;
     background-color: var(--white);
     padding: 10px;
     border-radius: 50%;
-    transition: .3s ease-in-out;
     color: var(--black);
     border: 1px solid var(--gray);
 }

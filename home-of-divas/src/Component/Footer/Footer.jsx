@@ -8,6 +8,7 @@ import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoReturnUpBackSharp } from "react-icons/io5";
+import Link from 'next/link';
 
 const Footer = () => {
   const [vissible, setVissible] = useState(false);
@@ -62,18 +63,18 @@ const Footer = () => {
       </div>
       <div className={styles.small_col}>
         <h3>QUICK LINKS</h3>
-        <li>About</li>
-        <li>Shop</li>
-        <li>Blogs</li>
-        <li>Contact</li>
-        <li>FAQ</li>
+        <Link className={styles.link} href='/about'><li>About</li></Link>
+        <Link className={styles.link} href='/shop'><li>Shop</li></Link>
+        <Link className={styles.link} href='/blog'><li>Blogs</li></Link>
+        <Link className={styles.link} href='/contact'><li>Contact</li></Link>
+        <Link className={styles.link} href='/contact'><li>FAQ</li></Link>
       </div>
       <div className={styles.small_col}>
         <h3>ACCOUNT</h3>
-        <li>My Account</li>
-        <li>Order Tracking</li>
-        <li>Checkout</li>
-        <li>Favorite</li>
+        <Link className={styles.link} href='/profile'><li>My Account</li></Link>
+        <Link className={styles.link} href='/profile'><li>Order Tracking</li></Link>
+        <Link className={styles.link} href='/checkout'><li>Checkout</li></Link>
+        <Link className={styles.link} href='/favorite'><li>Favorite</li></Link>
       </div>
       <div className={styles.big_col}>
         <h3>NEWSLETTER</h3>
@@ -85,16 +86,16 @@ const Footer = () => {
         </form>
         <div className={styles.socila_icon_Con}>
               <div className={styles.socila_icon}>
-                <FaFacebookF />
+                <a href="http://"><FaFacebookF /></a>
               </div>
               <div className={styles.socila_icon}>
-                <FaTwitter />
+                <a href="http://"><FaTwitter /></a>
               </div>
               <div className={styles.socila_icon}>
-                <FaYoutube />
+                <a href="http://"><FaYoutube /></a>
               </div>
               <div className={styles.socila_icon}>
-                <FaInstagram />
+                <a href="http://"><FaInstagram /></a>
               </div>
             </div>
       </div>
