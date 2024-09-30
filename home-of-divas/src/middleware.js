@@ -3,11 +3,12 @@ import { NextResponse } from 'next/server';
 export function middleware(req) {
   const path = req.nextUrl.pathname;
     const token = req.cookies.get("DCToken")?. value || "";
-    const userId = req.cookies.get("DCUserId")?. value || "";
+    const isAdmin = req.cookies.get("DCIsAdmin")?. value || "";
     const isPublic = path === '/signup';
     const isProfile = path === '/profile';
     const isOrder = path === '/order';
     const isverifyOrder = path === '/verify-payment';
+    const isAdminPath = path === '/admin';
 
     if(token && isPublic){
       return NextResponse.redirect(new URL('/', req.url));
@@ -21,6 +22,13 @@ export function middleware(req) {
     if(!token && isverifyOrder){
       return NextResponse.redirect(new URL('/signup', req.url));
     }
+    if(!token && isAdminPath){
+      return NextResponse.redirect(new URL('/signup', req.url));
+    }
+    if(token && isAdmin === "false" && isAdminPath){
+      return NextResponse.redirect(new URL('/profile', req.url));
+    }
+
 }
  
 
@@ -37,6 +45,7 @@ export const config = {
     '/favorite',
     '/cart',
     '/order',
-    '/verify-payment'
+    '/verify-payment',
+    '/admin',
   ]
 }

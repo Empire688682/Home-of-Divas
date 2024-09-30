@@ -31,8 +31,16 @@ const loginUser = async (req) => {
         }
 
         const token = jwt.sign({ id: user._id }, process.env.TOKEN_KEY, { expiresIn: '2d' });
+        const isUserAdmin = user.isAdmin;
         const res = NextResponse.json({ success: true, token, user:userData, message: "User login successfully" });
         res.cookies.set('DCToken', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 2 * 24 * 60 * 60,
+            sameSite: "lax",
+            path: "/"
+        });
+        res.cookies.set('DCIsAdmin', isUserAdmin, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 2 * 24 * 60 * 60,
