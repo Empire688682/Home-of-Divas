@@ -1,12 +1,14 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './itemId.module.css';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
+import { useGlobalContext } from '@/Component/Context';
 
 const Page = () => {
   const params = useParams();
   const { itemId } = params;
+  const {addToCart, handleFav} = useGlobalContext()
 
   const [productData, setProductData] = useState(null); // State to store fetched product data
 
@@ -33,11 +35,30 @@ const Page = () => {
   return (
     <div className={styles.container}>
       {productData ? (
-        <div>
-          <h1>{productData.name}</h1>
-          <p>{productData.description}</p>
-          <p>Price: {productData.price}</p>
-          {/* Render other product details here */}
+        <div className={styles.product}>
+          <div className={styles.imageSection}>
+            <Image src={productData.image} width={180}  height={180}alt={productData.name} className={styles.mainImage} />
+            <div className={styles.thumbnailContainer}>
+                <Image
+                width={80}
+                height={80}
+                  key={index}
+                  src={productData.image}
+                  alt={`Thumbnail ${index + 1}`}
+                  className={styles.thumbnail}
+                  onClick={() => { /* Set main image on thumbnail click */ }}
+                />
+            </div>
+          </div>
+          <div className={styles.detailsSection}>
+            <h1>{productData.name}</h1>
+            <p className={styles.description}>{productData.description}</p>
+            <p className={styles.price}>Price: ${productData.price}</p>
+            <div className={styles.buttonContainer}>
+              <button className={styles.addToCartButton} onClick={()=>addToCart(productData._id)} >Add to Cart</button>
+              <button className={styles.addToFavButton} onClick={()=>handleFav(productData._id)}>Add to Favorites</button>
+            </div>
+          </div>
         </div>
       ) : (
         <h1>Loading product...</h1>
