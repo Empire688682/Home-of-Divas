@@ -77,6 +77,7 @@ const ShopProduct = () => {
                                             if (category === "All" || item.category === category) {
                                                 return <div key={item._id} className={styles.shop_cart}>
                                                     <div className={styles.img_com} onClick={() => router.push(`/shop/${item._id}`)}>
+                                                        <item/>
                                                         <Image className={styles.img} src={`/uploads/${item.image}`} alt="" fill />
                                                     </div>
                                                     <div className={styles.item_text}>
