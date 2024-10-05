@@ -1,4 +1,135 @@
-.container{
+
+/* Container for the entire page */
+.container {
+    display: flex;
+    align-items: center;
+    background-color: #f0f4f8; /* Light grayish background */
+    min-height: 100vh;
     padding: 50px 5%;
     margin-top: 70px;
-}
+  }
+  
+  /* Product container */
+  .product {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  /* Image section styles */
+  .imageSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Main image container */
+  .mainImageContainer {
+    width: 300px;
+    max-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  /* Main image styling */
+  .mainImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Thumbnail container styles */
+  .thumbnailContainer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Thumbnail image styling */
+  .thumbnail {
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+    border: 2px solid #ccc;
+  }
+  
+  .thumbnail:hover {
+    border-color: #0070f3; /* Change border color on hover */
+  }
+  
+  /* Details section for product info */
+  .detailsSection {
+    padding: 20px;
+  }
+  
+  .detailsSection h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Button container for add to cart and favorite buttons */
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Add to cart button styling */
+  .addToCartButton, .addToFavButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addToCartButton {
+    background-color: #0070f3;
+    color: white;
+  }
+  
+  .addToFavButton {
+    background-color: #ff4757;
+    color: white;
+  }
+  
+  .addToCartButton:hover {
+    background-color: #005bb5; /* Darker shade for hover */
+  }
+  
+  .addToFavButton:hover {
+    background-color: #e84118; /* Darker shade for hover */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .product {
+      flex-direction: column;
+    }
+    
+    .mainImageContainer {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  

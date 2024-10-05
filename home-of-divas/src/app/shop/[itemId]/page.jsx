@@ -4,11 +4,12 @@ import styles from './itemId.module.css';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import { useGlobalContext } from '@/Component/Context';
+import Image from 'next/image';
 
 const Page = () => {
   const params = useParams();
   const { itemId } = params;
-  const {addToCart, handleFav} = useGlobalContext()
+  const { addToCart, handleFav } = useGlobalContext()
 
   const [productData, setProductData] = useState(null); // State to store fetched product data
 
@@ -37,17 +38,42 @@ const Page = () => {
       {productData ? (
         <div className={styles.product}>
           <div className={styles.imageSection}>
-            <Image src={productData.image} width={180}  height={180}alt={productData.name} className={styles.mainImage} />
+            <Image src={`/uploads/${productData.image}`} width={180} height={180} alt={productData.name} className={styles.mainImage} />
             <div className={styles.thumbnailContainer}>
-                <Image
-                width={80}
-                height={80}
-                  key={index}
-                  src={productData.image}
-                  alt={`Thumbnail ${index + 1}`}
-                  className={styles.thumbnail}
-                  onClick={() => { /* Set main image on thumbnail click */ }}
-                />
+              <Image
+                width={50}
+                height={50}
+                src={`/uploads/${productData.image}`}
+                className={styles.thumbnail}
+                onClick={() => { /* Set main image on thumbnail click */ }}
+              />
+            </div>
+            <div className={styles.thumbnailContainer}>
+              <Image
+                width={50}
+                height={50}
+                src={`/uploads/${productData.image}`}
+                className={styles.thumbnail}
+                onClick={() => { /* Set main image on thumbnail click */ }}
+              />
+            </div>
+            <div className={styles.thumbnailContainer}>
+              <Image
+                width={50}
+                height={50}
+                src={`/uploads/${productData.image}`}
+                className={styles.thumbnail}
+                onClick={() => { /* Set main image on thumbnail click */ }}
+              />
+            </div>
+            <div className={styles.thumbnailContainer}>
+              <Image
+                width={50}
+                height={50}
+                src={`/uploads/${productData.image}`}
+                className={styles.thumbnail}
+                onClick={() => { /* Set main image on thumbnail click */ }}
+              />
             </div>
           </div>
           <div className={styles.detailsSection}>
@@ -55,8 +81,8 @@ const Page = () => {
             <p className={styles.description}>{productData.description}</p>
             <p className={styles.price}>Price: ${productData.price}</p>
             <div className={styles.buttonContainer}>
-              <button className={styles.addToCartButton} onClick={()=>addToCart(productData._id)} >Add to Cart</button>
-              <button className={styles.addToFavButton} onClick={()=>handleFav(productData._id)}>Add to Favorites</button>
+              <button className={styles.addToCartButton} onClick={() => addToCart(productData._id)} >Add to Cart</button>
+              <button className={styles.addToFavButton} onClick={() => handleFav(productData._id)}>Add to Favorites</button>
             </div>
           </div>
         </div>
