@@ -3,17 +3,15 @@ import React from 'react';
 import styles from './itemId.module.css';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useParams } from 'next/navigation';
 
 const page = () => {
-  const router = useRouter();
-  const itemId = router.query?.itemId;
-
-  useEffect(()=>{
-    console.log("itemId:",itemId);
-  }, [itemId])
+  const params = useParams();
+  const {itemId} = params
+ 
   return (
     <div className={styles.container}>
-      <h1>Shop Page</h1>
+      <h1>{itemId}ggg</h1>
     </div>
   )
 }
