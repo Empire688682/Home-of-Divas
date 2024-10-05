@@ -2,7 +2,6 @@
 /* Container for the entire page */
 .container {
     display: flex;
-    align-items: center;
     background-color: #f0f4f8; /* Light grayish background */
     min-height: 100vh;
     padding: 50px 5%;
@@ -19,19 +18,19 @@
     max-width: 300px;
     overflow: hidden;
     padding: 20px;
+    flex-wrap: wrap;
   }
   
   /* Image section styles */
   .imageSection {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
   
   /* Main image container */
   .mainImageContainer {
-    width: 300px;
-    max-width: 300px;
+    min-width: 300px;
+    max-width: 400px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
@@ -51,6 +50,11 @@
     gap: 10px;
     margin-top: 10px;
   }
+
+  .thumbnailContainerBig{
+    display: flex;
+    margin-bottom: 20px;
+  }
   
   /* Thumbnail image styling */
   .thumbnail {
@@ -64,13 +68,8 @@
     border-color: #0070f3; /* Change border color on hover */
   }
   
-  /* Details section for product info */
-  .detailsSection {
-    padding: 20px;
-  }
-  
-  .detailsSection h1 {
-    font-size: 2rem;
+  .detailsSection h3 {
+    font-size: 1.5rem;
     margin-bottom: 10px;
   }
   

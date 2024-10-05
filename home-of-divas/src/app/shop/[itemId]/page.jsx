@@ -39,7 +39,8 @@ const Page = () => {
         <div className={styles.product}>
           <div className={styles.imageSection}>
             <Image src={`/uploads/${productData.image}`} width={180} height={180} alt={productData.name} className={styles.mainImage} />
-            <div className={styles.thumbnailContainer}>
+           <div className={styles.thumbnailContainerBig}>
+           <div className={styles.thumbnailContainer}>
               <Image
                 width={50}
                 height={50}
@@ -75,14 +76,24 @@ const Page = () => {
                 onClick={() => { /* Set main image on thumbnail click */ }}
               />
             </div>
+            <div className={styles.thumbnailContainer}>
+              <Image
+                width={50}
+                height={50}
+                src={`/uploads/${productData.image}`}
+                className={styles.thumbnail}
+                onClick={() => { /* Set main image on thumbnail click */ }}
+              />
+            </div>
+           </div>
           </div>
           <div className={styles.detailsSection}>
-            <h1>{productData.name}</h1>
+            <h3>{productData.name}</h3>
             <p className={styles.description}>{productData.description}</p>
             <p className={styles.price}>Price: ${productData.price}</p>
             <div className={styles.buttonContainer}>
               <button className={styles.addToCartButton} onClick={() => addToCart(productData._id)} >Add to Cart</button>
-              <button className={styles.addToFavButton} onClick={() => handleFav(productData._id)}>Add to Favorites</button>
+              <button className={styles.addToFavButton} onClick={()=>handleFav(productData._id)}>Add to Fav</button>
             </div>
           </div>
         </div>
