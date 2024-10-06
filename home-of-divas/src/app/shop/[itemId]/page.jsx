@@ -12,6 +12,7 @@ const Page = () => {
   const { addToCart, handleFav } = useGlobalContext()
 
   const [productData, setProductData] = useState(null); // State to store fetched product data
+  const [imgSrc, setImgSrc] = useState('/Food.jpg');
 
   const fetchData = async () => {
     try {
@@ -38,7 +39,7 @@ const Page = () => {
       {productData ? (
         <div className={styles.product}>
           <div className={styles.imageSection}>
-            <Image src={`/uploads/${productData.image}`} width={180} height={180} alt={productData.name} className={styles.mainImage} />
+            <Image src={imgSrc} width={180} height={180} alt={productData.name} className={styles.mainImage} />
            <div className={styles.thumbnailContainerBig}>
            <div className={styles.thumbnailContainer}>
               <Image
@@ -46,7 +47,7 @@ const Page = () => {
                 height={50}
                 src={`/uploads/${productData.image}`}
                 className={styles.thumbnail}
-                onClick={() => { /* Set main image on thumbnail click */ }}
+                onClick={() => setImgSrc(`/uploads/${productData.image}`)}
               />
             </div>
             <div className={styles.thumbnailContainer}>
@@ -90,7 +91,7 @@ const Page = () => {
           <div className={styles.detailsSection}>
             <h3>{productData.name}</h3>
             <p className={styles.description}>{productData.description}</p>
-            <p className={styles.price}>Price: ${productData.price}</p>
+            <p className={styles.price}>Price: #{productData.price}</p>
             <div className={styles.buttonContainer}>
               <button className={styles.addToCartButton} onClick={() => addToCart(productData._id)} >Add to Cart</button>
               <button className={styles.addToFavButton} onClick={()=>handleFav(productData._id)}>Add to Fav</button>
