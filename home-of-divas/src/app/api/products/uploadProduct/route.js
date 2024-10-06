@@ -9,14 +9,18 @@ export async function POST(req) {
     try {
         const formData = await req.formData();
 
+        console.log('Form data:', formData);
+
         const name = formData.get("name");
+        const itemDescription = formData.get("itemDescription");
+        console.log('itemDescription:', itemDescription);
         const price = formData.get("price");
         const category = formData.get("category");
         const images = [];
         const imageFields = ['image', 'image1', 'image2', 'image3'];
 
         const hasImages = imageFields.some((field) => formData.get(field));
-        if (!name || !category || !price || !hasImages) {
+        if (!name  || !category || !price || !hasImages) {
             return NextResponse.json({ success: false, message: "All fields required" }, { status: 400 });
         }
 
@@ -30,7 +34,7 @@ export async function POST(req) {
             const image = formData.get(fieldName);
 
             if (image) {
-                const bytes = await image.array.Buffer();
+                const bytes = await image.arrayBuffer();
                 const buffer = Buffer.from(bytes);
                 const imageName = Date.now() + "_Divas_" + image.name;
                 const filepath = path.join(uploadDir, imageName);
@@ -42,12 +46,13 @@ export async function POST(req) {
         await connectDB();
 
         console.log("IMAGES:", images);
+        console.log("itemDescription:", itemDescription);
 
         const newItem = new ProductModel({
             name,
             price,
             category,
-            discription,
+            itemDescription,
             images
         });
 
