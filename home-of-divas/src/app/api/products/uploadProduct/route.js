@@ -12,31 +12,41 @@ export async function POST(req) {
         const name = formData.get("name");
         const price = formData.get("price");
         const category = formData.get("category");
-        const image = formData.get("image");
+        const images = [];
+        const imageFields = ['image', 'image1', 'image2', 'image3'];
 
-        if (!name || !category || !price || !image) {
+        if (!name || !category || !price || !formData.get(imageFields)) {
             return NextResponse.json({ success: false, message: "All fields required" }, { status: 400 });
         }
 
         const uploadDir = path.join(process.cwd(), "public/uploads");
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });
+        };
+
+        for (const fieldName in imageFields){
+            const image = formData.get(fieldName);
+
+            if(image){
+                const bytes = await image.array.Buffer();
+                const buffer = Buffer.from(bytes);
+                const imageName = Date.now() + "_Divas_" + image.name;
+                const filepath = path.join(uploadDir, imageName);
+                await writeFile(filepath, buffer);
+                images.push(imageName);
+            }
         }
 
-        const bytes = await image.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-
-        const imageName = Date.now() + "_" +"Divas_"+ image.name;
-        const filepath = path.join(uploadDir, imageName);
-        await writeFile(filepath, buffer);
-
         await connectDB();
+
+        console.log("IMAGES:", images);
 
         const newItem = new ProductModel({
             name,
             price,
             category,
-            image: imageName
+            discription,
+            images
         });
 
         await newItem.save();

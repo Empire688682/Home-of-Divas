@@ -14,6 +14,9 @@ const AddItems = () => {
   });
 
   const [image, setImage] = useState(null);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -37,6 +40,9 @@ const AddItems = () => {
       formData.append('category', data.category);
       formData.append('price', data.price);
       formData.append('image', image);
+      formData.append('image1', image1);
+      formData.append('image2', image2);
+      formData.append('image3', image3);
 
       const response = await axios.post('api/products/uploadProduct', formData,
         { headers: { "Content-Type": 'multipart/form-data' } });
@@ -65,7 +71,7 @@ const AddItems = () => {
       <ToastContainer style={{ width: '80%' }} />
       <form className={`${styles.addForm}`} onSubmit={submitHandler}>
         <div className={`${styles.add_img_con} ${styles.flex_col}`}>
-          <p>Upload image</p>
+          <p>Product D image</p>
           <label htmlFor="image">
             <div className={styles.img_Con}>
               <Image
@@ -80,6 +86,63 @@ const AddItems = () => {
             hidden={true}
             type="file"
             id="image"
+            accept="image/*"
+          />
+        </div>
+        <div className={`${styles.add_img_con} ${styles.flex_col}`}>
+          <p>Upload image 1</p>
+          <label htmlFor="image1">
+            <div className={styles.img_Con}>
+              <Image
+                src={image1 ? URL.createObjectURL(image1) : '/profile_icon.png'}
+                alt="Uploaded Preview"
+                fill
+              />
+            </div>
+          </label>
+          <input
+            onChange={(e) => setImage1(e.target.files[0])}
+            hidden={true}
+            type="file"
+            id="image1"
+            accept="image/*"
+          />
+        </div>
+        <div className={`${styles.add_img_con} ${styles.flex_col}`}>
+          <p>Upload image 2</p>
+          <label htmlFor="image2">
+            <div className={styles.img_Con}>
+              <Image
+                src={image2 ? URL.createObjectURL(image2) : '/profile_icon.png'}
+                alt="Uploaded Preview"
+                fill
+              />
+            </div>
+          </label>
+          <input
+            onChange={(e) => setImage2(e.target.files[0])}
+            hidden={true}
+            type="file"
+            id="image2"
+            accept="image/*"
+          />
+        </div>
+        <div className={`${styles.add_img_con} ${styles.flex_col}`}>
+          <p>Upload image 3</p>
+          <label htmlFor="image3">
+            <div className={styles.img_Con}>
+              <Image
+                src={image3 ? URL.createObjectURL(image3) : '/profile_icon.png'}
+                alt="Uploaded Preview"
+                fill
+              />
+            </div>
+          </label>
+          <input
+            onChange={(e) => setImage3(e.target.files[0])}
+            hidden={true}
+            type="file"
+            id="image3"
             accept="image/*"
           />
         </div>
