@@ -15,19 +15,21 @@ export async function POST(req) {
         const images = [];
         const imageFields = ['image', 'image1', 'image2', 'image3'];
 
-        if (!name || !category || !price || !formData.get(imageFields)) {
+        const hasImages = imageFields.some((field) => formData.get(field));
+        if (!name || !category || !price || !hasImages) {
             return NextResponse.json({ success: false, message: "All fields required" }, { status: 400 });
         }
+
 
         const uploadDir = path.join(process.cwd(), "public/uploads");
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });
         };
 
-        for (const fieldName in imageFields){
+        for (const fieldName of imageFields) {
             const image = formData.get(fieldName);
 
-            if(image){
+            if (image) {
                 const bytes = await image.array.Buffer();
                 const buffer = Buffer.from(bytes);
                 const imageName = Date.now() + "_Divas_" + image.name;
