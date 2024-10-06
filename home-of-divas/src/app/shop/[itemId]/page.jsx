@@ -9,10 +9,10 @@ import Image from 'next/image';
 const Page = () => {
   const params = useParams();
   const { itemId } = params;
-  const { addToCart, handleFav } = useGlobalContext()
+  const { addToCart, handleFav } = useGlobalContext();
 
   const [productData, setProductData] = useState(null); // State to store fetched product data
-  const [imgSrc, setImgSrc] = useState('/Food.jpg');
+  const [imgSrc, setImgSrc] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -39,7 +39,7 @@ const Page = () => {
       {productData ? (
         <div className={styles.product}>
           <div className={styles.imageSection}>
-            <Image src={imgSrc} width={180} height={180} alt={productData.name} className={styles.mainImage} />
+            <Image src={imgSrc? imgSrc : `/uploads/${productData.image}`} width={180} height={180} alt={productData.name} className={styles.mainImage} />
            <div className={styles.thumbnailContainerBig}>
            <div className={styles.thumbnailContainer}>
               <Image
@@ -54,36 +54,36 @@ const Page = () => {
               <Image
                 width={50}
                 height={50}
-                src={`/uploads/${productData.image}`}
+                src="/feature.jpg"
                 className={styles.thumbnail}
-                onClick={() => { /* Set main image on thumbnail click */ }}
+                onClick={() => setImgSrc('/feature.jpg')}
               />
             </div>
             <div className={styles.thumbnailContainer}>
               <Image
                 width={50}
                 height={50}
-                src={`/uploads/${productData.image}`}
+                src="/delivery_rider.png"
                 className={styles.thumbnail}
-                onClick={() => { /* Set main image on thumbnail click */ }}
+               onClick={() => setImgSrc('/delivery_rider.png')}
               />
             </div>
             <div className={styles.thumbnailContainer}>
               <Image
                 width={50}
                 height={50}
-                src={`/uploads/${productData.image}`}
+                src="/exclusive_image.png"
                 className={styles.thumbnail}
-                onClick={() => { /* Set main image on thumbnail click */ }}
+               onClick={() => setImgSrc('/exclusive_image.png')}
               />
             </div>
             <div className={styles.thumbnailContainer}>
               <Image
                 width={50}
                 height={50}
-                src={`/uploads/${productData.image}`}
+                src="/h1_hero1.png"
                 className={styles.thumbnail}
-                onClick={() => { /* Set main image on thumbnail click */ }}
+               onClick={() => setImgSrc('/h1_hero1.png')}
               />
             </div>
            </div>
