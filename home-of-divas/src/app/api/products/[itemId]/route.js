@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
     const {itemId} = await req.json();
-    console.log("itemId:", itemId);
     try {
         connectDB();
         const data = await ProductModel.findById(itemId);

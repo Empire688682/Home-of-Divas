@@ -9,8 +9,6 @@ export async function POST(req) {
     try {
         const formData = await req.formData();
 
-        console.log('Form data:', formData);
-
         const name = formData.get("name");
         const itemDescription = formData.get("itemDescription");
         console.log('itemDescription:', itemDescription);
