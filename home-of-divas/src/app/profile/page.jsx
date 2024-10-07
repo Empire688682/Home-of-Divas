@@ -42,7 +42,7 @@ const Profile = () => {
         <h2>ACCOUNT DASHBOARD</h2>
         <ul>
         {
-            user.isAdmin ? <Link style={{textDecoration:"none"}} href="/admin"> <li><RiAdminFill style={{fontWeight:"bold"}} /> Admin</li> </Link> : null
+            user.isAdmin ? <Link style={{textDecoration:"none"}} href="/admin"> <li><RiAdminFill style={{fontWeight:"bold"}} /> Admin Dashboard</li> </Link> : null
           }
           <li onClick={() => setDashboard("information")}>
             <RiInformationFill />
