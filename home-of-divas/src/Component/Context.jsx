@@ -1,9 +1,7 @@
 "use client";
 import React, { useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 import axios from 'axios';
-import { set } from 'mongoose';
 
 const GlobalContext = React.createContext();
 
