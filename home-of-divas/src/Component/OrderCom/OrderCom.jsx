@@ -123,37 +123,6 @@ const OrderCom = () => {
                     
                 </div>
             </div>
-            <div className={styles.two_col}>
-                <h3>Payment Methods</h3>
-                <div className={styles.paywith_card}>
-                <div>
-                    {
-                        circleCheck === "card"? <FaCheckCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("card")} />:<FaRegCircle  className={styles.paywith_card_icon} onClick={()=> setCircleCheck("card")} />
-                    }
-                </div>
-                <div>
-                    <h5>Pay with card</h5>
-                    <p>(Get 5% 0ff total price and money back guarantee)</p>
-                    <small>You will be redirect to Paystack payment gateway</small>
-                </div>
-                </div>
-                <div className={styles.payon_deliver}>
-                <div >
-                {
-                        circleCheck === "dilever"? <FaCheckCircle className={styles.payon_deliver_icon} onClick={()=> setCircleCheck("dilever")} />:<FaRegCircle className={styles.payon_deliver_icon} onClick={()=> setCircleCheck("dilever")} />
-                    }
-                </div>
-                <div>
-                    <h5>Pay on delivery</h5>
-                    <ul>
-                        <li>Kindly note that we will only accept POS payment option on delivery</li>
-                        <li>You have to make payment before opening package</li>
-                        <li>Once the seal is broken, item can only be returned if damaged or defective</li>
-                    </ul>
-                </div>
-                    
-                </div>
-            </div>
             <div className={`${styles.two_col} ${styles.cart}`}>
             <h3>ORDER SUMMARY</h3>
                 {
