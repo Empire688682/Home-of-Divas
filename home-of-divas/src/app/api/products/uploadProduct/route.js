@@ -11,7 +11,6 @@ export async function POST(req) {
 
         const name = formData.get("name");
         const itemDescription = formData.get("itemDescription");
-        console.log('itemDescription:', itemDescription);
         const price = formData.get("price");
         const category = formData.get("category");
         const images = [];
