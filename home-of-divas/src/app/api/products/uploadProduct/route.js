@@ -8,7 +8,6 @@ import { ProductModel } from "@/model/productModel";
 export async function POST(req) {
     try {
         const formData = await req.formData();
-
         const name = formData.get("name");
         const itemDescription = formData.get("itemDescription");
         const price = formData.get("price");
@@ -41,9 +40,6 @@ export async function POST(req) {
         }
 
         await connectDB();
-
-        console.log("IMAGES:", images);
-        console.log("itemDescription:", itemDescription);
 
         const newItem = new ProductModel({
             name,

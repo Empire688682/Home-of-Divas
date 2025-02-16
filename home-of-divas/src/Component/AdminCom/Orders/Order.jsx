@@ -13,7 +13,7 @@ const Order = () => {
   const fetchOrder = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("/api/order/allOrder");
+      const response = await axios.get("api/order/allOrder");
       if (response.data.success) {
         setAllOrder(response.data.data || []);
       }
@@ -30,7 +30,7 @@ const Order = () => {
 
   const removeOrder = async (orderId) => {
     try {
-      const response = await axios.post("/api/order/removeOrder", { orderId });
+      const response = await axios.post("api/order/removeOrder", { orderId });
       if (response.data.success) {
         fetchOrder();
         toast.success("Order removed successfully!");
@@ -48,7 +48,7 @@ const Order = () => {
 
   const updateStatus = async (orderId, stage) => {
     try {
-      const response = await axios.post("/api/order/orderStatus", { orderId, stage });
+      const response = await axios.post("api/order/orderStatus", { orderId, stage });
       if (response.data.success) {
         fetchOrder(); // Fetch orders again to get updated statuses
         toast.success("Status updated successfully!");
