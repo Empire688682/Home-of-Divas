@@ -42,7 +42,7 @@ useEffect(() => {
             <div className={` ${styles.cartItems}`} key={item._id}>
               <div className={styles.product}>
               <div className={styles.img_Con}>
-                <Image src={`/uploads/${item.image}`} alt='' fill/>
+                <Image src={`/uploads/${item.images[0]}`} alt='' fill/>
               </div>
               <p>{item.name}</p>
               </div>

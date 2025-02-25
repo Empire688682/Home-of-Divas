@@ -104,7 +104,7 @@ const ShopProduct = () => {
                                                                     <FaHeart />
                                                                 </div>
                                                                 {
-                                                                    cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
+                                                                    cartItems[item._id] > 0 ? <div className={styles.cart}>
                                                                         <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
                                                                         <p>{cartItems[item._id]}</p>
                                                                         <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>

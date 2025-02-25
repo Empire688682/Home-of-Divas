@@ -1,65 +1,91 @@
-.myOrder{
-    width: 100%;
-    color: black;
-}
-.myOrder .header, .myOrder .content{
+.myOrderContainer {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .loading,
+  .noOrder {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+  }
+  
+  .orderList {
     display: flex;
-    gap: 20px;
-    align-items: center;
-    border: 1px solid gray;
-    padding: 10px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .orderCard {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
     justify-content: space-between;
-    width: 100%;
-}
-.header .image{
-    flex-basis: 10%;
-    width: 100%;
-    font-weight: 500;
-}
-.header .name{
-    flex-basis: 40%;
-    flex: 1;
-    width: 100%;
-    font-weight: 500;
-}
-.header .category{
-    flex-basis: 20%;
-    width: 100%;
-    font-weight: 500;
-}
-.header .price{
-    flex-basis: 10%;
-    width: 100%;
-    font-weight: 500;
-}
-.header .remove{
-    flex-basis: 10%;
-    width: 100%;
-    font-weight: 500;
-}
-.content .image{
-    flex-basis: 10%;
-    width: 100%;
-}
-.image img{
-    width: 60px;
-    height: 60px;
-}
-.content .name{
-    flex-basis: 40%;
-    flex: 1;
-    width: 100%;
-}
-.content .category{
-    flex-basis: 20%;
-    width: 100%;
-}
-.content .price{
-    flex-basis: 10%;
-    width: 100%;
-}
-.content .remove{
-    flex-basis: 10%;
-    width: 100%;
-    cursor: pointer;
-}
+    align-items: center;
+  }
+  
+  .orderDetails {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+  }
+  
+  .itemDetails {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .productImage {
+    border-radius: 6px;
+  }
+  
+  .itemInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .itemName {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .itemQuantity {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .orderSummary {
+    text-align: right;
+  }
+  
+  .orderTotal {
+    font-weight: bold;
+    font-size: 16px;
+    color: #27ae60;
+  }
+
+  .orderStatus{
+    font-weight: bold;
+    font-size: 16px;
+    color: #27ae60;
+  }
+  
+  .paymentMethod {
+    font-size: 14px;
+    color: #777;
+  }
+  

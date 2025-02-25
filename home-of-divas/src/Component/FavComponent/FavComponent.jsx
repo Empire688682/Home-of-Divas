@@ -23,7 +23,7 @@ const FavComponent = () => {
               return <div key={product._id} className={styles.fav_cart}>
                 <div className={styles.cart_head}>
                   <div className={styles.img_Con}>
-                    <Image src={`/uploads/${product.image}`} alt='' fill/>
+                    <Image src={`/uploads/${product.images[0]}`} alt='' fill/>
                   </div>
                   <div className={styles.cart_name_price}>
                     <p>{product.name}</p>

@@ -88,7 +88,7 @@ const AddItems = () => {
             <label htmlFor={key}>
               <div className={styles.img_Con}>
                 <Image
-                  src={images[key] ? URL.createObjectURL(images[key]) : '/profile_icon.png'}
+                  src={images[key] ? URL.createObjectURL(images[key]) : '/upload_area.svg'}
                   alt="Uploaded Preview"
                   fill
                 />
