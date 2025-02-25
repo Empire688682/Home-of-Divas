@@ -131,7 +131,7 @@ const OrderCom = () => {
                     <div>Delivery fees <h4>#2000</h4></div>
                     <div>Total <h4>#{getTotalValue() + 2000}</h4></div>
                     <label htmlFor='submitButton' className={styles.buttonLabel}>
-                        {loading ? "Processing..." : "Proceed to checkout"}
+                        {loading ? "Processing..." : <p>Proceed to checkout</p>}
                     </label></>
                     :
                     <>

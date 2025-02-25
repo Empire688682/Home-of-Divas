@@ -56,7 +56,7 @@
     padding-bottom: 3px;
 }
 
-.buttonLabel {
+.buttonLabel  p{
     padding: 10px 50px;
     border: none;
     border-radius: 20px;
@@ -66,6 +66,7 @@
     cursor: pointer;
     margin-top: 40px;
     font-size: 16px;
+    text-align: center;
 }
 
 .two_col form {
@@ -91,4 +92,9 @@
         min-width: 300px;
         margin-bottom: 30px;
     }
+    .buttonLabel  p{
+        padding: 10px 30px;
+        font-size: 14px;
+    }
+    
 }
