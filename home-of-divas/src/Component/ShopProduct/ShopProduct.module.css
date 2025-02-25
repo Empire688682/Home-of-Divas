@@ -91,7 +91,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.fav, .cart{
+.items_toggle_Con, .fav, .cart{
     font-size: 30px;
     cursor: pointer;
     color: var(--gray);
@@ -131,10 +131,10 @@
     font-weight: 600;
 }
 .items_toggle_Con{
+    width: 100%;
     display: flex;
     align-items: center;
     border: 1px solid lightslategray;
-    width: 150px;
     height: 52px;
     justify-content: space-between;
     padding: 10px;

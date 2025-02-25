@@ -73,9 +73,9 @@ const ShopProduct = () => {
                                 <p>Internal Server Error, or Network Error</p>
                             </div>
                                 :
-                                <div className={styles.shop_items}>
+                                <div>
                                     {
-                                        allProduct.length > 0 ? <>
+                                        allProduct.length > 0 ? <div div className={styles.shop_items}>
                                             {
                                                 allProduct.map((item) => {
                                                     if (category === "All" || item.category === category) {
@@ -104,7 +104,7 @@ const ShopProduct = () => {
                                                                     <FaHeart />
                                                                 </div>
                                                                 {
-                                                                    cartItems[item._id] > 0 ? <div className={styles.cart}>
+                                                                    cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
                                                                         <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
                                                                         <p>{cartItems[item._id]}</p>
                                                                         <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>
@@ -119,7 +119,7 @@ const ShopProduct = () => {
                                                     }
                                                 })
                                             }
-                                        </>
+                                        </div>
                                             :
                                             <div className={styles.error_message_Con}>
                                                 <p>No Product Found</p>
