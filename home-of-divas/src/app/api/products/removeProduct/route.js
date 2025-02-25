@@ -9,8 +9,6 @@ export async function POST(req) {
         connectDB();
        const product = await ProductModel.findById(id);
 
-       console.log("product:", product);
-
        if(!product){
         return NextResponse.json({success:false, message:"No product available"});
        } 
