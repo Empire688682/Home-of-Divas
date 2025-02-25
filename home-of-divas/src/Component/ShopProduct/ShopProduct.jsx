@@ -25,6 +25,8 @@ const ShopProduct = () => {
     } = useGlobalContext();
     const router = useRouter();
 
+    console.log("AllData:", allProduct);
+
     const handleAddToCart = (itemId) => {
         if (!token) {
             router.push("/signup");
@@ -73,47 +75,55 @@ const ShopProduct = () => {
                                 :
                                 <div className={styles.shop_items}>
                                     {
-                                        allProduct.map((item) => {
-                                            if (category === "All" || item.category === category) {
-                                                return <div key={item._id} className={styles.shop_cart}>
-                                                    <div className={styles.img_com} onClick={() => router.push(`/shop/${item._id}`)}>
-                                                        <item/>
-                                                        <Image className={styles.img} src={`/uploads/${item.image}`} alt="" fill />
-                                                    </div>
-                                                    <div className={styles.item_text}>
-                                                        <div className={styles.item_name}>
-                                                            {item.name}
-                                                        </div>
-                                                        <div className={styles.item_price}>
-                                                            <div className={styles.item_stars}>
-                                                                <FaStar className={styles.star} />
-                                                                <FaStar className={styles.star} />
-                                                                <FaStar className={styles.star} />
-                                                                <FaStar className={styles.star} />
-                                                                <FaStar className={styles.star} />
+                                        allProduct.length > 0 ? <>
+                                            {
+                                                allProduct.map((item) => {
+                                                    if (category === "All" || item.category === category) {
+                                                        return <div key={item._id} className={styles.shop_cart}>
+                                                            <div className={styles.img_com} onClick={() => router.push(`/shop/${item._id}`)}>
+                                                                <item />
+                                                                <Image className={styles.img} src={`/uploads/${item.images[0]}`} alt="" fill sizes='100%' />
                                                             </div>
-                                                            <p>#{item.price}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.cart_fav_Con}>
-                                                        <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleAddToFav(item._id)}>
-                                                            <FaHeart />
-                                                        </div>
-                                                        {
-                                                            cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
-                                                                <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
-                                                                <p>{cartItems[item._id]}</p>
-                                                                <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>
-                                                            </div>
-                                                                :
-                                                                <div onClick={() => handleAddToCart(item._id)} className={styles.cart}>
-                                                                    <FiShoppingCart />
+                                                            <div className={styles.item_text}>
+                                                                <div className={styles.item_name}>
+                                                                    {item.name}
                                                                 </div>
-                                                        }
-                                                    </div>
-                                                </div>
+                                                                <div className={styles.item_price}>
+                                                                    <div className={styles.item_stars}>
+                                                                        <FaStar className={styles.star} />
+                                                                        <FaStar className={styles.star} />
+                                                                        <FaStar className={styles.star} />
+                                                                        <FaStar className={styles.star} />
+                                                                        <FaStar className={styles.star} />
+                                                                    </div>
+                                                                    <p>#{item.price}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className={styles.cart_fav_Con}>
+                                                                <div className={favItem[item._id] < 0 || !favItem[item._id] ? styles.fav : styles.fav_red} onClick={() => handleAddToFav(item._id)}>
+                                                                    <FaHeart />
+                                                                </div>
+                                                                {
+                                                                    cartItems[item._id] > 0 ? <div className={styles.items_toggle_Con}>
+                                                                        <p className={styles.add_icon} onClick={() => handleAddToCart(item._id)}>+</p>
+                                                                        <p>{cartItems[item._id]}</p>
+                                                                        <p className={styles.remove_icon} onClick={() => handleRemoveFromCart(item._id)}>-</p>
+                                                                    </div>
+                                                                        :
+                                                                        <div onClick={() => handleAddToCart(item._id)} className={styles.cart}>
+                                                                            <FiShoppingCart />
+                                                                        </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                })
                                             }
-                                        })
+                                        </>
+                                            :
+                                            <div className={styles.error_message_Con}>
+                                                <p>No Product Found</p>
+                                            </div>
                                     }
                                 </div>
                         }

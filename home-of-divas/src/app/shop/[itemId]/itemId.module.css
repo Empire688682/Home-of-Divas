@@ -18,7 +18,8 @@
     max-width: 300px;
     overflow: hidden;
     padding: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
   }
   
   /* Image section styles */
@@ -54,6 +55,8 @@
   .thumbnailContainerBig{
     display: flex;
     margin-bottom: 20px;
+    justify-content: center;
+    gap: 10px;
   }
   
   /* Thumbnail image styling */
@@ -69,18 +72,18 @@
   }
   
   .detailsSection h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
   }
   
   .description {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     color: #555;
     margin-bottom: 20px;
   }
   
   .price {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #333;
     margin-bottom: 20px;
   }
@@ -122,13 +125,5 @@
   
   /* Responsive design for smaller screens */
   @media (max-width: 768px) {
-    .product {
-      flex-direction: column;
-    }
-    
-    .mainImageContainer {
-      width: 100%;
-      max-width: 100%;
-    }
   }
   

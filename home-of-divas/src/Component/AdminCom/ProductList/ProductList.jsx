@@ -43,7 +43,7 @@ const ProductList = () => {
                 return <div className={styles.content}>
                   <div className={styles.img_Con}>
                     <Image
-                      src={`/uploads/${product.image}`}
+                      src={`/uploads/${product.images[0]}`}
                       alt=''
                       fill
                     />

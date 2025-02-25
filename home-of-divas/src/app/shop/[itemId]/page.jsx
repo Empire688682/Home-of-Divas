@@ -39,58 +39,40 @@ const Page = () => {
       {productData ? (
         <div className={styles.product}>
           <div className={styles.imageSection}>
-            <Image src={imgSrc? imgSrc : `/uploads/${productData.image}`} width={180} height={180} alt={productData.name} className={styles.mainImage} />
+            <Image src={imgSrc? imgSrc : `/uploads/${productData.images[0]}`} width={180} height={180} alt={productData.name} className={styles.mainImage} />
            <div className={styles.thumbnailContainerBig}>
            <div className={styles.thumbnailContainer}>
               <Image
-                width={50}
-                height={50}
-                src={`/uploads/${productData.image}`}
+                width={80}
+                height={80}
+                src={`/uploads/${productData.images[0]}`}
                 className={styles.thumbnail}
-                onClick={() => setImgSrc(`/uploads/${productData.image}`)}
+                onClick={() => setImgSrc(`/uploads/${productData.images[0]}`)}
               />
             </div>
             <div className={styles.thumbnailContainer}>
               <Image
-                width={50}
-                height={50}
-                src="/feature.jpg"
+                width={80}
+                height={80}
+                src={`/uploads/${productData.images[1]}`}
                 className={styles.thumbnail}
-                onClick={() => setImgSrc('/feature.jpg')}
+                onClick={() => setImgSrc(`/uploads/${productData.images[1]}`)}
               />
             </div>
             <div className={styles.thumbnailContainer}>
               <Image
-                width={50}
-                height={50}
-                src="/delivery_rider.png"
+                width={80}
+                height={80}
+                src={`/uploads/${productData.images[2]}`}
                 className={styles.thumbnail}
-               onClick={() => setImgSrc('/delivery_rider.png')}
-              />
-            </div>
-            <div className={styles.thumbnailContainer}>
-              <Image
-                width={50}
-                height={50}
-                src="/exclusive_image.png"
-                className={styles.thumbnail}
-               onClick={() => setImgSrc('/exclusive_image.png')}
-              />
-            </div>
-            <div className={styles.thumbnailContainer}>
-              <Image
-                width={50}
-                height={50}
-                src="/h1_hero1.png"
-                className={styles.thumbnail}
-               onClick={() => setImgSrc('/h1_hero1.png')}
+               onClick={() => setImgSrc(`/uploads/${productData.images[2]}`)}
               />
             </div>
            </div>
           </div>
           <div className={styles.detailsSection}>
             <h3>{productData.name}</h3>
-            <p className={styles.description}>{productData.description}</p>
+            <p className={styles.description}>{productData.itemDescription}</p>
             <p className={styles.price}>Price: #{productData.price}</p>
             <div className={styles.buttonContainer}>
               <button className={styles.addToCartButton} onClick={() => addToCart(productData._id)} >Add to Cart</button>
