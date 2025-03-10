@@ -48,7 +48,7 @@ const MyOrder = () => {
                 ))}
               </div>
               <div className={styles.orderSummary}>
-                <p>Total: <span className={styles.orderTotal}>${order.total}</span></p>
+                <p>Total: <span className={styles.orderTotal}>#{order.total}</span></p>
                 <p>Payment: <span className={styles.paymentMethod}>{order.paymentMethod}</span></p>
                 <p>Status: <span className={styles.orderStatus}>{order.status}</span></p>
               </div>
