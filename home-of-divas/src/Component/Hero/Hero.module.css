@@ -35,8 +35,13 @@
     color: var(--white);
     padding-bottom: 30px;
   }
+  .btnCon{
+    display: flex;
+    gap: 8px;
+  }
   .text_col .btn{
     background-color: var(--orange);
+     text-decoration: none;
     color: var(--white);
     border: none;
     padding: 20px 40px;
