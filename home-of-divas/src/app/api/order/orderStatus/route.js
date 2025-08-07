@@ -1,6 +1,6 @@
 import { connectDB } from "@/ConnectDB/ConnectDB";
 import { OrderModel } from "@/model/orderModel";
-import { NextResponse } from "next/server";
+import { NextResponse } from "next/server"
 connectDB();
 
 export async function POST(req) {
